@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #120407;
+  --bg-surface: #200810;
+  --text-main: #fff7f2;
+  --text-muted: #d1b8b8;
+  --accent-rose: #d85c72;
+  --accent-gold: #f3cf98;
+  --accent-gold-dark: #c59b27;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #120407;
+}
+::-webkit-scrollbar-thumb {
+  background: #3a101b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d85c72;
+}
+
+/* Liquid Glass Utility */
+.liquid-glass {
+  position: relative;
+  background: rgba(36, 12, 18, 0.55);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(243, 207, 152, 0.18);
+}
+
+.liquid-glass-nav {
+  background: rgba(22, 6, 10, 0.72);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(243, 207, 152, 0.22);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+}
+
+.liquid-glass-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(42, 12, 22, 0.65) 0%, rgba(20, 6, 11, 0.8) 100%);
+  backdrop-filter: blur(14px) saturate(150%);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+  border: 1px solid rgba(243, 207, 152, 0.16);
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.liquid-glass-card:hover {
+  border-color: rgba(243, 207, 152, 0.5);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(216, 92, 114, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.25);
+}
+
+/* Gold Shimmer Text */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #fff7f2 0%, #f3cf98 50%, #d85c72 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.rose-gold-text {
+  background: linear-gradient(135deg, #fce8eb 0%, #d85c72 50%, #f3cf98 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Stitched border effect */
+.stitched-border {
+  border: 2px dashed rgba(243, 207, 152, 0.35);
+}
+
+/* Ambient glow pulses */
+@keyframes ambientGlow {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 0.65; transform: scale(1.08); }
+}
+
+.animate-ambient-glow {
+  animation: ambientGlow 8s ease-in-out infinite;
+}
