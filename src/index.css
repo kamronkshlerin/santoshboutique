@@ -550,3 +550,31 @@
   color: #1a060c !important;
 }
 
+/* ======================================================= */
+/* MOTIONSITES CURSOR REACTIVE PARALLAX SUITE              */
+/* ======================================================= */
+
+.cursor-float-gentle {
+  transform: translate3d(calc(var(--mouse-tilt-x, 0px) * 0.45), calc(var(--mouse-tilt-y, 0px) * 0.45), 0);
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.cursor-float-opposite {
+  transform: translate3d(calc(var(--mouse-tilt-x, 0px) * -0.55), calc(var(--mouse-tilt-y, 0px) * -0.55), 0);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.cursor-float-badge {
+  transform: translate3d(calc(var(--mouse-tilt-x, 0px) * 0.8), calc(var(--mouse-tilt-y, 0px) * 0.8), 0);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.cursor-float-card {
+  transform: perspective(1000px) rotateY(calc(var(--mouse-tilt-x, 0px) * 0.28deg)) rotateX(calc(var(--mouse-tilt-y, 0px) * -0.28deg));
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+

@@ -137,7 +137,7 @@ export const HeroSection: React.FC = () => {
         <div className="lg:col-span-7 text-center lg:text-left flex flex-col items-center lg:items-start">
           
           {/* Studio Landmark & Live Badge */}
-          <div className="hero-tagline-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full liquid-glass mb-6 border border-[#f3cf98]/30 shadow-lg animate-fade-in">
+          <div className="hero-tagline-badge cursor-float-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full liquid-glass mb-6 border border-[#f3cf98]/30 shadow-lg animate-fade-in">
             <MapPin className="w-3.5 h-3.5 text-[#d85c72]" />
             <span className="text-xs sm:text-sm font-medium text-[#f3cf98] tracking-wide">
               {config.heroTagline}
@@ -146,12 +146,12 @@ export const HeroSection: React.FC = () => {
           </div>
 
           {/* Main Headline */}
-          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#fff7f2] leading-[1.1] mb-6">
+          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#fff7f2] leading-[1.1] mb-6 cursor-float-gentle">
             Stitching Your <span className="italic gold-gradient-text">Dreams</span> With Care
           </h1>
 
           {/* Subtitle & Tagline */}
-          <p className="max-w-xl text-base sm:text-lg text-[#d1b8b8] font-light leading-relaxed mb-3">
+          <p className="max-w-xl text-base sm:text-lg text-[#d1b8b8] font-light leading-relaxed mb-3 cursor-float-opposite">
             {config.heroSubtitle}
           </p>
 
@@ -209,7 +209,7 @@ export const HeroSection: React.FC = () => {
         {/* ================= RIGHT COLUMN: 3D Atelier Haute Couture Model Stage (5 Cols) ================= */}
         <div className="lg:col-span-5 flex items-center justify-center lg:justify-end">
           <div 
-            className="relative w-full max-w-[420px] sm:max-w-[440px] rounded-[32px] overflow-hidden p-2.5 transition-transform duration-500 ease-out will-change-transform group hover:[transform:perspective(1000px)_rotateY(-3deg)_rotateX(2deg)_scale(1.01)]"
+            className="relative w-full max-w-[420px] sm:max-w-[440px] rounded-[32px] overflow-hidden p-2.5 transition-transform duration-500 ease-out will-change-transform group cursor-float-card hover:[transform:perspective(1000px)_rotateY(-3deg)_rotateX(2deg)_scale(1.02)]"
           >
             {/* Glowing Golden Aura Border */}
             <div className="absolute -inset-1 rounded-[36px] bg-gradient-to-tr from-[#8a1c32]/50 via-[#f3cf98]/30 to-[#d85c72]/40 blur-xl opacity-80 group-hover:opacity-100 transition-opacity" />

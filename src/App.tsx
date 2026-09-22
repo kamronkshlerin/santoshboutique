@@ -17,6 +17,7 @@ import { PricingPage } from './pages/PricingPage';
 import { ContactPage } from './pages/ContactPage';
 import { AdminBookingsDashboard } from './components/AdminBookingsDashboard';
 import { ScrollProgressBar, LuxuryMarqueeRibbon, useGlobalCardSpotlight } from './components/MotionSiteExperience';
+import { MotionCoutureCursor } from './components/MotionCoutureCursor';
 
 export type PageTab = 'home' | 'about' | 'designs' | 'process' | 'pricing' | 'contact' | 'admin';
 
@@ -104,6 +105,9 @@ export const App: React.FC = () => {
     <div className={`min-h-screen ${theme === 'light' ? 'light-mode bg-[#faf7f5] text-[#1f070e]' : 'bg-[#120407] text-[#fff7f2]'} font-sans overflow-x-hidden selection:bg-[#d85c72] selection:text-white transition-colors duration-300`}>
       {/* Top Motionsite Scroll Progress Bar */}
       <ScrollProgressBar theme={theme} />
+
+      {/* Haute-Couture Luxury Magnetic Cursor & Halo Follower */}
+      <MotionCoutureCursor theme={theme} />
 
       {/* Top Floating Glass Navigation with Multi-Page Routing & Theme Toggle */}
       <Navbar 

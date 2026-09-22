@@ -91,7 +91,7 @@ export const ServicesGrid: React.FC = () => {
             <span>Artisanal Stitching Services</span>
           </div>
 
-          <h2 className="font-display text-3xl sm:text-5xl font-bold text-[#fff7f2] tracking-tight leading-tight mb-4">
+          <h2 className="font-display text-3xl sm:text-5xl font-bold text-[#fff7f2] tracking-tight leading-tight mb-4 cursor-float-gentle">
             Master Craftsmanship for <span className="italic gold-gradient-text">Every Occasion</span>
           </h2>
 
@@ -105,7 +105,7 @@ export const ServicesGrid: React.FC = () => {
           {/* Row 1: Featured 2-Column Wide Spotlight + 1-Column Express Alteration */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
             {/* Spotlight Card: Lehenga & Party Wear (Span 2 cols on desktop) */}
-            <div className="lg:col-span-2 liquid-glass-card card-spotlight rounded-3xl overflow-hidden flex flex-col md:flex-row group">
+            <div className="lg:col-span-2 liquid-glass-card card-spotlight cursor-float-card rounded-3xl overflow-hidden flex flex-col md:flex-row group">
               <div className="relative md:w-5/12 h-64 md:h-auto overflow-hidden shrink-0">
                 <img
                   src={featuredService.image}
