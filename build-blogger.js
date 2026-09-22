@@ -203,14 +203,12 @@ ${jsonLd}
       <p>Neeche diye gaye har section me <b>[Edit]</b> par click karke WhatsApp number, Calling Phone, Starting Prices, Address, aur Announcements change kar sakte hain!</p>
     </div>
 
-    <!-- 0. REAL-TIME BOOKINGS & ORDERS AUTOMATION CRM -->
-    <b:section class='layout-section' id='sec-orders' name='0. 📋 Customer Orders CRM &amp; Full Automation' showaddelement='yes'>
+    <!-- 0. REAL-TIME BOOKINGS & GOOGLE SHEETS AUTOMATION -->
+    <b:section class='layout-section' id='sec-orders' name='0. 📋 Customer Orders &amp; Google Sheets Automation' showaddelement='yes'>
       <b:widget id='HTML100' locked='false' title='Bookings Automation &amp; Google Sheets' type='HTML' version='2'>
         <b:widget-settings>
           <b:widget-setting name='content'><![CDATA[webhookUrl: 
-adminPin: 2026
-crmPortalUrl: #/admin
-instructions: Sabhi custom measurement form bookings dekhne ke liye website ke URL ke aage #/admin lagayein (e.g. yoursite.blogspot.com/#/admin). PIN: 2026. Is field me Google Sheets webhook URL paste karke Google Sheets me auto-sync karein.]]></b:widget-setting>
+instructions: Customer bookings Google Sheets me auto-sync karne ke liye apna Apps Script Webhook URL paste karein.]]></b:widget-setting>
         </b:widget-settings>
         <b:includable id='main'>
           <div class='cms-block' data-key='orders'>
