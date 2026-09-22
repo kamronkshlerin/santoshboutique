@@ -9,8 +9,13 @@ interface QuickOption {
   text: string;
 }
 
-export const FloatingWhatsApp: React.FC = () => {
+interface FloatingWhatsAppProps {
+  theme?: 'dark' | 'light';
+}
+
+export const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({ theme = 'dark' }) => {
   const config = useBloggerConfig();
+  const isLight = theme === 'light';
   const [isOpen, setIsOpen] = useState(false);
   const [unreadCount, setUnreadCount] = useState(1);
   const [currentTime, setCurrentTime] = useState('Just now');
@@ -57,7 +62,6 @@ export const FloatingWhatsApp: React.FC = () => {
     const now = new Date();
     const formatted = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     setCurrentTime(formatted);
-
     // Auto-pop teaser after 5 seconds if not yet interacted
     const timer = setTimeout(() => {
       setIsOpen(true);
@@ -67,7 +71,7 @@ export const FloatingWhatsApp: React.FC = () => {
   }, []);
 
   const handleSelectChip = (opt: QuickOption) => {
-    setMessage(opt.text);
+    setMessage(opt.text || '');
     if (inputRef.current) {
       inputRef.current.focus();
     }
@@ -101,7 +105,11 @@ export const FloatingWhatsApp: React.FC = () => {
       {/* ================= 1. AUTHENTIC WHATSAPP POPUP WINDOW ================= */}
       {isOpen && (
         <div 
-          className="mb-3.5 w-[92vw] sm:w-[370px] rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.7)] border border-white/20 bg-[#120407] text-[#fff7f2] animate-in fade-in slide-in-from-bottom-5 duration-300 transition-all flex flex-col"
+          className={`whatsapp-window mb-3.5 w-[92vw] sm:w-[370px] rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.3)] animate-in fade-in slide-in-from-bottom-5 duration-300 transition-all flex flex-col ${
+            isLight
+              ? 'border border-black/10 bg-[#efeae2] text-[#111b21]'
+              : 'border border-white/20 bg-[#120407] text-[#fff7f2]'
+          }`}
           style={{ maxHeight: 'calc(100vh - 110px)' }}
         >
           {/* WhatsApp Header */}
@@ -109,7 +117,9 @@ export const FloatingWhatsApp: React.FC = () => {
             <div className="flex items-center gap-3">
               {/* Studio Avatar with Online Indicator */}
               <div className="relative">
-                <div className="w-11 h-11 rounded-full bg-[#120407] border-2 border-white/40 flex items-center justify-center font-display font-bold text-lg text-[#f3cf98] shadow-inner">
+                <div className={`w-11 h-11 rounded-full border-2 border-white/60 flex items-center justify-center font-display font-bold text-lg shadow-inner ${
+                  isLight ? 'bg-white text-[#075E54]' : 'bg-[#120407] text-[#f3cf98]'
+                }`}>
                   SB
                 </div>
                 <span className="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-[#25D366] border-2 border-[#075E54] ring-1 ring-white" />
@@ -124,7 +134,7 @@ export const FloatingWhatsApp: React.FC = () => {
                     ✓
                   </span>
                 </div>
-                <p className="text-[11px] text-white/85 flex items-center gap-1 mt-0.5">
+                <p className="text-[11px] text-white/90 flex items-center gap-1 mt-0.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#25D366] animate-ping inline-block" />
                   <span>Online • Typically replies in 5 mins</span>
                 </p>
@@ -134,7 +144,7 @@ export const FloatingWhatsApp: React.FC = () => {
             {/* Close Button */}
             <button
               onClick={() => setIsOpen(false)}
-              className="p-1.5 rounded-full hover:bg-black/20 text-white/80 hover:text-white transition-colors"
+              className="p-1.5 rounded-full hover:bg-black/20 text-white/90 hover:text-white transition-colors"
               aria-label="Close WhatsApp chat"
             >
               <X className="w-5 h-5" />
@@ -143,46 +153,66 @@ export const FloatingWhatsApp: React.FC = () => {
 
           {/* WhatsApp Chat Body */}
           <div 
-            className="p-3.5 sm:p-4 overflow-y-auto space-y-3 flex-1 bg-gradient-to-b from-[#18080f] via-[#14050b] to-[#120407]"
+            className={`whatsapp-chat-body p-3.5 sm:p-4 overflow-y-auto space-y-3 flex-1 ${
+              isLight
+                ? 'bg-[#efeae2]'
+                : 'bg-gradient-to-b from-[#18080f] via-[#14050b] to-[#120407]'
+            }`}
             style={{ minHeight: '260px', maxHeight: '380px' }}
           >
             {/* Encryption Notice */}
             <div className="text-center">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-black/40 border border-white/5 text-[10px] text-[#f3cf98]/80 font-medium">
+              <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-[10px] font-medium shadow-xs ${
+                isLight
+                  ? 'bg-[#ffeecd] border border-[#f0dfbe] text-[#54656f]'
+                  : 'bg-black/40 border border-white/5 text-[#f3cf98]/80'
+              }`}>
                 🔒 Messages are end-to-end encrypted
               </span>
             </div>
 
             {/* Time Marker */}
             <div className="text-center">
-              <span className="text-[10px] text-[#d1b8b8]/60 uppercase tracking-widest font-mono">
+              <span className={`text-[10px] uppercase tracking-widest font-mono ${
+                isLight ? 'text-[#667781]' : 'text-[#d1b8b8]/60'
+              }`}>
                 Today {currentTime}
               </span>
             </div>
 
             {/* Boutique's Incoming Welcome Bubble */}
             <div className="flex flex-col items-start max-w-[88%]">
-              <div className="relative p-3 rounded-2xl rounded-tl-none bg-[#240c14] border border-[#f3cf98]/20 shadow-md text-[13px] leading-relaxed text-[#fff7f2]">
-                <p className="font-semibold text-[#f3cf98] text-xs mb-1 flex items-center gap-1">
-                  <Sparkles className="w-3.5 h-3.5 text-[#f3cf98]" />
+              <div className={`whatsapp-incoming-bubble relative p-3 rounded-2xl rounded-tl-none shadow-md text-[13px] leading-relaxed ${
+                isLight
+                  ? 'bg-white border border-black/5 text-[#111b21]'
+                  : 'bg-[#240c14] border border-[#f3cf98]/20 text-[#fff7f2]'
+              }`}>
+                <p className={`font-bold text-xs mb-1 flex items-center gap-1 ${
+                  isLight ? 'text-[#075e54]' : 'text-[#f3cf98]'
+                }`}>
+                  <Sparkles className="w-3.5 h-3.5" />
                   Santosh Boutique Bilaspur
                 </p>
-                <p>
+                <p className={isLight ? 'text-[#111b21]' : 'text-[#fff7f2]'}>
                   Namaste! Welcome to Himachal's premier atelier. Aapko custom suit, designer blouse, ya bridal lehenga ke baare me puchna hai?
                 </p>
-                <p className="mt-1 text-xs text-[#d1b8b8]">
+                <p className={`mt-1 text-xs ${isLight ? 'text-[#54656f]' : 'text-[#d1b8b8]'}`}>
                   👉 Neeche quick option tap karein ya direct message send karein:
                 </p>
-                <div className="flex items-center justify-end gap-1 mt-1 text-[10px] text-[#d1b8b8]/60">
+                <div className={`flex items-center justify-end gap-1 mt-1 text-[10px] ${
+                  isLight ? 'text-[#667781]' : 'text-[#d1b8b8]/60'
+                }`}>
                   <span>{currentTime}</span>
-                  <CheckCheck className="w-3.5 h-3.5 text-[#34B7F1]" />
+                  <CheckCheck className={`w-3.5 h-3.5 ${isLight ? 'text-[#53bdeb]' : 'text-[#34B7F1]'}`} />
                 </div>
               </div>
             </div>
 
             {/* Quick-Tap Preset Options / Chips */}
             <div className="space-y-1.5 pt-1">
-              <p className="text-[10px] font-bold text-[#f3cf98]/70 uppercase tracking-wider pl-1">
+              <p className={`text-[10px] font-bold uppercase tracking-wider pl-1 ${
+                isLight ? 'text-[#54656f]' : 'text-[#f3cf98]/70'
+              }`}>
                 ⚡ Quick Inquiries (Tap to select)
               </p>
               <div className="flex flex-wrap gap-1.5">
@@ -190,10 +220,14 @@ export const FloatingWhatsApp: React.FC = () => {
                   <button
                     key={opt.id}
                     onClick={() => handleSelectChip(opt)}
-                    className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-xs bg-white/5 hover:bg-[#8a1c32]/30 active:scale-95 border border-[#f3cf98]/20 hover:border-[#f3cf98]/50 text-[#fff7f2] transition-all text-left"
+                    className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-xs active:scale-95 transition-all text-left shadow-xs ${
+                      isLight
+                        ? 'bg-white hover:bg-[#e7f7ed] border border-[#25D366]/40 hover:border-[#25D366] text-[#111b21]'
+                        : 'bg-white/5 hover:bg-[#8a1c32]/30 border border-[#f3cf98]/20 hover:border-[#f3cf98]/50 text-[#fff7f2]'
+                    }`}
                   >
                     <span>{opt.icon}</span>
-                    <span className="font-medium text-[11px]">{opt.label}</span>
+                    <span className="font-semibold text-[11px]">{opt.label}</span>
                   </button>
                 ))}
               </div>
@@ -201,7 +235,11 @@ export const FloatingWhatsApp: React.FC = () => {
           </div>
 
           {/* WhatsApp Bottom Input & Direct Action Area */}
-          <div className="p-3 bg-[#1e0710] border-t border-[#f3cf98]/20 flex flex-col gap-2">
+          <div className={`p-3 border-t flex flex-col gap-2 ${
+            isLight
+              ? 'bg-[#f0f2f5] border-[#d1d7db]'
+              : 'bg-[#1e0710] border-[#f3cf98]/20'
+          }`}>
             <div className="flex items-center gap-2">
               <div className="relative flex-1">
                 <input
@@ -211,14 +249,18 @@ export const FloatingWhatsApp: React.FC = () => {
                   onChange={(e) => setMessage(e.target.value)}
                   onKeyDown={handleKeyDown}
                   placeholder="Type a message..."
-                  className="w-full bg-[#120407] border border-[#f3cf98]/30 rounded-full px-4 py-2.5 text-xs text-white placeholder-white/40 focus:outline-none focus:border-[#25D366] transition-colors"
+                  className={`w-full rounded-full px-4 py-2.5 text-xs focus:outline-none transition-colors ${
+                    isLight
+                      ? 'bg-white border border-[#d1d7db] text-[#111b21] placeholder-[#667781] focus:border-[#25D366]'
+                      : 'bg-[#120407] border border-[#f3cf98]/30 text-white placeholder-white/40 focus:border-[#25D366]'
+                  }`}
                 />
               </div>
 
               {/* Green WhatsApp Send Button */}
               <button
                 onClick={() => handleSendToWhatsApp()}
-                className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#25D366] via-[#128C7E] to-[#25D366] text-white flex items-center justify-center shrink-0 shadow-lg hover:scale-105 active:scale-95 transition-transform"
+                className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#25D366] via-[#128C7E] to-[#25D366] text-white flex items-center justify-center shrink-0 shadow-md hover:scale-105 active:scale-95 transition-transform"
                 title="Send on WhatsApp"
                 aria-label="Send on WhatsApp"
               >
@@ -229,9 +271,13 @@ export const FloatingWhatsApp: React.FC = () => {
             {/* Direct Redirect Callout Button */}
             <button
               onClick={() => handleSendToWhatsApp()}
-              className="w-full py-2 px-3 rounded-xl bg-gradient-to-r from-[#25D366]/20 via-[#25D366]/30 to-[#25D366]/20 border border-[#25D366]/40 hover:bg-[#25D366]/30 text-white text-[11px] font-semibold flex items-center justify-center gap-2 transition-all"
+              className={`w-full py-2.5 px-3 rounded-xl text-white text-xs font-semibold flex items-center justify-center gap-2 shadow-md transition-all ${
+                isLight
+                  ? 'bg-[#25D366] hover:bg-[#20ba5a]'
+                  : 'bg-gradient-to-r from-[#25D366]/20 via-[#25D366]/30 to-[#25D366]/20 border border-[#25D366]/40 hover:bg-[#25D366]/30'
+              }`}
             >
-              <MessageCircle className="w-3.5 h-3.5 text-[#25D366] fill-[#25D366]" />
+              <MessageCircle className="w-4 h-4 text-white fill-white" />
               <span>Direct Open WhatsApp Chat with Message</span>
             </button>
           </div>
@@ -249,7 +295,9 @@ export const FloatingWhatsApp: React.FC = () => {
 
         {/* Unread badge if closed */}
         {!isOpen && unreadCount > 0 && (
-          <span className="absolute -top-1 -right-1 bg-red-600 text-white font-bold text-[10px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-[#120407] animate-bounce">
+          <span className={`absolute -top-1 -right-1 bg-red-600 text-white font-bold text-[10px] w-5 h-5 rounded-full flex items-center justify-center border-2 animate-bounce ${
+            isLight ? 'border-white' : 'border-[#120407]'
+          }`}>
             {unreadCount}
           </span>
         )}

@@ -185,7 +185,7 @@ export const App: React.FC = () => {
       <Footer onNavigate={navigateTo} />
 
       {/* Persistent Floating WhatsApp Booking Engine */}
-      <FloatingWhatsApp />
+      <FloatingWhatsApp theme={theme} />
     </div>
   );
 };

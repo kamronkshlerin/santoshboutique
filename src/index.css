@@ -650,4 +650,38 @@
   color: #fce1b6 !important;
 }
 
+/* ======================================================= */
+/* AUTHENTIC WHATSAPP POPUP LIGHT THEME                    */
+/* ======================================================= */
+.light-mode .whatsapp-window {
+  background: #efeae2 !important;
+  color: #111b21 !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2) !important;
+}
+
+.light-mode .whatsapp-chat-body {
+  background: #efeae2 !important;
+}
+
+.light-mode .whatsapp-incoming-bubble {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  color: #111b21 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+}
+
+.light-mode .whatsapp-incoming-bubble p {
+  color: #111b21 !important;
+}
+
+.light-mode .whatsapp-incoming-bubble .font-bold {
+  color: #075e54 !important;
+}
+
+.light-mode .whatsapp-incoming-bubble p.text-xs {
+  color: #54656f !important;
+}
+
+
 

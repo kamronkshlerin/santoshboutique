@@ -114,14 +114,14 @@ export const MotionCoutureCursor: React.FC<{ theme?: 'dark' | 'light' }> = ({ th
 
   return (
     <>
-      {/* 1. Ambient Moving Silk Halo */}
+      {/* 1. Ambient Moving Silk Halo (Warm Golden-Rose Light in Light Mode & Velvet Glow in Dark Mode) */}
       <div
         ref={haloRef}
         className="fixed top-0 left-0 w-[550px] h-[550px] rounded-full pointer-events-none z-30 opacity-0 transition-opacity duration-500 will-change-transform"
         style={{
           background: theme === 'light'
-            ? 'radial-gradient(circle, rgba(216, 92, 114, 0.02) 0%, transparent 60%)'
-            : 'radial-gradient(circle, rgba(216, 92, 114, 0.10) 0%, rgba(243, 207, 152, 0.05) 45%, transparent 70%)',
+            ? 'radial-gradient(circle, rgba(243, 207, 152, 0.38) 0%, rgba(216, 92, 114, 0.14) 35%, rgba(255, 255, 255, 0.05) 55%, transparent 70%)'
+            : 'radial-gradient(circle, rgba(216, 92, 114, 0.12) 0%, rgba(243, 207, 152, 0.06) 45%, transparent 70%)',
         }}
       />
 
@@ -130,22 +130,22 @@ export const MotionCoutureCursor: React.FC<{ theme?: 'dark' | 'light' }> = ({ th
         ref={ringRef}
         className={`fixed top-0 left-0 rounded-full pointer-events-none z-[999] opacity-0 transition-opacity duration-300 will-change-transform flex items-center justify-center ${
           theme === 'light'
-            ? 'w-7 h-7 border border-[#8a1c32]/25 bg-transparent shadow-none'
+            ? 'w-9 h-9 border border-[#8a1c32]/45 bg-gradient-to-tr from-[#f3cf98]/20 to-[#d85c72]/15 shadow-[0_0_18px_rgba(216,92,114,0.35),0_0_8px_rgba(243,207,152,0.45)]'
             : 'w-9 h-9 border border-[#f3cf98]/60 bg-[#f3cf98]/5 shadow-[0_0_20px_rgba(243,207,152,0.35)]'
         }`}
       >
         {/* Subtle spinning dashed stitch compass marks */}
         <div className={`w-full h-full rounded-full border border-dashed animate-spin ${
-          theme === 'light' ? 'border-[#8a1c32]/15' : 'border-[#f3cf98]/30'
+          theme === 'light' ? 'border-[#8a1c32]/30' : 'border-[#f3cf98]/30'
         }`} style={{ animationDuration: '10s' }} />
       </div>
 
-      {/* 3. Center Golden Needle Sparkle Point */}
+      {/* 3. Center Golden Needle Sparkle Point with Light Mode Luminous Sparkle */}
       <div
         ref={dotRef}
         className={`fixed top-0 left-0 rounded-full pointer-events-none z-[1000] opacity-0 transition-opacity duration-150 will-change-transform ${
           theme === 'light'
-            ? 'w-1.5 h-1.5 bg-[#8a1c32]/80'
+            ? 'w-2 h-2 bg-[#8a1c32] shadow-[0_0_10px_#d85c72,0_0_4px_#f3cf98]'
             : 'w-2 h-2 bg-[#f3cf98] shadow-[0_0_10px_#f3cf98]'
         }`}
       />
