@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Scissors, MessageCircle, Menu, X, Sparkles, MapPin } from 'lucide-react';
+import { useBloggerConfig } from '../config';
 
 export const Navbar: React.FC = () => {
+  const config = useBloggerConfig();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -23,9 +25,9 @@ export const Navbar: React.FC = () => {
 
   const openWhatsApp = () => {
     const text = encodeURIComponent(
-      "Namaste Santosh Boutique! I want to inquire about custom tailoring & stitching services."
+      `Namaste ${config.boutiqueName}! I want to inquire about custom tailoring & stitching services.`
     );
-    window.open(`https://wa.me/919816000000?text=${text}`, '_blank');
+    window.open(`https://wa.me/${config.whatsapp}?text=${text}`, '_blank');
   };
 
   return (

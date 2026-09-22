@@ -1,14 +1,7 @@
 import React, { useState } from 'react';
 import { MessageCircle, Check, Send, Ruler, ShieldCheck, Clock } from 'lucide-react';
 import { ConfiguratorState } from '../types';
-
-const OUTFIT_OPTIONS = [
-  { id: 'blouse', label: 'Designer Blouse', icon: '🥻', basePrice: '₹400' },
-  { id: 'suit', label: 'Suit & Kurti Set', icon: '👗', basePrice: '₹350' },
-  { id: 'lehenga', label: 'Lehenga & Party Wear', icon: '✨', basePrice: '₹1200' },
-  { id: 'custom-tailoring', label: 'Custom Tailoring', icon: '✂️', basePrice: 'Quote' },
-  { id: 'alteration', label: 'Express Alteration', icon: '⚡', basePrice: '₹80' },
-];
+import { useBloggerConfig } from '../config';
 
 const STYLE_CUTS: Record<string, string[]> = {
   blouse: [
@@ -38,19 +31,29 @@ const STYLE_CUTS: Record<string, string[]> = {
     'Pinterest / Instagram Photo Re-creation',
     'Custom Neckline & Silhouette Design',
     'Mother-Daughter Matching Festive Set',
-    'Bespoke Fabric Consultation & Styling',
-    'Bridal Trousseau Coordinate Suite'
+    'Western Fusion Indo-Chic',
+    'Designer Cape / Jacket Attachment'
   ],
   alteration: [
-    'Waist & Chest Tapering',
-    'Sleeve Shortening & Armhole Fix',
-    'Overall Length Adjustment',
-    'Shoulder Slipping Fix',
-    'Zipper & Hook Replacement'
+    'Waist & Side Fitting (Bust & Torso)',
+    'Length Shortening / Hemming',
+    'Sleeve Alteration / Armhole Adjust',
+    'Zip / Hook / Button Replacement',
+    'Neckline Reshaping / Deepening'
   ]
 };
 
 export const StyleConfigurator: React.FC = () => {
+  const config = useBloggerConfig();
+
+  const outfitOptions = [
+    { id: 'blouse', label: 'Designer Blouse', icon: '🥻', basePrice: config.priceBlouse },
+    { id: 'suit', label: 'Suit & Kurti Set', icon: '👗', basePrice: config.priceSuit },
+    { id: 'lehenga', label: 'Lehenga & Party Wear', icon: '✨', basePrice: config.priceLehenga },
+    { id: 'custom-tailoring', label: 'Custom Tailoring', icon: '✂️', basePrice: 'Custom Quote' },
+    { id: 'alteration', label: 'Express Alteration', icon: '⚡', basePrice: config.priceAlteration },
+  ];
+
   const [form, setForm] = useState<ConfiguratorState>({
     serviceType: 'blouse',
     styleCut: 'Princess Cut (Padded)',
@@ -70,15 +73,15 @@ export const StyleConfigurator: React.FC = () => {
   };
 
   const getEstimatedPrice = () => {
-    const option = OUTFIT_OPTIONS.find(o => o.id === form.serviceType);
-    return option ? option.basePrice : '₹350';
+    const option = outfitOptions.find(o => o.id === form.serviceType);
+    return option ? option.basePrice : config.priceSuit;
   };
 
   const generateWhatsAppMessage = () => {
-    const selectedOutfit = OUTFIT_OPTIONS.find(o => o.id === form.serviceType)?.label || form.serviceType;
+    const selectedOutfit = outfitOptions.find(o => o.id === form.serviceType)?.label || form.serviceType;
     
-    let text = `✨ *Santosh Boutique - Custom Stitching Booking* ✨\n`;
-    text += `📍 *Studio Location*: Near Baba Balak Nath Temple, Sarti, Bilaspur\n`;
+    let text = `✨ *${config.boutiqueName} - Custom Stitching Booking* ✨\n`;
+    text += `📍 *Studio Location*: ${config.address}\n`;
     text += `-----------------------------------------\n`;
     text += `👗 *Selected Outfit*: ${selectedOutfit}\n`;
     text += `✂️ *Style / Cut*: ${form.styleCut}\n`;
@@ -99,7 +102,7 @@ export const StyleConfigurator: React.FC = () => {
   const handleSubmitWhatsApp = (e: React.FormEvent) => {
     e.preventDefault();
     const payload = generateWhatsAppMessage();
-    const url = `https://wa.me/919816000000?text=${encodeURIComponent(payload)}`;
+    const url = `https://wa.me/${config.whatsapp}?text=${encodeURIComponent(payload)}`;
     window.open(url, '_blank');
   };
 
@@ -133,7 +136,7 @@ export const StyleConfigurator: React.FC = () => {
                   Step 1: Choose Outfit Category
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5">
-                  {OUTFIT_OPTIONS.map((opt) => {
+                  {outfitOptions.map((opt) => {
                     const isSelected = form.serviceType === opt.id;
                     return (
                       <button

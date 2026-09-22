@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import { Sparkles, MessageCircle, Heart, ShieldCheck, MapPin, ChevronDown } from 'lucide-react';
 import { ASSETS } from '../constants';
+import { useBloggerConfig } from '../config';
 
 export const HeroSection: React.FC = () => {
+  const config = useBloggerConfig();
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   // Elegant golden embroidery thread & dust particle canvas simulation
@@ -79,8 +81,8 @@ export const HeroSection: React.FC = () => {
   }, []);
 
   const openWhatsApp = (msg?: string) => {
-    const defaultText = "Namaste Santosh Boutique! I saw your website and want to discuss custom stitching.";
-    window.open(`https://wa.me/919816000000?text=${encodeURIComponent(msg || defaultText)}`, '_blank');
+    const defaultText = `Namaste ${config.boutiqueName}! I saw your website and want to discuss custom stitching.`;
+    window.open(`https://wa.me/${config.whatsapp}?text=${encodeURIComponent(msg || defaultText)}`, '_blank');
   };
 
   const scrollToConfigurator = () => {
@@ -93,9 +95,10 @@ export const HeroSection: React.FC = () => {
       <div className="absolute inset-0 -z-20">
         <img
           src={ASSETS.hero}
-          alt="Santosh Boutique Studio Interior with Embroidered Suit"
-          className="w-full h-full object-cover object-center scale-105 filter brightness-[0.42] contrast-[1.15]"
+          alt="Santosh Boutique Bridal Atelier Display"
+          className="w-full h-full object-cover object-center brightness-[0.42] contrast-[1.15]"
         />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#120407] via-transparent to-[#120407]" />
         {/* Multilayered radial and linear dark burgundy overlays for maximum text legibility */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#120407] via-[#120407]/75 to-[#120407]/40" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-[#120407]/60 to-[#120407]" />
@@ -113,23 +116,19 @@ export const HeroSection: React.FC = () => {
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full liquid-glass mb-6 border border-[#f3cf98]/30 shadow-lg animate-fade-in">
           <MapPin className="w-3.5 h-3.5 text-[#d85c72]" />
           <span className="text-xs sm:text-sm font-medium text-[#f3cf98] tracking-wide">
-            Near Baba Balak Nath Temple, Sarti, Bilaspur (H.P.)
+            {config.heroTagline}
           </span>
           <span className="w-1.5 h-1.5 rounded-full bg-[#25D366] animate-pulse" />
         </div>
 
         {/* Main Headline */}
         <h1 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-[#fff7f2] leading-[1.08] mb-6">
-          Stitching Your{' '}
-          <span className="italic font-normal gold-gradient-text">Dreams</span>{' '}
-          With Care
+          {config.heroHeadline}
         </h1>
 
         {/* Taglines and Description */}
         <p className="max-w-2xl mx-auto text-base sm:text-xl text-[#d1b8b8] font-light leading-relaxed mb-4">
-          <strong className="text-[#fff7f2] font-semibold">Traditional Designs</strong> •{' '}
-          <strong className="text-[#fff7f2] font-semibold">Modern Styles</strong> •{' '}
-          <strong className="text-[#fff7f2] font-semibold">Perfect Fit</strong>
+          {config.heroSubtitle}
         </p>
 
         <p className="text-xs sm:text-sm tracking-widest text-[#f3cf98] uppercase font-medium mb-10">

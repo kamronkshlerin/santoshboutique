@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
 import { MapPin, Clock, Phone, MessageCircle, Navigation, ShieldCheck, Heart, Image as ImageIcon, Map as MapIcon, ExternalLink } from 'lucide-react';
 import { ASSETS } from '../constants';
+import { useBloggerConfig } from '../config';
 
 export const StudioLocationSection: React.FC = () => {
+  const config = useBloggerConfig();
   const [viewMode, setViewMode] = useState<'photos' | 'map'>('photos');
 
   const openGoogleMaps = () => {
-    window.open('https://maps.google.com/?q=Baba+Balak+Nath+Temple+Sarti+Bilaspur+Himachal+Pradesh+174004', '_blank');
+    window.open(config.mapsUrl, '_blank');
   };
 
   const openCall = () => {
-    window.open('tel:+919816000000', '_self');
+    window.open(`tel:${config.phone.replace(/\s+/g, '')}`, '_self');
   };
 
   const openWhatsApp = () => {
-    const text = encodeURIComponent("Namaste! I am visiting Sarti near Baba Balak Nath Temple. Please share exact boutique landmark directions.");
-    window.open(`https://wa.me/919816000000?text=${text}`, '_blank');
+    const text = encodeURIComponent(`Namaste ${config.boutiqueName}! I am visiting near ${config.landmark}. Please share exact boutique landmark directions.`);
+    window.open(`https://wa.me/${config.whatsapp}?text=${text}`, '_blank');
   };
 
   return (
@@ -63,8 +65,7 @@ export const StudioLocationSection: React.FC = () => {
                       Exact Address & Landmark:
                     </strong>
                     <p className="mt-0.5 leading-relaxed">
-                      Near Baba Balak Nath Temple, Sarti,<br />
-                      District Bilaspur (Himachal Pradesh) — <span className="text-[#f3cf98] font-semibold">174004</span>
+                      {config.address}
                     </p>
                   </div>
                 </div>
@@ -78,8 +79,7 @@ export const StudioLocationSection: React.FC = () => {
                       Studio Hours:
                     </strong>
                     <p className="mt-0.5">
-                      Monday to Saturday: <strong className="text-[#fff7f2]">9:30 AM – 7:30 PM</strong><br />
-                      Sunday: Special Bridal Appointments Only
+                      {config.hours}
                     </p>
                   </div>
                 </div>

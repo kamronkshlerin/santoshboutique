@@ -2,81 +2,84 @@ import React from 'react';
 import { Sparkles, Clock, MessageCircle, ArrowUpRight, Check, Zap } from 'lucide-react';
 import { ServiceItem } from '../types';
 import { ASSETS } from '../constants';
-
-const SERVICES: ServiceItem[] = [
-  {
-    id: 'lehenga',
-    title: 'Lehenga & Party Wear',
-    hindiTitle: 'लहंगा एवं पार्टी वियर',
-    iconName: 'Sparkles',
-    tagline: 'Bridal Lehengas, Reception Gowns & Heavy Festive Sets',
-    description: 'Complete bridal trousseau and festival wear stitching. Includes high-volume can-can attachment, heavy 16-kalidar stitching, padded designer blouse setting, and exquisite dupatta border work.',
-    startingPrice: '₹1200 onwards',
-    turnaround: '4 - 7 Days',
-    popularCuts: ['Full Flair Can-can', '16-Kalidar Gown', 'Crop Top & Skirt', 'Pre-Draped Saree', 'Velvet Bridal Set'],
-    image: ASSETS.lehenga,
-  },
-  {
-    id: 'alteration',
-    title: 'Alteration Services',
-    hindiTitle: 'अल्टरेशन एवं रिपेयर',
-    iconName: 'Zap',
-    tagline: 'Precision 24h Fitting For Any Garment',
-    description: 'Bought readymade online? Bring it in for precision waist tapering, bust reshaping, sleeve shortening, and zipper renewal.',
-    startingPrice: '₹80 onwards',
-    turnaround: 'Same Day / 24 Hours',
-    popularCuts: ['Waist Tapering', 'Bust Resizing', 'Length Alteration', 'Shoulder Fit', 'Zip Replacement'],
-    image: ASSETS.hero,
-  },
-  {
-    id: 'suit',
-    title: 'Suit & Kurti Stitching',
-    hindiTitle: 'सूट सिलाई',
-    iconName: 'Scissors',
-    tagline: 'Traditional Punjabi, Salwar, Pant & Anarkali Suits',
-    description: 'Flawlessly tailored suits shaped to your personal silhouette. From classic Punjabi Patiala suits to elegant straight-cut office pants and festive Anarkalis.',
-    startingPrice: '₹350 onwards',
-    turnaround: '2 - 3 Days',
-    popularCuts: ['Patiala Salwar', 'Straight Pants', 'Princess Anarkali', 'A-Line Kurti', 'Sharara Set'],
-    image: ASSETS.suit,
-  },
-  {
-    id: 'blouse',
-    title: 'Designer Blouse',
-    hindiTitle: 'डिज़ाइनर ब्लाउज़',
-    iconName: 'Sparkles',
-    tagline: 'Bridal, Princess Cut, Deep Back & Handwork',
-    description: 'Expertly structured blouses crafted for non-slip shoulders and absolute comfort. Customizable with padded cups, sweetheart necklines, handcrafted dori, and pearl latkans.',
-    startingPrice: '₹400 onwards',
-    turnaround: '2 - 4 Days',
-    popularCuts: ['Princess Cut', 'Deep V-Back with Dori', 'Boat Neck', 'Katori Cut', 'Bridal Padded'],
-    image: ASSETS.blouse,
-  },
-  {
-    id: 'custom-tailoring',
-    title: 'Custom Tailoring',
-    hindiTitle: 'कस्टम सिलाई',
-    iconName: 'Scissors',
-    tagline: 'Bring Your Pinterest / Instagram Design to Life',
-    description: 'Show us your reference photo from Instagram or Pinterest. Bring your fabric and our master tailors will recreate it with exact millimeter precision and finishing.',
-    startingPrice: 'Custom Quote',
-    turnaround: '3 - 5 Days',
-    popularCuts: ['Pinterest Recreations', 'Fabric Consultation', 'Mother-Daughter Sets', 'Festive Coordinates'],
-    image: ASSETS.hero,
-  },
-];
+import { useBloggerConfig } from '../config';
 
 export const ServicesGrid: React.FC = () => {
+  const config = useBloggerConfig();
+
+  const services: ServiceItem[] = [
+    {
+      id: 'lehenga',
+      title: 'Lehenga & Party Wear',
+      hindiTitle: 'लहंगा एवं पार्टी वियर',
+      iconName: 'Sparkles',
+      tagline: 'Bridal Lehengas, Reception Gowns & Heavy Festive Sets',
+      description: 'Complete bridal trousseau and festival wear stitching. Includes high-volume can-can attachment, heavy 16-kalidar stitching, padded designer blouse setting, and exquisite dupatta border work.',
+      startingPrice: config.priceLehenga,
+      turnaround: '4 - 7 Days',
+      popularCuts: ['Full Flair Can-can', '16-Kalidar Gown', 'Crop Top & Skirt', 'Pre-Draped Saree', 'Velvet Bridal Set'],
+      image: ASSETS.lehenga,
+    },
+    {
+      id: 'alteration',
+      title: 'Alteration Services',
+      hindiTitle: 'अल्टरेशन एवं रिपेयर',
+      iconName: 'Zap',
+      tagline: 'Precision 24h Fitting For Any Garment',
+      description: 'Bought readymade online? Bring it in for precision waist tapering, bust reshaping, sleeve shortening, and zipper renewal.',
+      startingPrice: config.priceAlteration,
+      turnaround: 'Same Day / 24 Hours',
+      popularCuts: ['Waist Tapering', 'Bust Resizing', 'Length Alteration', 'Shoulder Fit', 'Zip Replacement'],
+      image: ASSETS.hero,
+    },
+    {
+      id: 'suit',
+      title: 'Suit & Kurti Stitching',
+      hindiTitle: 'सूट सिलाई',
+      iconName: 'Scissors',
+      tagline: 'Traditional Punjabi, Salwar, Pant & Anarkali Suits',
+      description: 'Flawlessly tailored suits shaped to your personal silhouette. From classic Punjabi Patiala suits to elegant straight-cut office pants and festive Anarkalis.',
+      startingPrice: config.priceSuit,
+      turnaround: '2 - 3 Days',
+      popularCuts: ['Patiala Salwar', 'Straight Pants', 'Princess Anarkali', 'A-Line Kurti', 'Sharara Set'],
+      image: ASSETS.suit,
+    },
+    {
+      id: 'blouse',
+      title: 'Designer Blouse',
+      hindiTitle: 'डिज़ाइनर ब्लाउज़',
+      iconName: 'Sparkles',
+      tagline: 'Bridal, Princess Cut, Deep Back & Handwork',
+      description: 'Expertly structured blouses crafted for non-slip shoulders and absolute comfort. Customizable with padded cups, sweetheart necklines, handcrafted dori, and pearl latkans.',
+      startingPrice: config.priceBlouse,
+      turnaround: '2 - 4 Days',
+      popularCuts: ['Princess Cut', 'Deep V-Back with Dori', 'Boat Neck', 'Katori Cut', 'Bridal Padded'],
+      image: ASSETS.blouse,
+    },
+    {
+      id: 'custom-tailoring',
+      title: 'Custom Tailoring',
+      hindiTitle: 'कस्टम सिलाई',
+      iconName: 'Scissors',
+      tagline: 'Bring Your Pinterest / Instagram Design to Life',
+      description: 'Got a screenshot from Instagram or Pinterest? Bring your dream dress concept. We provide expert fabric yardage estimation, pattern grading, and bespoke boutique execution.',
+      startingPrice: 'Custom Estimate',
+      turnaround: 'Based on Design',
+      popularCuts: ['Co-ord Sets', 'Western Fusion Indo', 'Jackets & Capes', 'Draped Gowns', 'Mother-Daughter Matching'],
+      image: ASSETS.hero,
+    },
+  ];
+
   const handleInquiry = (service: ServiceItem) => {
     const message = encodeURIComponent(
-      `Namaste Santosh Boutique! I would like to book a consultation for *${service.title}* (${service.startingPrice}). Please let me know available slots.`
+      `Namaste ${config.boutiqueName}! I would like to book a consultation for *${service.title}* (${service.startingPrice}). Please let me know available slots.`
     );
-    window.open(`https://wa.me/919816000000?text=${message}`, '_blank');
+    window.open(`https://wa.me/${config.whatsapp}?text=${message}`, '_blank');
   };
 
-  const featuredService = SERVICES[0]; // Lehenga
-  const alterationService = SERVICES[1]; // Alteration
-  const regularServices = SERVICES.slice(2); // Suit, Blouse, Custom
+  const featuredService = services[0]; // Lehenga
+  const alterationService = services[1]; // Alteration
+  const regularServices = services.slice(2); // Suit, Blouse, Custom
 
   return (
     <section id="services" className="py-24 px-4 sm:px-6 lg:px-8 relative z-10">

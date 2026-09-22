@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { MessageCircle, X } from 'lucide-react';
+import { useBloggerConfig } from '../config';
 
 export const FloatingWhatsApp: React.FC = () => {
+  const config = useBloggerConfig();
   const [showTooltip, setShowTooltip] = useState(false);
 
   useEffect(() => {
@@ -14,9 +16,9 @@ export const FloatingWhatsApp: React.FC = () => {
 
   const openWhatsApp = () => {
     const text = encodeURIComponent(
-      "Namaste Santosh Boutique! I want to ask about stitching prices, fabric requirements, and fitting appointments."
+      `Namaste ${config.boutiqueName}! I want to ask about stitching prices, fabric requirements, and fitting appointments.`
     );
-    window.open(`https://wa.me/919816000000?text=${text}`, '_blank');
+    window.open(`https://wa.me/${config.whatsapp}?text=${text}`, '_blank');
   };
 
   return (

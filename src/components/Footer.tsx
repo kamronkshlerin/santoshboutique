@@ -1,9 +1,12 @@
 import React from 'react';
 import { Scissors, Phone, MessageCircle, Heart } from 'lucide-react';
+import { useBloggerConfig } from '../config';
 
 export const Footer: React.FC = () => {
+  const config = useBloggerConfig();
+
   const openWhatsApp = () => {
-    window.open('https://wa.me/919816000000', '_blank');
+    window.open(`https://wa.me/${config.whatsapp}`, '_blank');
   };
 
   return (
@@ -51,15 +54,10 @@ export const Footer: React.FC = () => {
               Studio Landmark
             </h4>
             <p className="text-xs leading-relaxed mb-3">
-              📍 Near Baba Balak Nath Temple,<br />
-              Sarti, District Bilaspur,<br />
-              Himachal Pradesh — 174004
+              📍 {config.address}
             </p>
             <p className="text-xs text-[#f3cf98] mb-1">
-              🕒 Monday - Saturday: 9:30 AM - 7:30 PM
-            </p>
-            <p className="text-xs text-[#d1b8b8]">
-              Sunday: By Appointment Only
+              🕒 {config.hours}
             </p>
           </div>
 
@@ -78,7 +76,7 @@ export const Footer: React.FC = () => {
               </button>
 
               <a
-                href="tel:+919816000000"
+                href={`tel:${config.phone.replace(/\s+/g, '')}`}
                 className="w-full py-2.5 px-3 rounded-xl liquid-glass text-xs font-semibold text-white flex items-center justify-center gap-2 hover:bg-white/10 transition-all border border-white/10"
               >
                 <Phone className="w-3.5 h-3.5 text-[#f3cf98]" />
