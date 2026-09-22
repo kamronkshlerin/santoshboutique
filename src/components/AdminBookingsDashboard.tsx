@@ -68,6 +68,16 @@ export const AdminBookingsDashboard: React.FC<AdminDashboardProps> = ({ onClose 
       setIsStage1Passed(true);
       loadBookings();
     }
+
+    const handleBookingUpdate = () => {
+      loadBookings();
+    };
+    window.addEventListener('storage', handleBookingUpdate);
+    window.addEventListener('sb_booking_created', handleBookingUpdate);
+    return () => {
+      window.removeEventListener('storage', handleBookingUpdate);
+      window.removeEventListener('sb_booking_created', handleBookingUpdate);
+    };
   }, []);
 
   // Cooldown countdown timer

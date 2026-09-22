@@ -59,6 +59,10 @@ export const saveBooking = async (
   const updated = [newRecord, ...existing];
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new Event('storage'));
+      window.dispatchEvent(new CustomEvent('sb_booking_created', { detail: newRecord }));
+    }
   } catch (e) {
     console.error('LocalStorage save error:', e);
   }
