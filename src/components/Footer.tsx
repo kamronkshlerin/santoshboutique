@@ -137,9 +137,21 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <p>
             © {new Date().getFullYear()} Santosh Boutique &amp; Stitching Studio. All rights reserved.
           </p>
-          <p className="flex items-center gap-1">
-            Handcrafted with <Heart className="w-3.5 h-3.5 text-[#d85c72] fill-[#d85c72]" /> for Bilaspur, Himachal Pradesh
-          </p>
+
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => onNavigate?.('admin')}
+              className="text-white/30 hover:text-[#f3cf98] text-[11px] transition-colors flex items-center gap-1"
+              title="Open Boutique Owner CRM Dashboard"
+            >
+              <span>🔐</span>
+              <span>Boutique CRM</span>
+            </button>
+            <span>•</span>
+            <p className="flex items-center gap-1">
+              Handcrafted with <Heart className="w-3.5 h-3.5 text-[#d85c72] fill-[#d85c72]" /> for Bilaspur, Himachal Pradesh
+            </p>
+          </div>
         </div>
       </div>
     </footer>

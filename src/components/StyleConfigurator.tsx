@@ -114,14 +114,8 @@ export const StyleConfigurator: React.FC = () => {
   const handleCompleteBooking = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
 
-    if (!customerName.trim()) {
-      setInputError('Kripya apna naam (Name) darj karein.');
-      return;
-    }
-    if (!customerPhone.trim()) {
-      setInputError('Kripya WhatsApp Phone number darj karein.');
-      return;
-    }
+    const finalName = customerName.trim() || 'Website Visitor (WhatsApp)';
+    const finalPhone = customerPhone.trim() || 'Direct WhatsApp';
     setInputError('');
 
     // 1. Instantly save booking into Boutique Admin CRM Store & Webhook
@@ -129,8 +123,8 @@ export const StyleConfigurator: React.FC = () => {
     const selectedOutfitLabel = outfitOptions.find(o => o.id === form.serviceType)?.label || form.serviceType;
 
     const newRecord = await saveBooking({
-      customerName: customerName.trim(),
-      customerPhone: customerPhone.trim(),
+      customerName: finalName,
+      customerPhone: finalPhone,
       serviceType: selectedOutfitLabel,
       styleCut: form.styleCut,
       fabricStatus: form.fabricStatus,
