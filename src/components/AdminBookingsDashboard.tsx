@@ -3,14 +3,15 @@ import {
   Lock, Unlock, Search, Download, Trash2, MessageCircle, 
   Sparkles, Filter, CheckCircle, X, Scissors, Settings, 
   KeyRound, Save, RotateCcw, Copy, Check, 
-  MapPin, Phone, DollarSign, Megaphone, ShieldAlert, Mail 
+  MapPin, Phone, DollarSign, Megaphone, ShieldAlert, Mail,
+  ArrowLeft, Key
 } from 'lucide-react';
 import { 
   BookingRecord, getBookings, updateBookingStatus, deleteBooking, 
   clearAllBookings, exportBookingsToCSV 
 } from '../utils/bookingStore';
 import { useBloggerConfig, saveLiveConfig, resetLiveConfig, BoutiqueConfig } from '../config';
-import { verifyAdminCredentials, updateAdminCredentials, getAuthorizedAdminEmail } from '../utils/cryptoAuth';
+import { verifyStage1Code, verifyAdminCredentials, updateAdminCredentials } from '../utils/cryptoAuth';
 
 interface AdminDashboardProps {
   onClose?: () => void;
@@ -21,9 +22,14 @@ type AdminTab = 'bookings' | 'website_controls' | 'security';
 export const AdminBookingsDashboard: React.FC<AdminDashboardProps> = ({ onClose }) => {
   const config = useBloggerConfig();
   
-  // Auth state
+  // Two-Stage Zero-Knowledge Auth State
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [emailInput, setEmailInput] = useState(() => getAuthorizedAdminEmail());
+  const [isStage1Passed, setIsStage1Passed] = useState(false);
+  const [stage1Code, setStage1Code] = useState('');
+  const [stage1Error, setStage1Error] = useState('');
+
+  // Stage 2 inputs: completely BLANK by default, NO autofill!
+  const [emailInput, setEmailInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
   const [authError, setAuthError] = useState('');
   const [failedAttempts, setFailedAttempts] = useState(0);
@@ -44,7 +50,7 @@ export const AdminBookingsDashboard: React.FC<AdminDashboardProps> = ({ onClose 
   const [copiedLayout, setCopiedLayout] = useState(false);
 
   // Security tab state
-  const [adminEmailSetting, setAdminEmailSetting] = useState(() => getAuthorizedAdminEmail());
+  const [adminEmailSetting, setAdminEmailSetting] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordChangeMsg, setPasswordChangeMsg] = useState<{ text: string; success: boolean } | null>(null);
@@ -59,6 +65,7 @@ export const AdminBookingsDashboard: React.FC<AdminDashboardProps> = ({ onClose 
     const authSession = sessionStorage.getItem('sb_admin_auth_token');
     if (authSession === 'valid_session') {
       setIsAuthenticated(true);
+      setIsStage1Passed(true);
       loadBookings();
     }
   }, []);
@@ -76,11 +83,34 @@ export const AdminBookingsDashboard: React.FC<AdminDashboardProps> = ({ onClose 
     setBookings(list);
   };
 
+  // Stage 1 Secret Code Verification
+  const handleStage1Submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (cooldownSec > 0) return;
+
+    const isValid = await verifyStage1Code(stage1Code);
+    if (isValid) {
+      setIsStage1Passed(true);
+      setStage1Error('');
+      setFailedAttempts(0);
+    } else {
+      const newAttempts = failedAttempts + 1;
+      setFailedAttempts(newAttempts);
+      if (newAttempts >= 3) {
+        setCooldownSec(30);
+        setStage1Error('Too many failed attempts! Cooldown active for 30s.');
+      } else {
+        setStage1Error(`Invalid Security Access Code! (${3 - newAttempts} attempts remaining)`);
+      }
+    }
+  };
+
+  // Stage 2 Admin Email & Password Verification
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (cooldownSec > 0) return;
 
-    // Cryptographic 2-Factor Credential validation (Email + salted SHA-256 password)
+    // Zero-knowledge cryptographic verification
     const isValid = await verifyAdminCredentials(emailInput, passwordInput);
 
     if (isValid) {
@@ -94,7 +124,7 @@ export const AdminBookingsDashboard: React.FC<AdminDashboardProps> = ({ onClose 
       setFailedAttempts(newAttempts);
       if (newAttempts >= 3) {
         setCooldownSec(30);
-        setAuthError('Too many failed attempts! Security cooldown active for 30s.');
+        setAuthError('Too many failed attempts! Cooldown active for 30s.');
       } else {
         setAuthError(`Invalid Email or Password! (${3 - newAttempts} attempts remaining)`);
       }
@@ -103,8 +133,11 @@ export const AdminBookingsDashboard: React.FC<AdminDashboardProps> = ({ onClose 
 
   const handleLogout = () => {
     setIsAuthenticated(false);
-    sessionStorage.removeItem('sb_admin_auth_token');
+    setIsStage1Passed(false);
+    setStage1Code('');
+    setEmailInput('');
     setPasswordInput('');
+    sessionStorage.removeItem('sb_admin_auth_token');
   };
 
   const handleStatusChange = (id: string, newStatus: BookingRecord['status']) => {
@@ -236,93 +269,171 @@ announcement: ${editConfig.announcement}
   const readyCount = bookings.filter(b => b.status === 'ready_for_trial').length;
   const completedCount = bookings.filter(b => b.status === 'completed').length;
 
-  // ================= 1. SECURE CRYPTOGRAPHIC LOGIN GATE =================
+  // ================= 1. TWO-STAGE ZERO-KNOWLEDGE SECURITY GATE =================
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen pt-32 pb-20 px-4 flex items-center justify-center">
         <div className="w-full max-w-md p-8 rounded-3xl liquid-glass border border-[#f3cf98]/30 shadow-2xl text-center">
-          <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-tr from-[#8a1c32] to-[#d85c72] flex items-center justify-center mb-6 shadow-xl">
-            <Lock className="w-8 h-8 text-[#fff7f2]" />
-          </div>
-
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f3cf98]/10 border border-[#f3cf98]/30 text-[11px] font-bold text-[#f3cf98] uppercase tracking-wider mb-3">
-            <ShieldAlert className="w-3.5 h-3.5 text-[#f3cf98]" />
-            <span>SHA-256 Salted Cryptographic Gate</span>
-          </div>
-
-          <h2 className="font-display text-2xl sm:text-3xl font-bold text-[#fff7f2] mb-2">
-            Santosh Boutique Admin
-          </h2>
-          <p className="text-xs text-[#d1b8b8] mb-6">
-            Website ke sabhi controls aur bookings manage karne ke liye apna admin email aur password enter karein.
-          </p>
-
-          <form onSubmit={handleLogin} className="space-y-4 text-left">
+          
+          {/* ================= STAGE 1: SECRET MASTER ACCESS CODE POPUP ================= */}
+          {!isStage1Passed ? (
             <div>
-              <label className="block text-xs font-semibold text-[#f3cf98] mb-1.5">
-                Admin Email Address
-              </label>
-              <div className="relative">
-                <Mail className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-white/40" />
-                <input
-                  type="email"
-                  required
-                  disabled={cooldownSec > 0}
-                  placeholder="jus.socialmediaexpert@gmail.com"
-                  value={emailInput}
-                  onChange={(e) => {
-                    setEmailInput(e.target.value);
-                    setAuthError('');
-                  }}
-                  className="w-full pl-10 pr-4 py-3 rounded-xl bg-black/60 border border-white/20 text-xs sm:text-sm text-[#fff7f2] focus:border-[#f3cf98] outline-none disabled:opacity-50"
-                />
+              <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-tr from-[#8a1c32] to-[#d85c72] flex items-center justify-center mb-6 shadow-xl">
+                <Key className="w-8 h-8 text-[#fff7f2]" />
               </div>
-            </div>
 
-            <div>
-              <label className="block text-xs font-semibold text-[#f3cf98] mb-1.5">
-                Admin Master Password
-              </label>
-              <div className="relative">
-                <Lock className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-white/40" />
-                <input
-                  type="password"
-                  required
-                  disabled={cooldownSec > 0}
-                  placeholder={cooldownSec > 0 ? `Wait ${cooldownSec}s...` : "••••••••"}
-                  value={passwordInput}
-                  onChange={(e) => {
-                    setPasswordInput(e.target.value);
-                    setAuthError('');
-                  }}
-                  className="w-full pl-10 pr-4 py-3 rounded-xl bg-black/60 border border-white/20 text-xs sm:text-sm text-[#fff7f2] focus:border-[#f3cf98] outline-none disabled:opacity-50"
-                />
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f3cf98]/10 border border-[#f3cf98]/30 text-[11px] font-bold text-[#f3cf98] uppercase tracking-wider mb-3">
+                <ShieldAlert className="w-3.5 h-3.5 text-[#f3cf98]" />
+                <span>Security Access Verification</span>
               </div>
-              {authError && (
-                <p className="text-xs text-red-400 mt-2 font-medium">
-                  {authError}
+
+              <h2 className="font-display text-2xl sm:text-3xl font-bold text-[#fff7f2] mb-2">
+                Atelier Security Gate
+              </h2>
+              <p className="text-xs text-[#d1b8b8] mb-6">
+                Website admin portal me pravesh karne ke liye Secret Security Access Code enter karein.
+              </p>
+
+              <form onSubmit={handleStage1Submit} className="space-y-4 text-left" autoComplete="off">
+                <div>
+                  <label className="block text-xs font-semibold text-[#f3cf98] mb-1.5">
+                    Security Access Code
+                  </label>
+                  <div className="relative">
+                    <KeyRound className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-white/40" />
+                    <input
+                      type="password"
+                      required
+                      autoComplete="new-password"
+                      disabled={cooldownSec > 0}
+                      placeholder={cooldownSec > 0 ? `Locked (${cooldownSec}s)` : "••••••••"}
+                      value={stage1Code}
+                      onChange={(e) => {
+                        setStage1Code(e.target.value);
+                        setStage1Error('');
+                      }}
+                      className="w-full pl-10 pr-4 py-3 rounded-xl bg-black/60 border border-white/20 text-sm text-[#fff7f2] focus:border-[#f3cf98] outline-none tracking-widest disabled:opacity-50"
+                    />
+                  </div>
+                  {stage1Error && (
+                    <p className="text-xs text-red-400 mt-2 font-medium">
+                      {stage1Error}
+                    </p>
+                  )}
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={cooldownSec > 0 || !stage1Code}
+                  className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#d85c72] to-[#8a1c32] text-white font-semibold text-sm shadow-lg hover:shadow-[#d85c72]/30 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                >
+                  <Unlock className="w-4 h-4" />
+                  <span>{cooldownSec > 0 ? `Wait ${cooldownSec}s...` : 'Verify Code & Proceed'}</span>
+                </button>
+              </form>
+
+              <div className="mt-6 pt-4 border-t border-white/10 text-center">
+                <p className="text-[11px] text-[#f3cf98]/70 font-medium">
+                  🔒 Zero-Knowledge Cryptographic Shield
                 </p>
-              )}
+              </div>
             </div>
+          ) : (
+            /* ================= STAGE 2: EMAIL & PASSWORD LOGIN ================= */
+            <div>
+              <div className="flex items-center justify-between mb-4 pb-2 border-b border-white/10">
+                <button
+                  type="button"
+                  onClick={() => setIsStage1Passed(false)}
+                  className="text-xs text-[#f3cf98] hover:underline flex items-center gap-1"
+                >
+                  <ArrowLeft className="w-3.5 h-3.5" />
+                  <span>Re-enter Access Code</span>
+                </button>
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-mono">
+                  Code Verified
+                </span>
+              </div>
 
-            <button
-              type="submit"
-              disabled={cooldownSec > 0 || !emailInput || !passwordInput}
-              className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#d85c72] to-[#8a1c32] text-white font-semibold text-sm shadow-lg hover:shadow-[#d85c72]/30 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
-            >
-              <Unlock className="w-4 h-4" />
-              <span>{cooldownSec > 0 ? `Locked (${cooldownSec}s)` : 'Login to Admin Dashboard'}</span>
-            </button>
-          </form>
+              <div className="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-tr from-[#8a1c32] to-[#d85c72] flex items-center justify-center mb-4 shadow-xl">
+                <Lock className="w-7 h-7 text-[#fff7f2]" />
+              </div>
 
-          <div className="mt-6 pt-4 border-t border-white/10 text-center space-y-1">
-            <p className="text-[11px] text-[#f3cf98]/80 font-medium">
-              🔒 Zero Plaintext Storage. Protected with Web Crypto API.
-            </p>
-            <p className="text-[10px] text-[#d1b8b8]/60">
-              Authorized Email: <code className="text-[#f3cf98]">jus.socialmediaexpert@gmail.com</code>
-            </p>
-          </div>
+              <h2 className="font-display text-2xl font-bold text-[#fff7f2] mb-1">
+                Admin Credential Login
+              </h2>
+              <p className="text-xs text-[#d1b8b8] mb-6">
+                Apna authorized administrator email aur password enter karein.
+              </p>
+
+              <form onSubmit={handleLogin} className="space-y-4 text-left" autoComplete="off">
+                <div>
+                  <label className="block text-xs font-semibold text-[#f3cf98] mb-1.5">
+                    Admin Email Address
+                  </label>
+                  <div className="relative">
+                    <Mail className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-white/40" />
+                    <input
+                      type="email"
+                      required
+                      autoComplete="new-password"
+                      disabled={cooldownSec > 0}
+                      placeholder="admin@domain.com"
+                      value={emailInput}
+                      onChange={(e) => {
+                        setEmailInput(e.target.value);
+                        setAuthError('');
+                      }}
+                      className="w-full pl-10 pr-4 py-3 rounded-xl bg-black/60 border border-white/20 text-xs sm:text-sm text-[#fff7f2] focus:border-[#f3cf98] outline-none disabled:opacity-50"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-semibold text-[#f3cf98] mb-1.5">
+                    Admin Password
+                  </label>
+                  <div className="relative">
+                    <Lock className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-white/40" />
+                    <input
+                      type="password"
+                      required
+                      autoComplete="new-password"
+                      disabled={cooldownSec > 0}
+                      placeholder="••••••••"
+                      value={passwordInput}
+                      onChange={(e) => {
+                        setPasswordInput(e.target.value);
+                        setAuthError('');
+                      }}
+                      className="w-full pl-10 pr-4 py-3 rounded-xl bg-black/60 border border-white/20 text-xs sm:text-sm text-[#fff7f2] focus:border-[#f3cf98] outline-none disabled:opacity-50"
+                    />
+                  </div>
+                  {authError && (
+                    <p className="text-xs text-red-400 mt-2 font-medium">
+                      {authError}
+                    </p>
+                  )}
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={cooldownSec > 0 || !emailInput || !passwordInput}
+                  className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#d85c72] to-[#8a1c32] text-white font-semibold text-sm shadow-lg hover:shadow-[#d85c72]/30 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                >
+                  <Unlock className="w-4 h-4" />
+                  <span>{cooldownSec > 0 ? `Locked (${cooldownSec}s)` : 'Login to Dashboard'}</span>
+                </button>
+              </form>
+
+              <div className="mt-6 pt-4 border-t border-white/10 text-center">
+                <p className="text-[11px] text-[#f3cf98]/70 font-medium">
+                  🔒 Zero-Knowledge Cryptographic Verification Active
+                </p>
+              </div>
+            </div>
+          )}
+
         </div>
       </div>
     );
@@ -915,7 +1026,7 @@ announcement: ${editConfig.announcement}
                 required
                 value={adminEmailSetting}
                 onChange={(e) => setAdminEmailSetting(e.target.value)}
-                placeholder="jus.socialmediaexpert@gmail.com"
+                placeholder="admin@example.com"
                 className="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/15 text-xs text-[#fff7f2] focus:border-[#f3cf98] outline-none"
               />
             </div>
