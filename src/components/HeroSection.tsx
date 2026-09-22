@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Sparkles, MessageCircle, Heart, ShieldCheck, MapPin, ChevronDown } from 'lucide-react';
+import { ASSETS } from '../constants';
 
 export const HeroSection: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -91,7 +92,7 @@ export const HeroSection: React.FC = () => {
       {/* Background Image with Cinematic Luxury Gradients */}
       <div className="absolute inset-0 -z-20">
         <img
-          src="/images/hero.jpg"
+          src={ASSETS.hero}
           alt="Santosh Boutique Studio Interior with Embroidered Suit"
           className="w-full h-full object-cover object-center scale-105 filter brightness-[0.42] contrast-[1.15]"
         />

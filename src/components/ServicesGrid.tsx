@@ -1,6 +1,7 @@
 import React from 'react';
 import { Sparkles, Clock, MessageCircle, ArrowUpRight, Check, Zap } from 'lucide-react';
 import { ServiceItem } from '../types';
+import { ASSETS } from '../constants';
 
 const SERVICES: ServiceItem[] = [
   {
@@ -13,7 +14,7 @@ const SERVICES: ServiceItem[] = [
     startingPrice: '₹1200 onwards',
     turnaround: '4 - 7 Days',
     popularCuts: ['Full Flair Can-can', '16-Kalidar Gown', 'Crop Top & Skirt', 'Pre-Draped Saree', 'Velvet Bridal Set'],
-    image: '/images/lehenga.jpg',
+    image: ASSETS.lehenga,
   },
   {
     id: 'alteration',
@@ -25,7 +26,7 @@ const SERVICES: ServiceItem[] = [
     startingPrice: '₹80 onwards',
     turnaround: 'Same Day / 24 Hours',
     popularCuts: ['Waist Tapering', 'Bust Resizing', 'Length Alteration', 'Shoulder Fit', 'Zip Replacement'],
-    image: '/images/hero.jpg',
+    image: ASSETS.hero,
   },
   {
     id: 'suit',
@@ -37,7 +38,7 @@ const SERVICES: ServiceItem[] = [
     startingPrice: '₹350 onwards',
     turnaround: '2 - 3 Days',
     popularCuts: ['Patiala Salwar', 'Straight Pants', 'Princess Anarkali', 'A-Line Kurti', 'Sharara Set'],
-    image: '/images/suit.jpg',
+    image: ASSETS.suit,
   },
   {
     id: 'blouse',
@@ -49,7 +50,7 @@ const SERVICES: ServiceItem[] = [
     startingPrice: '₹400 onwards',
     turnaround: '2 - 4 Days',
     popularCuts: ['Princess Cut', 'Deep V-Back with Dori', 'Boat Neck', 'Katori Cut', 'Bridal Padded'],
-    image: '/images/blouse.jpg',
+    image: ASSETS.blouse,
   },
   {
     id: 'custom-tailoring',
@@ -61,7 +62,7 @@ const SERVICES: ServiceItem[] = [
     startingPrice: 'Custom Quote',
     turnaround: '3 - 5 Days',
     popularCuts: ['Pinterest Recreations', 'Fabric Consultation', 'Mother-Daughter Sets', 'Festive Coordinates'],
-    image: '/images/hero.jpg',
+    image: ASSETS.hero,
   },
 ];
 

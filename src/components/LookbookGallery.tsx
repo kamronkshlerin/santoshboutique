@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Sparkles, MessageCircle, X, ZoomIn } from 'lucide-react';
 import { LookbookItem } from '../types';
+import { ASSETS } from '../constants';
 
 const GALLERY_ITEMS: LookbookItem[] = [
   {
     id: '1',
     title: 'Velvet Maroon Bridal Blouse with Pearl Latkans',
     category: 'blouse',
-    image: '/images/blouse.jpg',
+    image: ASSETS.blouse,
     details: 'Heavy zardozi embroidery, sweetheart neck, deep back with handcrafted latkans.',
     tag: 'Bridal Couture'
   },
@@ -15,7 +16,7 @@ const GALLERY_ITEMS: LookbookItem[] = [
     id: '2',
     title: 'Emerald Green Silk Punjabi Suit with Gota Lace',
     category: 'suit',
-    image: '/images/suit.jpg',
+    image: ASSETS.suit,
     details: 'Chiffon border dupatta, Patiala salwar, golden zari collar work.',
     tag: 'Festive Classic'
   },
@@ -23,7 +24,7 @@ const GALLERY_ITEMS: LookbookItem[] = [
     id: '3',
     title: 'Crimson Royal Wedding Lehenga with Can-can Flare',
     category: 'lehenga',
-    image: '/images/lehenga.jpg',
+    image: ASSETS.lehenga,
     details: '16 Kalidar flare, matching embroidered blouse, hand-stitched bridal border.',
     tag: 'Royal Bridal'
   },
@@ -31,7 +32,7 @@ const GALLERY_ITEMS: LookbookItem[] = [
     id: '4',
     title: 'Peach Blossom Anarkali Floor-Length Gown',
     category: 'suit',
-    image: '/images/hero.jpg',
+    image: ASSETS.hero,
     details: 'Soft georgette with sequins embroidery, princess cut bustline.',
     tag: 'Party Wear'
   }

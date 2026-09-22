@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { MapPin, Clock, Phone, MessageCircle, Navigation, ShieldCheck, Heart, Image as ImageIcon, Map as MapIcon, ExternalLink } from 'lucide-react';
+import { ASSETS } from '../constants';
 
 export const StudioLocationSection: React.FC = () => {
   const [viewMode, setViewMode] = useState<'photos' | 'map'>('photos');
@@ -171,7 +172,7 @@ export const StudioLocationSection: React.FC = () => {
                   {/* Photo 1: Actual Shop Exterior */}
                   <div className="group relative rounded-2xl overflow-hidden border border-white/15 bg-black/40">
                     <img
-                      src="/images/shop_exterior.jpg"
+                      src={ASSETS.shopExterior}
                       alt="Santosh Boutique Shop Building in Sarti, Bilaspur"
                       className="w-full h-56 sm:h-64 object-cover group-hover:scale-105 transition-transform duration-500"
                     />
@@ -194,7 +195,7 @@ export const StudioLocationSection: React.FC = () => {
                   {/* Photo 2: Baba Balak Nath Temple Landmark Gate */}
                   <div className="group relative rounded-2xl overflow-hidden border border-white/15 bg-black/40">
                     <img
-                      src="/images/temple_landmark.jpg"
+                      src={ASSETS.templeLandmark}
                       alt="Baba Balak Nath Temple Gate Landmark in Sarti, Bilaspur"
                       className="w-full h-56 sm:h-64 object-cover group-hover:scale-105 transition-transform duration-500"
                     />

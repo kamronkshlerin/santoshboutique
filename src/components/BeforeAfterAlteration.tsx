@@ -1,5 +1,6 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { Scissors, Check, AlertCircle, ArrowLeftRight } from 'lucide-react';
+import { ASSETS } from '../constants';
 
 export const BeforeAfterAlteration: React.FC = () => {
   const [sliderPos, setSliderPos] = useState(50);
@@ -57,7 +58,7 @@ export const BeforeAfterAlteration: React.FC = () => {
             {/* "After" Layer (Full width behind) - Bespoke Santosh Fitting */}
             <div className="absolute inset-0">
               <img
-                src="/images/hero.jpg"
+                src={ASSETS.hero}
                 alt="Santosh Boutique Precision Tailored Suit"
                 className="w-full h-full object-cover filter brightness-[0.95]"
               />
@@ -87,7 +88,7 @@ export const BeforeAfterAlteration: React.FC = () => {
             >
               <div className="relative w-full h-full" style={{ width: containerRef.current?.offsetWidth || '100%' }}>
                 <img
-                  src="/images/suit.jpg"
+                  src={ASSETS.suit}
                   alt="Standard Loose Readymade Fit"
                   className="w-full h-full object-cover filter brightness-[0.75] contrast-[0.95]"
                 />
