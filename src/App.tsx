@@ -20,34 +20,60 @@ import { AdminBookingsDashboard } from './components/AdminBookingsDashboard';
 export type PageTab = 'home' | 'about' | 'designs' | 'process' | 'pricing' | 'contact' | 'admin';
 
 export const App: React.FC = () => {
-  const getPageFromHash = (): PageTab => {
+  const resolveCurrentPage = (): PageTab => {
     if (typeof window === 'undefined') return 'home';
+    const path = window.location.pathname.toLowerCase();
     const hash = window.location.hash.toLowerCase();
-    if (hash.includes('admin') || hash.includes('booking') || hash.includes('crm')) return 'admin';
-    if (hash.includes('about')) return 'about';
-    if (hash.includes('design') || hash.includes('catalog') || hash.includes('lookbook')) return 'designs';
-    if (hash.includes('process') || hash.includes('how-it-works')) return 'process';
-    if (hash.includes('pricing') || hash.includes('rate')) return 'pricing';
-    if (hash.includes('contact') || hash.includes('location')) return 'contact';
+    const search = window.location.search.toLowerCase();
+    const combined = `${path} ${hash} ${search}`;
+
+    if (combined.includes('admin') || combined.includes('booking') || combined.includes('crm')) return 'admin';
+    if (combined.includes('about')) return 'about';
+    if (combined.includes('design') || combined.includes('catalog') || combined.includes('lookbook')) return 'designs';
+    if (combined.includes('process') || combined.includes('how-it-works')) return 'process';
+    if (combined.includes('pricing') || combined.includes('rate')) return 'pricing';
+    if (combined.includes('contact') || combined.includes('location')) return 'contact';
     return 'home';
   };
 
-  const [currentPage, setCurrentPage] = useState<PageTab>(() => getPageFromHash());
+  const [currentPage, setCurrentPage] = useState<PageTab>(() => resolveCurrentPage());
 
   useEffect(() => {
-    const handleHashChange = () => {
-      const page = getPageFromHash();
+    // If user arrived with an old hash (e.g. /#/about), immediately upgrade to clean /about
+    if (window.location.hash && window.location.hash.startsWith('#/')) {
+      const page = resolveCurrentPage();
+      const cleanPath = page === 'home' ? '/' : `/${page}`;
+      if (window.history.replaceState) {
+        window.history.replaceState({ page }, '', cleanPath);
+      }
+    }
+
+    const handleRouteChange = () => {
+      const page = resolveCurrentPage();
       setCurrentPage(page);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    window.addEventListener('popstate', handleRouteChange);
+    window.addEventListener('hashchange', handleRouteChange);
+
+    return () => {
+      window.removeEventListener('popstate', handleRouteChange);
+      window.removeEventListener('hashchange', handleRouteChange);
+    };
   }, []);
 
   const navigateTo = (page: PageTab) => {
     setCurrentPage(page);
-    window.location.hash = page === 'home' ? '#/' : `#/${page}`;
+    const cleanPath = page === 'home' ? '/' : `/${page}`;
+    
+    // Update browser URL cleanly without '#'
+    if (window.history.pushState) {
+      window.history.pushState({ page }, '', cleanPath);
+    } else {
+      window.location.hash = page === 'home' ? '#/' : `#/${page}`;
+    }
+    
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 

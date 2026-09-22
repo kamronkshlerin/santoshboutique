@@ -87,7 +87,7 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
       background: #120407;
       color: #fff7f2;
     }
-    .status-msg-wrap, .blogger-header, .blog-feeds, .post-feeds, .header-widget {
+    .status-msg-wrap, .status-msg-body, .status-msg-border, #error-page, .blogger-header, .blog-feeds, .post-feeds, .header-widget {
       display: none !important;
     }
 
@@ -168,6 +168,20 @@ ${sanitizedCss}
   <script type='application/ld+json'>
   //<![CDATA[
 ${jsonLd}
+  //]]>
+  </script>
+
+  <!-- Instant Clean URL Upgrade -->
+  <script type='text/javascript'>
+  //<![CDATA[
+  try {
+    if (window.location.hash && window.location.hash.startsWith('#/')) {
+      var cleanRoute = window.location.hash.replace(/^#\/?/, '/');
+      if (window.history.replaceState) {
+        window.history.replaceState(null, '', cleanRoute);
+      }
+    }
+  } catch(e) {}
   //]]>
   </script>
 </head>
