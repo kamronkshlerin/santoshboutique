@@ -88,6 +88,7 @@ ${jsonLd}
 <body class='bg-[#120407] text-[#fff7f2] font-sans antialiased overflow-x-hidden'>
 
   <!-- LIVE REACT APPLICATION CONTAINER -->
+  <div id='santosh-root'></div>
   <div id='root'></div>
 
   <!-- ======================================================= -->
@@ -178,7 +179,11 @@ mapsUrl: https://maps.google.com/?q=Baba+Balak+Nath+Temple+Sarti+Bilaspur+Himach
 
     <!-- 6. ADSENSE & EXTRA GADGETS -->
     <b:section class='layout-section' id='sec-gadgets' name='6. 💰 Google AdSense &amp; Extra Widgets' showaddelement='yes'>
-      <b:widget id='Blog1' locked='true' title='Blog Core System' type='Blog' version='2' visible='false'/>
+      <b:widget id='Blog1' locked='true' title='Blog Core System' type='Blog' version='2'>
+        <b:includable id='main'>
+          <!-- Clean container: prevents blog posts from corrupting standalone React UI -->
+        </b:includable>
+      </b:widget>
     </b:section>
 
   </div>

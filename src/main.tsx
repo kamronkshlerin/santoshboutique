@@ -3,8 +3,13 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+const mountNode = document.getElementById('santosh-root') || document.getElementById('root');
+if (mountNode) {
+  ReactDOM.createRoot(mountNode).render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>,
+  );
+} else {
+  console.error('Boutique mount node not found!');
+}
