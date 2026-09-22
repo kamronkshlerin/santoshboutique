@@ -180,6 +180,9 @@
 }
 
 /* 3. Dark Backgrounds to Light */
+.light-mode .trustbar-section,
+.light-mode .bg-\[\#18050a\],
+.light-mode [class*="bg-[#18050a]"],
 .light-mode .bg-\[\#120407\],
 .light-mode .bg-\[\#150409\],
 .light-mode .bg-\[\#1a080e\],
@@ -188,7 +191,30 @@
 .light-mode [class*="bg-[#120407]"],
 .light-mode [class*="bg-[#1a080e]"],
 .light-mode [class*="bg-[#150409]"] {
+  background-color: #faf7f5 !important;
+}
+
+.light-mode .trustbar-section {
+  background-color: #f7f1ee !important;
+  border-color: rgba(138, 28, 50, 0.14) !important;
+}
+
+.light-mode .trustbar-section .liquid-glass {
   background-color: #ffffff !important;
+  border-color: rgba(138, 28, 50, 0.18) !important;
+  box-shadow: 0 4px 16px rgba(138, 28, 50, 0.06) !important;
+}
+
+.light-mode .trustbar-section .text-\[\#fff7f2\] {
+  color: #1a060c !important;
+}
+
+.light-mode .trustbar-section .text-\[\#d1b8b8\] {
+  color: #523c44 !important;
+}
+
+.light-mode .trustbar-section .text-\[\#f3cf98\] {
+  color: #8a1c32 !important;
 }
 
 .light-mode [class*="bg-black/"],
