@@ -683,5 +683,31 @@
   color: #54656f !important;
 }
 
+/* ======================================================= */
+/* RECREATION STUDIO & CTA EXPERIENCE BANNERS (LIGHT MODE) */
+/* ======================================================= */
+.light-mode .recreation-banner-card,
+.light-mode .cta-experience-card {
+  background: linear-gradient(135deg, #ffffff 0%, #fff4f6 50%, #faedf0 100%) !important;
+  border: 1.5px solid rgba(138, 28, 50, 0.22) !important;
+  box-shadow: 0 16px 40px -10px rgba(138, 28, 50, 0.1), 0 2px 6px rgba(138, 28, 50, 0.05) !important;
+}
 
+.light-mode .recreation-banner-card .banner-eyebrow {
+  color: #8a1c32 !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+}
 
+.light-mode .recreation-banner-card .banner-heading,
+.light-mode .recreation-banner-card h2,
+.light-mode .cta-experience-card h2 {
+  color: #1a060c !important;
+  font-weight: 700 !important;
+}
+
+.light-mode .recreation-banner-card .banner-desc,
+.light-mode .recreation-banner-card p,
+.light-mode .cta-experience-card p {
+  color: #523c44 !important;
+}

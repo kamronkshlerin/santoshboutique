@@ -1,4 +1,4 @@
-﻿import React, { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { 
   Scissors, 
   Award, 
@@ -108,7 +108,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
 
           {/* Highlights Card */}
           <div className="lg:col-span-5">
-            <div className="relative rounded-3xl p-8 liquid-glass border border-[#f3cf98]/30 shadow-2xl bg-gradient-to-b from-[#8a1c32]/30 via-transparent to-[#120407]">
+            <div className="relative rounded-3xl p-8 liquid-glass border border-[#f3cf98]/30 shadow-2xl">
               <div className="w-12 h-12 rounded-2xl bg-[#f3cf98] text-[#120407] flex items-center justify-center font-bold text-xl mb-6 shadow-lg">
                 <Scissors className="w-6 h-6" />
               </div>
@@ -181,8 +181,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* Bottom CTA to Visit or Call */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-tr from-[#8a1c32]/40 via-[#1a080e] to-[#8a1c32]/20 border border-[#f3cf98]/30 shadow-2xl">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
+        <div className="p-8 sm:p-12 rounded-3xl liquid-glass border border-[#f3cf98]/30 shadow-2xl cta-experience-card">
           <h2 className="text-2xl sm:text-4xl font-display font-bold text-[#fff7f2] mb-3">
             Ready to Experience the Perfect Custom Fit?
           </h2>
