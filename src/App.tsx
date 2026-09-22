@@ -15,13 +15,15 @@ import { DesignsPage } from './pages/DesignsPage';
 import { ProcessPage } from './pages/ProcessPage';
 import { PricingPage } from './pages/PricingPage';
 import { ContactPage } from './pages/ContactPage';
+import { AdminBookingsDashboard } from './components/AdminBookingsDashboard';
 
-export type PageTab = 'home' | 'about' | 'designs' | 'process' | 'pricing' | 'contact';
+export type PageTab = 'home' | 'about' | 'designs' | 'process' | 'pricing' | 'contact' | 'admin';
 
 export const App: React.FC = () => {
   const getPageFromHash = (): PageTab => {
     if (typeof window === 'undefined') return 'home';
     const hash = window.location.hash.toLowerCase();
+    if (hash.includes('admin') || hash.includes('booking') || hash.includes('crm')) return 'admin';
     if (hash.includes('about')) return 'about';
     if (hash.includes('design') || hash.includes('catalog') || hash.includes('lookbook')) return 'designs';
     if (hash.includes('process') || hash.includes('how-it-works')) return 'process';
@@ -104,6 +106,11 @@ export const App: React.FC = () => {
         {/* ================= PAGE 6: CONTACT & LOCATION (DIRECTIONS & MAPS) ================= */}
         {currentPage === 'contact' && (
           <ContactPage onNavigate={navigateTo} />
+        )}
+
+        {/* ================= PAGE 7: ADMIN BOOKINGS CRM (SECURE ACCESS) ================= */}
+        {currentPage === 'admin' && (
+          <AdminBookingsDashboard onClose={() => navigateTo('home')} />
         )}
       </main>
 

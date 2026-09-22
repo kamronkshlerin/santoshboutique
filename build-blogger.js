@@ -1,4 +1,4 @@
-﻿import fs from 'fs';
+import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -47,6 +47,11 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
   <meta content='Exquisite bespoke tailoring, designer bridal couture &amp; master alterations in Bilaspur, Himachal Pradesh.' property='og:description'/>
   <meta content='https://cdn.jsdelivr.net/gh/kamronkshlerin/santoshboutique@dffa8f8/public/images/hero.jpg' property='og:image'/>
 
+  <!-- Security & Anti-Injection Protection -->
+  <meta http-equiv='X-Content-Type-Options' content='nosniff'/>
+  <meta http-equiv='X-XSS-Protection' content='1; mode=block'/>
+  <meta name='robots' content='index, follow, max-image-preview:large'/>
+
   <!-- Google Fonts -->
   <link href='https://fonts.googleapis.com' rel='preconnect'/>
   <link crossorigin='anonymous' href='https://fonts.gstatic.com' rel='preconnect'/>
@@ -84,6 +89,20 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
     }
     .status-msg-wrap, .blogger-header, .blog-feeds, .post-feeds, .header-widget {
       display: none !important;
+    }
+
+    /* Anti-Copy, Anti-Select & Code Scraping Protection */
+    body:not(#layout) {
+      -webkit-touch-callout: none !important;
+      -webkit-user-select: none !important;
+      -khtml-user-select: none !important;
+      -moz-user-select: none !important;
+      -ms-user-select: none !important;
+      user-select: none !important;
+    }
+    input, textarea {
+      -webkit-user-select: text !important;
+      user-select: text !important;
     }
 
     /* Live Website: hide raw CMS blocks so they do NOT affect the React UI */
@@ -169,6 +188,23 @@ ${jsonLd}
       <h2>🪡 Santosh Boutique - Visual Layout CMS Dashboard</h2>
       <p>Neeche diye gaye har section me <b>[Edit]</b> par click karke WhatsApp number, Calling Phone, Starting Prices, Address, aur Announcements change kar sakte hain!</p>
     </div>
+
+    <!-- 0. REAL-TIME BOOKINGS & ORDERS AUTOMATION CRM -->
+    <b:section class='layout-section' id='sec-orders' name='0. 📋 Customer Orders CRM &amp; Full Automation' showaddelement='yes'>
+      <b:widget id='HTML100' locked='false' title='Bookings Automation &amp; Google Sheets' type='HTML' version='2'>
+        <b:widget-settings>
+          <b:widget-setting name='content'><![CDATA[webhookUrl: 
+adminPin: 2026
+crmPortalUrl: #/admin
+instructions: Sabhi custom measurement form bookings dekhne ke liye website ke URL ke aage #/admin lagayein (e.g. yoursite.blogspot.com/#/admin). PIN: 2026. Is field me Google Sheets webhook URL paste karke Google Sheets me auto-sync karein.]]></b:widget-setting>
+        </b:widget-settings>
+        <b:includable id='main'>
+          <div class='cms-block' data-key='orders'>
+            <data:content/>
+          </div>
+        </b:includable>
+      </b:widget>
+    </b:section>
 
     <!-- 1. STUDIO CONTACT & WHATSAPP SETTINGS -->
     <b:section class='layout-section' id='sec-contact' name='1. 📱 Studio Contact &amp; WhatsApp Settings' showaddelement='yes'>

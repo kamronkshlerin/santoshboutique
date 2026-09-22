@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Scissors, Phone, MessageCircle, Heart } from 'lucide-react';
 import { useBloggerConfig } from '../config';
 import { PageTab } from '../App';
@@ -135,11 +135,27 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-[#d1b8b8]/70">
           <p>
-            © {new Date().getFullYear()} Santosh Boutique & Stitching Studio. All rights reserved.
+            © {new Date().getFullYear()} Santosh Boutique &amp; Stitching Studio. All rights reserved.
           </p>
-          <p className="flex items-center gap-1">
-            Handcrafted with <Heart className="w-3.5 h-3.5 text-[#d85c72] fill-[#d85c72]" /> for Bilaspur, Himachal Pradesh
-          </p>
+          <div className="flex items-center gap-4">
+            <p className="flex items-center gap-1">
+              Handcrafted with <Heart className="w-3.5 h-3.5 text-[#d85c72] fill-[#d85c72]" /> for Bilaspur, Himachal Pradesh
+            </p>
+            <span>•</span>
+            <button
+              onClick={() => {
+                if (onNavigate) {
+                  onNavigate('admin' as any);
+                } else {
+                  window.location.hash = '#/admin';
+                }
+              }}
+              className="text-[#f3cf98]/70 hover:text-[#f3cf98] text-[11px] flex items-center gap-1 underline transition-colors"
+              title="View Customer Bookings CRM (Admin Protected)"
+            >
+              🔒 Orders CRM
+            </button>
+          </div>
         </div>
       </div>
     </footer>

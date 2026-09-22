@@ -3,6 +3,7 @@ import { MessageCircle, Check, Send, Ruler, ShieldCheck, Clock, Sparkles, Scisso
 import { ConfiguratorState } from '../types';
 import { useBloggerConfig } from '../config';
 import { MODEL_FITTING_IMG } from '../assets_models';
+import { saveBooking } from '../utils/bookingStore';
 
 const STYLE_CUTS: Record<string, string[]> = {
   blouse: [
@@ -68,6 +69,8 @@ export const StyleConfigurator: React.FC = () => {
     eventDate: '',
     customerNote: ''
   });
+  const [customerName, setCustomerName] = useState('');
+  const [customerPhone, setCustomerPhone] = useState('');
 
   const handleOutfitChange = (outfitId: string) => {
     const defaultCut = STYLE_CUTS[outfitId]?.[0] || '';
@@ -86,9 +89,11 @@ export const StyleConfigurator: React.FC = () => {
   const generateWhatsAppMessage = () => {
     const selectedOutfit = outfitOptions.find(o => o.id === form.serviceType)?.label || form.serviceType;
     
-    let text = `âœ¨ *${config.boutiqueName} - Custom Stitching Booking* âœ¨\n`;
+    let text = `✨ *${config.boutiqueName} - Custom Stitching Booking* ✨\n`;
     text += `📍 *Studio Location*: ${config.address}\n`;
     text += `-----------------------------------------\n`;
+    if (customerName) text += `👤 *Customer Name*: ${customerName}\n`;
+    if (customerPhone) text += `📞 *Phone*: ${customerPhone}\n`;
     text += `👗 *Selected Outfit*: ${selectedOutfit}\n`;
     text += `✂️ *Style / Cut*: ${form.styleCut}\n`;
     text += `🧵 *Fabric Status*: ${form.fabricStatus}\n`;
@@ -99,6 +104,7 @@ export const StyleConfigurator: React.FC = () => {
     if (form.customerNote) {
       text += `📝 *Special Requirement*: ${form.customerNote}\n`;
     }
+    text += `💰 *Quoted Starting*: ${getEstimatedPrice()}\n`;
     text += `-----------------------------------------\n`;
     text += `💬 *Hello Masterji*, I want to discuss measurements and book a slot for this outfit.`;
 
@@ -107,6 +113,21 @@ export const StyleConfigurator: React.FC = () => {
 
   const handleSubmitWhatsApp = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Auto-save booking into CRM Store & Webhook
+    const webhook = typeof window !== 'undefined' ? localStorage.getItem('sb_webhook_url') || '' : '';
+    saveBooking({
+      customerName: customerName || 'Website Customer',
+      customerPhone: customerPhone || 'Direct WhatsApp',
+      serviceType: outfitOptions.find(o => o.id === form.serviceType)?.label || form.serviceType,
+      styleCut: form.styleCut,
+      fabricStatus: form.fabricStatus,
+      urgency: form.urgency,
+      eventDate: form.eventDate,
+      customerNote: form.customerNote,
+      estimatedPrice: getEstimatedPrice(),
+    }, webhook);
+
     const payload = generateWhatsAppMessage();
     const url = `https://wa.me/${config.whatsapp}?text=${encodeURIComponent(payload)}`;
     window.open(url, '_blank');
@@ -253,6 +274,37 @@ export const StyleConfigurator: React.FC = () => {
                     placeholder="e.g. Deep back dori, padding, extra margin..."
                     value={form.customerNote}
                     onChange={(e) => setForm(prev => ({ ...prev, customerNote: e.target.value }))}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#120407] border border-white/15 text-xs text-[#fff7f2] focus:border-[#f3cf98] outline-none placeholder:text-white/30"
+                  />
+                </div>
+              </div>
+
+              {/* Step 5: Customer Details for Booking Record */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-white/10">
+                <div>
+                  <label className="block text-xs font-bold text-[#f3cf98] uppercase tracking-wider mb-2">
+                    Aapka Naam (Customer Name)
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. Pooja Sharma"
+                    value={customerName}
+                    onChange={(e) => setCustomerName(e.target.value)}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#120407] border border-white/15 text-xs text-[#fff7f2] focus:border-[#f3cf98] outline-none placeholder:text-white/30"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-[#f3cf98] uppercase tracking-wider mb-2">
+                    Phone / WhatsApp Number
+                  </label>
+                  <input
+                    type="tel"
+                    required
+                    placeholder="e.g. 98160 XXXXX"
+                    value={customerPhone}
+                    onChange={(e) => setCustomerPhone(e.target.value)}
                     className="w-full px-3.5 py-2.5 rounded-xl bg-[#120407] border border-white/15 text-xs text-[#fff7f2] focus:border-[#f3cf98] outline-none placeholder:text-white/30"
                   />
                 </div>
