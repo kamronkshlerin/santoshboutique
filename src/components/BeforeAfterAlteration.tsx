@@ -71,11 +71,11 @@ export const BeforeAfterAlteration: React.FC = () => {
               </div>
 
               {/* After Bullet Callouts */}
-              <div className="absolute bottom-6 right-6 max-w-xs text-right hidden sm:block">
-                <p className="text-sm font-bold text-[#fff7f2] drop-shadow-md">
+              <div className="photo-overlay-text absolute bottom-6 right-6 max-w-xs text-right hidden sm:block z-10">
+                <p className="photo-title text-sm font-bold text-white drop-shadow-md">
                   ✨ Flawless Hourglass Fit
                 </p>
-                <p className="text-xs text-[#f3cf98] drop-shadow">
+                <p className="photo-desc text-xs text-[#fce1b6] drop-shadow">
                   Custom bust darts, no shoulder gaping, sharp hemline
                 </p>
               </div>
@@ -95,17 +95,17 @@ export const BeforeAfterAlteration: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#120407]/90 via-black/40 to-black/50" />
 
                 {/* Before Badge */}
-                <div className="absolute top-6 left-6 px-4 py-2 rounded-full bg-[#8a1c32]/90 backdrop-blur-md text-white text-xs font-bold tracking-wider uppercase flex items-center gap-1.5 shadow-lg">
+                <div className="photo-overlay-badge absolute top-6 left-6 px-4 py-2 rounded-full bg-[#8a1c32]/90 backdrop-blur-md text-white text-xs font-bold tracking-wider uppercase flex items-center gap-1.5 shadow-lg">
                   <AlertCircle className="w-4 h-4 text-[#f3cf98]" />
                   <span>Before: Loose Readymade Fit</span>
                 </div>
 
                 {/* Before Bullet Callouts */}
-                <div className="absolute bottom-6 left-6 max-w-xs text-left hidden sm:block">
-                  <p className="text-sm font-bold text-[#fff7f2] drop-shadow-md">
+                <div className="photo-overlay-text absolute bottom-6 left-6 max-w-xs text-left hidden sm:block z-10">
+                  <p className="photo-title text-sm font-bold text-white drop-shadow-md">
                     ⚠️ Baggy Waist & Long Sleeves
                   </p>
-                  <p className="text-xs text-[#d1b8b8] drop-shadow">
+                  <p className="photo-desc text-xs text-[#fdf2f4] drop-shadow">
                     Ill-proportioned standard sizes bought online
                   </p>
                 </div>

@@ -170,46 +170,46 @@ export const StudioLocationSection: React.FC = () => {
               <div className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Photo 1: Actual Shop Exterior */}
-                  <div className="group relative rounded-2xl overflow-hidden border border-white/15 bg-black/40">
+                  <div className="group relative rounded-2xl overflow-hidden border border-black/10 sm:border-white/15 bg-black shadow-lg">
                     <img
                       src={ASSETS.shopExterior}
                       alt="Santosh Boutique Shop Building in Fatoh, Bilaspur"
                       className="w-full h-56 sm:h-64 object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#120407]/90 via-[#120407]/30 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent pointer-events-none" />
                     
-                    <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#120407]/85 backdrop-blur-md border border-[#f3cf98]/30 text-[10px] font-bold text-[#f3cf98] uppercase tracking-wider">
+                    <div className="photo-overlay-badge absolute top-3 left-3 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/20 text-[10px] font-bold text-white uppercase tracking-wider shadow-md">
                       Shop Building
                     </div>
 
-                    <div className="absolute bottom-3 left-3 right-3">
-                      <p className="text-xs font-bold text-[#fff7f2]">
+                    <div className="photo-overlay-text absolute bottom-3 left-3 right-3 z-10">
+                      <p className="photo-title text-sm sm:text-base font-bold text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] leading-tight mb-0.5">
                         Santosh Boutique & Studio Building
                       </p>
-                      <p className="text-[11px] text-[#d1b8b8]">
-                        Located on the main Fatoh main approach road
+                      <p className="photo-desc text-xs text-[#fce8eb] drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">
+                        Located on the main Fatoh approach road
                       </p>
                     </div>
                   </div>
 
                   {/* Photo 2: Baba Balak Nath Temple Landmark Gate */}
-                  <div className="group relative rounded-2xl overflow-hidden border border-white/15 bg-black/40">
+                  <div className="group relative rounded-2xl overflow-hidden border border-black/10 sm:border-white/15 bg-black shadow-lg">
                     <img
                       src={ASSETS.templeLandmark}
                       alt="Baba Balak Nath Temple Gate Landmark in Fatoh, Bilaspur"
                       className="w-full h-56 sm:h-64 object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#120407]/90 via-[#120407]/30 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent pointer-events-none" />
 
-                    <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#8a1c32]/90 backdrop-blur-md border border-[#f3cf98]/30 text-[10px] font-bold text-white uppercase tracking-wider flex items-center gap-1">
+                    <div className="photo-overlay-badge absolute top-3 left-3 px-3 py-1 rounded-full bg-[#8a1c32]/95 backdrop-blur-md border border-white/20 text-[10px] font-bold text-white uppercase tracking-wider flex items-center gap-1 shadow-md">
                       <span>🛕 Key Landmark</span>
                     </div>
 
-                    <div className="absolute bottom-3 left-3 right-3">
-                      <p className="text-xs font-bold text-[#fff7f2]">
+                    <div className="photo-overlay-text absolute bottom-3 left-3 right-3 z-10">
+                      <p className="photo-title text-sm sm:text-base font-bold text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] leading-tight mb-0.5">
                         Baba Balak Nath Temple Gate
                       </p>
-                      <p className="text-[11px] text-[#f3cf98]">
+                      <p className="photo-desc text-xs text-[#fce1b6] drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)] font-medium">
                         White 3-dome archway with stone staircase
                       </p>
                     </div>
@@ -217,19 +217,19 @@ export const StudioLocationSection: React.FC = () => {
                 </div>
 
                 {/* Helpful direction tip box */}
-                <div className="p-4 rounded-2xl bg-white/5 border border-[#f3cf98]/20 flex items-center justify-between gap-3 text-xs text-[#d1b8b8]">
+                <div className="studio-direction-box p-4 rounded-2xl bg-white/5 border border-[#f3cf98]/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-[#d1b8b8]">
                   <div className="flex items-center gap-2.5">
-                    <span className="text-xl">🧭</span>
-                    <p>
-                      <strong className="text-[#fff7f2]">Navigation Tip:</strong> When coming via Fatoh / Sarti road, look for the temple's white arches. Our shop is just steps away.
+                    <span className="text-xl shrink-0">🧭</span>
+                    <p className="studio-direction-text leading-relaxed">
+                      <strong className="studio-direction-bold text-[#fff7f2] font-bold">Navigation Tip:</strong> When coming via Fatoh / Sarti road, look for the temple's white arches. Our shop is just steps away.
                     </p>
                   </div>
                   <button
                     onClick={openGoogleMaps}
-                    className="shrink-0 px-3 py-1.5 rounded-xl bg-[#d85c72] hover:bg-[#b53c52] text-white font-semibold text-xs transition-colors flex items-center gap-1"
+                    className="shrink-0 px-3.5 py-2 rounded-xl bg-[#8a1c32] hover:bg-[#b53c52] text-white font-semibold text-xs shadow-md transition-colors flex items-center gap-1.5"
                   >
                     <span>Open GPS</span>
-                    <ExternalLink className="w-3 h-3" />
+                    <ExternalLink className="w-3.5 h-3.5" />
                   </button>
                 </div>
               </div>
