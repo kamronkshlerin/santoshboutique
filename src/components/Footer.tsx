@@ -1,9 +1,24 @@
-import React from 'react';
+﻿import React from 'react';
 import { Scissors, Phone, MessageCircle, Heart } from 'lucide-react';
 import { useBloggerConfig } from '../config';
+import { PageTab } from '../App';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigate?: (page: PageTab) => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const config = useBloggerConfig();
+
+  const handleLink = (e: React.MouseEvent, page: PageTab) => {
+    e.preventDefault();
+    if (onNavigate) {
+      onNavigate(page);
+    } else {
+      window.location.hash = page === 'home' ? '#/' : `#/${page}`;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   const openWhatsApp = () => {
     window.open(`https://wa.me/${config.whatsapp}`, '_blank');
@@ -13,9 +28,12 @@ export const Footer: React.FC = () => {
     <footer className="relative bg-[#0d0205] border-t border-[#f3cf98]/20 pt-16 pb-12 px-4 sm:px-6 lg:px-8 text-[#d1b8b8]">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-          {/* Col 1: Brand Info */}
+          {/* Col 1: Brand Info & GEO Citations */}
           <div>
-            <div className="flex items-center gap-2.5 mb-4">
+            <div 
+              onClick={(e) => handleLink(e, 'home')}
+              className="flex items-center gap-2.5 mb-4 cursor-pointer"
+            >
               <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-[#8a1c32] to-[#f3cf98] flex items-center justify-center text-[#120407]">
                 <Scissors className="w-4 h-4 -rotate-45" />
               </div>
@@ -27,37 +45,65 @@ export const Footer: React.FC = () => {
               Boutique & Stitching Studio
             </p>
             <p className="text-xs leading-relaxed text-[#d1b8b8] mb-4">
-              LADIES FASHION • CUSTOM STITCHING • STYLE FOR EVERY YOU. Serving Bilaspur, Sarti, and neighboring Himachal regions with authentic couture perfection.
+              LADIES FASHION • CUSTOM STITCHING • STYLE FOR EVERY YOU. Serving Bilaspur, Sarti, Ghumarwin, and Himachal Pradesh with master atelier tailoring.
             </p>
             <p className="text-xs font-serif italic text-[#f3cf98]">
               "Create • Stitch • Empower"
             </p>
           </div>
 
-          {/* Col 2: Services */}
+          {/* Col 2: SEO & Multi-Page Navigation */}
           <div>
             <h4 className="text-sm font-bold text-[#fff7f2] uppercase tracking-wider mb-4 border-b border-white/10 pb-2">
-              Our Tailoring Services
+              Website Pages (SEO & AEO)
             </h4>
             <ul className="space-y-2 text-xs">
-              <li><a href="#services" className="hover:text-[#f3cf98] transition-colors">Suit & Patiala Stitching</a></li>
-              <li><a href="#services" className="hover:text-[#f3cf98] transition-colors">Princess Cut & Bridal Blouse</a></li>
-              <li><a href="#services" className="hover:text-[#f3cf98] transition-colors">Lehenga & Gown Assembly</a></li>
-              <li><a href="#alteration" className="hover:text-[#f3cf98] transition-colors">Express 24h Alterations</a></li>
-              <li><a href="#configurator" className="hover:text-[#f3cf98] transition-colors">Custom Measurement Configurator</a></li>
+              <li>
+                <a href="#/" onClick={(e) => handleLink(e, 'home')} className="hover:text-[#f3cf98] transition-colors">
+                  🏠 Home Studio Landing
+                </a>
+              </li>
+              <li>
+                <a href="#/about" onClick={(e) => handleLink(e, 'about')} className="hover:text-[#f3cf98] transition-colors">
+                  📖 About Us & Craftsmanship
+                </a>
+              </li>
+              <li>
+                <a href="#/designs" onClick={(e) => handleLink(e, 'designs')} className="hover:text-[#f3cf98] transition-colors">
+                  👗 Designs & Silhouettes Catalog
+                </a>
+              </li>
+              <li>
+                <a href="#/process" onClick={(e) => handleLink(e, 'process')} className="hover:text-[#f3cf98] transition-colors">
+                  ✂️ Our 6-Step Tailoring Process
+                </a>
+              </li>
+              <li>
+                <a href="#/pricing" onClick={(e) => handleLink(e, 'pricing')} className="hover:text-[#f3cf98] transition-colors">
+                  🏷️ Stitching Rates & Yardage Guide
+                </a>
+              </li>
+              <li>
+                <a href="#/contact" onClick={(e) => handleLink(e, 'contact')} className="hover:text-[#f3cf98] transition-colors">
+                  📍 Contact Us & Studio Location
+                </a>
+              </li>
             </ul>
           </div>
 
-          {/* Col 3: Studio Location */}
+          {/* Col 3: Studio Location & Landmark */}
           <div>
             <h4 className="text-sm font-bold text-[#fff7f2] uppercase tracking-wider mb-4 border-b border-white/10 pb-2">
-              Studio Landmark
+              Studio Landmark (GEO)
             </h4>
             <p className="text-xs leading-relaxed mb-3">
               📍 {config.address}
             </p>
             <p className="text-xs text-[#f3cf98] mb-1">
               🕒 {config.hours}
+            </p>
+            <p className="text-xs text-[#d1b8b8] mt-2">
+              🧭 Located directly near Baba Balak Nath Temple, Sarti road. Roadside parking available.
             </p>
           </div>
 
@@ -92,7 +138,7 @@ export const Footer: React.FC = () => {
             © {new Date().getFullYear()} Santosh Boutique & Stitching Studio. All rights reserved.
           </p>
           <p className="flex items-center gap-1">
-            Handcrafted with <Heart className="w-3.5 h-3.5 text-[#d85c72] fill-[#d85c72]" /> for Himachal Pradesh
+            Handcrafted with <Heart className="w-3.5 h-3.5 text-[#d85c72] fill-[#d85c72]" /> for Bilaspur, Himachal Pradesh
           </p>
         </div>
       </div>

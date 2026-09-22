@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { MessageCircle, Check, Send, Ruler, ShieldCheck, Clock } from 'lucide-react';
+import { MessageCircle, Check, Send, Ruler, ShieldCheck, Clock, Sparkles, Scissors } from 'lucide-react';
 import { ConfiguratorState } from '../types';
 import { useBloggerConfig } from '../config';
+import { MODEL_FITTING_IMG } from '../assets_models';
 
 const STYLE_CUTS: Record<string, string[]> = {
   blouse: [
@@ -46,12 +47,17 @@ const STYLE_CUTS: Record<string, string[]> = {
 export const StyleConfigurator: React.FC = () => {
   const config = useBloggerConfig();
 
-  const outfitOptions = [
-    { id: 'blouse', label: 'Designer Blouse', icon: '🥻', basePrice: config.priceBlouse },
-    { id: 'suit', label: 'Suit & Kurti Set', icon: '👗', basePrice: config.priceSuit },
-    { id: 'lehenga', label: 'Lehenga & Party Wear', icon: '✨', basePrice: config.priceLehenga },
-    { id: 'custom-tailoring', label: 'Custom Tailoring', icon: '✂️', basePrice: 'Custom Quote' },
-    { id: 'alteration', label: 'Express Alteration', icon: '⚡', basePrice: config.priceAlteration },
+  const outfitOptions: {
+    id: string;
+    label: string;
+    icon: React.ReactNode;
+    basePrice: string;
+  }[] = [
+    { id: 'blouse', label: 'Designer Blouse', icon: <Sparkles className="w-6 h-6 text-[#f3cf98]" />, basePrice: config.priceBlouse },
+    { id: 'suit', label: 'Suit & Kurti Set', icon: <Scissors className="w-6 h-6 text-[#d85c72]" />, basePrice: config.priceSuit },
+    { id: 'lehenga', label: 'Lehenga & Party Wear', icon: <Sparkles className="w-6 h-6 text-[#f3cf98]" />, basePrice: config.priceLehenga },
+    { id: 'custom-tailoring', label: 'Custom Tailoring', icon: <Ruler className="w-6 h-6 text-[#d1b8b8]" />, basePrice: 'Custom Quote' },
+    { id: 'alteration', label: 'Express Alteration', icon: <Clock className="w-6 h-6 text-[#f3cf98]" />, basePrice: config.priceAlteration },
   ];
 
   const [form, setForm] = useState<ConfiguratorState>({
@@ -80,7 +86,7 @@ export const StyleConfigurator: React.FC = () => {
   const generateWhatsAppMessage = () => {
     const selectedOutfit = outfitOptions.find(o => o.id === form.serviceType)?.label || form.serviceType;
     
-    let text = `✨ *${config.boutiqueName} - Custom Stitching Booking* ✨\n`;
+    let text = `âœ¨ *${config.boutiqueName} - Custom Stitching Booking* âœ¨\n`;
     text += `📍 *Studio Location*: ${config.address}\n`;
     text += `-----------------------------------------\n`;
     text += `👗 *Selected Outfit*: ${selectedOutfit}\n`;
@@ -288,7 +294,7 @@ export const StyleConfigurator: React.FC = () => {
               <div className="flex justify-between py-1.5 border-b border-white/5">
                 <span>Selected Outfit:</span>
                 <strong className="text-[#fff7f2]">
-                  {OUTFIT_OPTIONS.find(o => o.id === form.serviceType)?.label}
+                  {outfitOptions.find(o => o.id === form.serviceType)?.label}
                 </strong>
               </div>
 
@@ -345,8 +351,8 @@ export const StyleConfigurator: React.FC = () => {
             </div>
 
             {/* Studio Guarantee Stamp */}
-            <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-[#25D366]/10 border border-[#25D366]/30">
-              <span className="text-2xl">🪡</span>
+            <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-[#25D366]/10 border border-[#25D366]/30 mb-5">
+              <ShieldCheck className="w-6 h-6 text-[#25D366] shrink-0" />
               <div>
                 <p className="text-xs font-semibold text-[#fff7f2]">
                   100% Fit Trial Included
@@ -354,6 +360,27 @@ export const StyleConfigurator: React.FC = () => {
                 <p className="text-[11px] text-[#d1b8b8]">
                   Free minor adjustments if not completely satisfied with your fitting.
                 </p>
+              </div>
+            </div>
+
+            {/* Structured Atelier 18-Point Fitting Preview Card */}
+            <div className="rounded-2xl overflow-hidden border border-[#f3cf98]/25 bg-black/40 p-3.5 flex items-center gap-4">
+              <img 
+                src={MODEL_FITTING_IMG} 
+                alt="Master Tailor 18-Point Custom Fitting Session" 
+                className="w-20 h-24 object-cover object-top rounded-xl border border-[#f3cf98]/30 shrink-0" 
+              />
+              <div>
+                <div className="flex items-center gap-1.5 text-xs font-bold text-[#f3cf98] mb-1">
+                  <Ruler className="w-3.5 h-3.5" />
+                  <span>18-Point Anatomical Fitting</span>
+                </div>
+                <p className="text-[11px] text-[#d1b8b8] leading-tight mb-2">
+                  Zero armhole gaping, accurate dart placements, and custom shoulder slope drafting.
+                </p>
+                <span className="text-[10px] px-2.5 py-0.5 rounded-md bg-[#d85c72]/20 border border-[#d85c72]/40 text-[#f3cf98] font-mono">
+                  Boutique Trial Included
+                </span>
               </div>
             </div>
           </div>

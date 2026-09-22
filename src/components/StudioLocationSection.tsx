@@ -8,7 +8,7 @@ export const StudioLocationSection: React.FC = () => {
   const [viewMode, setViewMode] = useState<'photos' | 'map'>('photos');
 
   const openGoogleMaps = () => {
-    window.open(config.mapsUrl, '_blank');
+    window.open("https://maps.google.com/?q=31.412639,76.744472", "_blank");
   };
 
   const openCall = () => {
@@ -31,7 +31,7 @@ export const StudioLocationSection: React.FC = () => {
           </div>
 
           <h2 className="font-display text-3xl sm:text-5xl font-bold text-[#fff7f2] tracking-tight leading-tight mb-4">
-            Visit Our Atelier in <span className="italic gold-gradient-text">Sarti, Bilaspur</span>
+            Visit Our Atelier in <span className="italic gold-gradient-text">Fatoh, Bilaspur</span>
           </h2>
 
           <p className="text-sm sm:text-base text-[#d1b8b8] font-light">
@@ -161,7 +161,7 @@ export const StudioLocationSection: React.FC = () => {
               </div>
 
               <span className="text-[11px] text-[#f3cf98] font-medium hidden sm:inline-block">
-                📍 Sarti, Bilaspur (H.P.)
+                📍 Fatoh, Bilaspur (H.P.)
               </span>
             </div>
 
@@ -173,7 +173,7 @@ export const StudioLocationSection: React.FC = () => {
                   <div className="group relative rounded-2xl overflow-hidden border border-white/15 bg-black/40">
                     <img
                       src={ASSETS.shopExterior}
-                      alt="Santosh Boutique Shop Building in Sarti, Bilaspur"
+                      alt="Santosh Boutique Shop Building in Fatoh, Bilaspur"
                       className="w-full h-56 sm:h-64 object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#120407]/90 via-[#120407]/30 to-transparent" />
@@ -187,7 +187,7 @@ export const StudioLocationSection: React.FC = () => {
                         Santosh Boutique & Studio Building
                       </p>
                       <p className="text-[11px] text-[#d1b8b8]">
-                        Located on the main Sarti approach road
+                        Located on the main Fatoh main approach road
                       </p>
                     </div>
                   </div>
@@ -196,7 +196,7 @@ export const StudioLocationSection: React.FC = () => {
                   <div className="group relative rounded-2xl overflow-hidden border border-white/15 bg-black/40">
                     <img
                       src={ASSETS.templeLandmark}
-                      alt="Baba Balak Nath Temple Gate Landmark in Sarti, Bilaspur"
+                      alt="Baba Balak Nath Temple Gate Landmark in Fatoh, Bilaspur"
                       className="w-full h-56 sm:h-64 object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#120407]/90 via-[#120407]/30 to-transparent" />
@@ -221,7 +221,7 @@ export const StudioLocationSection: React.FC = () => {
                   <div className="flex items-center gap-2.5">
                     <span className="text-xl">🧭</span>
                     <p>
-                      <strong className="text-[#fff7f2]">Navigation Tip:</strong> When coming via Sarti road, look for the temple's white arches. Our shop is just steps away.
+                      <strong className="text-[#fff7f2]">Navigation Tip:</strong> When coming via Fatoh / Sarti road, look for the temple's white arches. Our shop is just steps away.
                     </p>
                   </div>
                   <button
@@ -238,7 +238,7 @@ export const StudioLocationSection: React.FC = () => {
               <div className="relative flex-1 min-h-[360px] rounded-2xl overflow-hidden border border-white/10">
                 <iframe
                   title="Santosh Boutique Location Map"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13637.284218774213!2d76.748!3d31.341!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390538a0f5a7d7cb%3A0xb36718d7c4331089!2sBaba%20Balak%20Nath%20Temple!5e0!3m2!1sen!2sin!4v1700000000000"
+                  src="https://maps.google.com/maps?q=31.412639,76.744472&t=&z=16&ie=UTF8&iwloc=&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) contrast(1.1)' }}

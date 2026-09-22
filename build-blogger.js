@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -9,7 +9,7 @@ const distHtmlPath = path.join(__dirname, 'dist', 'index.html');
 const outXmlPath = path.join(__dirname, 'blogger-theme.xml');
 
 if (!fs.existsSync(distHtmlPath)) {
-  console.error('dist/index.html not found!');
+  console.error('dist/index.html not found! Run npm run build first.');
   process.exit(1);
 }
 
@@ -52,6 +52,26 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
   <link crossorigin='anonymous' href='https://fonts.gstatic.com' rel='preconnect'/>
   <link href='https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap' rel='stylesheet'/>
 
+  <!-- Required for Blogger Layout Editor Version 3 -->
+  <b:template-skin>
+    <![CDATA[
+      body#layout {
+        background: #f1f5f9;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+      body#layout #blogger-layout-container {
+        display: block !important;
+      }
+      body#layout .layout-section {
+        margin: 15px 0;
+        padding: 15px;
+        background: #ffffff;
+        border: 2px dashed #cbd5e1;
+        border-radius: 8px;
+      }
+    ]]>
+  </b:template-skin>
+
   <b:skin><![CDATA[
     /* Reset default Blogger styles */
     html, body {
@@ -65,9 +85,56 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
     .status-msg-wrap, .blogger-header, .blog-feeds, .post-feeds, .header-widget {
       display: none !important;
     }
-    /* Hide CMS config raw data block on live website, visible to Layout Engine */
-    #blogger-layout-container {
+
+    /* Live Website: hide raw CMS blocks so they do NOT affect the React UI */
+    body:not(#layout) #blogger-layout-container,
+    body:not(#layout) .layout-section {
       display: none !important;
+    }
+
+    /* Blogger Layout Dashboard Editor Mode (body#layout) */
+    body#layout {
+      background: #f8fafc !important;
+      color: #0f172a !important;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+      padding: 24px !important;
+      margin: 0 !important;
+    }
+    body#layout #santosh-root,
+    body#layout #root {
+      display: none !important;
+    }
+    body#layout #blogger-layout-container {
+      display: block !important;
+      max-width: 900px !important;
+      margin: 0 auto !important;
+    }
+    body#layout .layout-admin-header {
+      background: linear-gradient(135deg, #8a1c32 0%, #120407 100%) !important;
+      color: #fff7f2 !important;
+      padding: 24px !important;
+      border-radius: 12px !important;
+      margin-bottom: 24px !important;
+      border: 1px solid rgba(243, 207, 152, 0.3) !important;
+    }
+    body#layout .layout-admin-header h2 {
+      margin: 0 0 6px 0 !important;
+      color: #f3cf98 !important;
+      font-size: 20px !important;
+    }
+    body#layout .layout-admin-header p {
+      margin: 0 !important;
+      font-size: 13px !important;
+      opacity: 0.9 !important;
+    }
+    body#layout .layout-section {
+      display: block !important;
+      margin-bottom: 20px !important;
+      background: #ffffff !important;
+      border: 2px dashed #94a3b8 !important;
+      border-radius: 10px !important;
+      padding: 16px !important;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
     }
   ]]></b:skin>
 
@@ -98,6 +165,11 @@ ${jsonLd}
   <!-- ======================================================= -->
   <div id='blogger-layout-container'>
 
+    <div class='layout-admin-header'>
+      <h2>🪡 Santosh Boutique - Visual Layout CMS Dashboard</h2>
+      <p>Neeche diye gaye har section me <b>[Edit]</b> par click karke WhatsApp number, Calling Phone, Starting Prices, Address, aur Announcements change kar sakte hain!</p>
+    </div>
+
     <!-- 1. STUDIO CONTACT & WHATSAPP SETTINGS -->
     <b:section class='layout-section' id='sec-contact' name='1. 📱 Studio Contact &amp; WhatsApp Settings' showaddelement='yes'>
       <b:widget id='HTML101' locked='false' title='WhatsApp &amp; Calling Numbers' type='HTML' version='2'>
@@ -120,7 +192,7 @@ hours: 9:00 AM - 8:00 PM (Everyday)]]></b:widget-setting>
         <b:widget-settings>
           <b:widget-setting name='content'><![CDATA[heroHeadline: Stitching Your Dreams With Care
 heroSubtitle: Traditional Designs • Modern Styles • Perfect Fit
-heroTagline: Near Baba Balak Nath Temple, Sarti, Bilaspur (H.P.)]]></b:widget-setting>
+heroTagline: Near Baba Balak Nath Temple, Fatoh, Bilaspur (H.P.)]]></b:widget-setting>
         </b:widget-settings>
         <b:includable id='main'>
           <div class='cms-block' data-key='hero'>
@@ -151,9 +223,9 @@ priceLehenga: ₹1200 onwards]]></b:widget-setting>
     <b:section class='layout-section' id='sec-location' name='4. 📍 Studio Address &amp; Maps' showaddelement='yes'>
       <b:widget id='HTML104' locked='false' title='Address &amp; Landmark Details' type='HTML' version='2'>
         <b:widget-settings>
-          <b:widget-setting name='content'><![CDATA[address: Near Baba Balak Nath Temple, Sarti, Bilaspur, Himachal Pradesh - 174004
-landmark: Directly near Baba Balak Nath Temple, Sarti
-mapsUrl: https://maps.google.com/?q=Baba+Balak+Nath+Temple+Sarti+Bilaspur+Himachal+Pradesh+174004]]></b:widget-setting>
+          <b:widget-setting name='content'><![CDATA[address: Fatoh, Near Radha Soami Satsang Beas, Bilaspur, Himachal Pradesh - 174004 (GPS: 31°24'45.5"N 76°44'40.1"E)
+landmark: Near Radha Soami Satsang Beas & Gram Panchayat Fatoh (Coordinates: 31°24'45.5"N 76°44'40.1"E)
+mapsUrl: https://maps.google.com/?q=31.412639,76.744472</b:widget-setting>
         </b:widget-settings>
         <b:includable id='main'>
           <div class='cms-block' data-key='location'>
