@@ -111,11 +111,11 @@ export const HeroSection: React.FC = () => {
         <img
           src={ASSETS.hero}
           alt="Santosh Boutique Bridal Atelier Display"
-          className="w-full h-full object-cover object-center brightness-[0.38] contrast-[1.15]"
+          className="hero-bg-img w-full h-full object-cover object-center brightness-[0.38] contrast-[1.15]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#120407] via-transparent to-[#120407]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#120407] via-[#120407]/80 to-[#120407]/50" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-[#120407]/60 to-[#120407]" />
+        <div className="hero-overlay-1 absolute inset-0 bg-gradient-to-b from-[#120407] via-transparent to-[#120407]" />
+        <div className="hero-overlay-2 absolute inset-0 bg-gradient-to-t from-[#120407] via-[#120407]/80 to-[#120407]/50" />
+        <div className="hero-overlay-3 absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-[#120407]/60 to-[#120407]" />
       </div>
 
       {/* Interactive Golden Canvas Layer */}
@@ -131,7 +131,7 @@ export const HeroSection: React.FC = () => {
         <div className="lg:col-span-7 text-center lg:text-left flex flex-col items-center lg:items-start">
           
           {/* Studio Landmark & Live Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full liquid-glass mb-6 border border-[#f3cf98]/30 shadow-lg animate-fade-in">
+          <div className="hero-tagline-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full liquid-glass mb-6 border border-[#f3cf98]/30 shadow-lg animate-fade-in">
             <MapPin className="w-3.5 h-3.5 text-[#d85c72]" />
             <span className="text-xs sm:text-sm font-medium text-[#f3cf98] tracking-wide">
               {config.heroTagline}
@@ -165,7 +165,7 @@ export const HeroSection: React.FC = () => {
 
             <button
               onClick={() => openWhatsApp()}
-              className="w-full sm:w-auto px-7 py-4 rounded-full liquid-glass text-[#fff7f2] font-semibold text-sm sm:text-base hover:bg-white/10 border border-[#f3cf98]/30 transition-all flex items-center justify-center gap-2.5 active:scale-95"
+              className="hero-secondary-btn w-full sm:w-auto px-7 py-4 rounded-full liquid-glass text-[#fff7f2] font-semibold text-sm sm:text-base hover:bg-white/10 border border-[#f3cf98]/30 transition-all flex items-center justify-center gap-2.5 active:scale-95"
             >
               <MessageCircle className="w-5 h-5 text-[#25D366]" />
               <span>Order & Enquiry on WhatsApp</span>
@@ -228,7 +228,7 @@ export const HeroSection: React.FC = () => {
 
                 {/* Top Badge: Bespoke Atelier Muse */}
                 <div className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#120407]/85 backdrop-blur-md border border-[#f3cf98]/40 shadow-lg">
+                  <div className="hero-muse-top-badge inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#120407]/85 backdrop-blur-md border border-[#f3cf98]/40 shadow-lg">
                     <Sparkles className="w-3.5 h-3.5 text-[#f3cf98]" />
                     <span className="text-[11px] font-bold text-[#f3cf98] uppercase tracking-wider">
                       Bespoke Atelier Muse
@@ -241,7 +241,7 @@ export const HeroSection: React.FC = () => {
                 </div>
 
                 {/* Bottom Card Annotation: Craftsmanship Info */}
-                <div className="absolute bottom-4 left-4 right-4 p-3.5 rounded-2xl bg-[#120407]/90 backdrop-blur-xl border border-[#f3cf98]/30 shadow-2xl">
+                <div className="hero-muse-bottom-annotation absolute bottom-4 left-4 right-4 p-3.5 rounded-2xl bg-[#120407]/90 backdrop-blur-xl border border-[#f3cf98]/30 shadow-2xl">
                   <div className="flex items-center justify-between mb-1">
                     <span className="text-xs font-bold text-[#fff7f2]">
                       Royal Bridal & Festive Silhouettes

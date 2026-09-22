@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Sparkles, Ruler } from 'lucide-react';
 import { MODEL_STORY_IMG, MODEL_FITTING_IMG } from '../assets_models';
 
@@ -261,23 +261,23 @@ export const Couture3DScrollModel: React.FC = () => {
 
           {/* Seamless Edge Blending (Motionsites Cinematic Vignette) */}
           {/* Top Fade */}
-          <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#120407] via-[#120407]/40 to-transparent pointer-events-none" />
+          <div className="model-fade-top absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#120407] via-[#120407]/40 to-transparent pointer-events-none" />
           {/* Bottom Fade */}
-          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#120407] via-[#120407]/70 to-transparent pointer-events-none" />
+          <div className="model-fade-bottom absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#120407] via-[#120407]/70 to-transparent pointer-events-none" />
           {/* Left/Right Edge Feathering */}
-          <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#120407]/80 to-transparent pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[#120407]/80 to-transparent pointer-events-none" />
+          <div className="model-fade-left absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#120407]/80 to-transparent pointer-events-none" />
+          <div className="model-fade-right absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[#120407]/80 to-transparent pointer-events-none" />
 
           {/* Floating Luxury Stage Badges (Only visible on larger screens) */}
           <div className="absolute top-6 left-6 right-6 hidden md:flex items-center justify-between pointer-events-none">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#120407]/80 backdrop-blur-md border border-[#f3cf98]/40 shadow-xl">
+            <div className="model-stage-badge inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#120407]/85 backdrop-blur-md border border-[#f3cf98]/40 shadow-xl">
               <Sparkles className="w-3.5 h-3.5 text-[#f3cf98]" />
               <span className="text-[11px] font-bold text-[#f3cf98] uppercase tracking-wider">
                 {isFittingMode ? '18-Point Custom Fitting' : 'Bespoke Atelier Muse'}
               </span>
             </div>
 
-            <div className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[10px] text-[#fff7f2]/80 font-mono">
+            <div className="model-stage-number px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[10px] text-[#fff7f2]/90 font-mono">
               STAGE 0{activeStage + 1}
             </div>
           </div>

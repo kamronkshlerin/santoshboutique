@@ -48,9 +48,11 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, theme =
     <header className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-6 lg:px-8 pt-3 sm:pt-4 transition-all duration-300">
       <nav
         className={`max-w-7xl mx-auto rounded-full px-4 sm:px-6 py-3 flex items-center justify-between transition-all duration-300 ${
-          scrolled
-            ? 'liquid-glass-nav py-2.5 shadow-2xl border border-[#f3cf98]/30 bg-[#120407]/90'
-            : 'bg-[#1a080e]/80 backdrop-blur-md border border-[#f3cf98]/20'
+          theme === 'light'
+            ? 'bg-white/95 backdrop-blur-xl border border-[#8a1c32]/20 shadow-xl shadow-[#8a1c32]/5 text-[#1a060c]'
+            : scrolled
+            ? 'liquid-glass-nav py-2.5 shadow-2xl border border-[#f3cf98]/30 bg-[#120407]/90 text-[#fff7f2]'
+            : 'bg-[#1a080e]/80 backdrop-blur-md border border-[#f3cf98]/20 text-[#fff7f2]'
         }`}
       >
         {/* Brand Logo & Name */}
@@ -66,11 +68,17 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, theme =
               <span className="font-display font-bold text-lg sm:text-2xl tracking-wide gold-gradient-text">
                 Santosh
               </span>
-              <span className="text-[9px] sm:text-[10px] uppercase tracking-widest text-[#f3cf98] px-1.5 py-0.2 rounded-full bg-[#f3cf98]/10 border border-[#f3cf98]/25 hidden sm:inline-block">
+              <span className={`text-[9px] sm:text-[10px] uppercase tracking-widest px-1.5 py-0.2 rounded-full hidden sm:inline-block ${
+                theme === 'light'
+                  ? 'text-[#8a1c32] bg-[#8a1c32]/10 border border-[#8a1c32]/25'
+                  : 'text-[#f3cf98] bg-[#f3cf98]/10 border border-[#f3cf98]/25'
+              }`}>
                 Bilaspur
               </span>
             </div>
-            <p className="text-[9px] sm:text-[10px] tracking-wider text-[#d1b8b8] uppercase hidden md:block font-medium">
+            <p className={`text-[9px] sm:text-[10px] tracking-wider uppercase hidden md:block font-medium ${
+              theme === 'light' ? 'text-[#6b525a]' : 'text-[#d1b8b8]'
+            }`}>
               Boutique & Stitching Studio
             </p>
           </div>
@@ -86,7 +94,11 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, theme =
                 onClick={() => handleNavClick(item.id)}
                 className={`px-3 py-1.5 rounded-full transition-all flex items-center gap-1.5 ${
                   isActive
-                    ? 'bg-[#f3cf98]/15 text-[#f3cf98] font-semibold border border-[#f3cf98]/40 shadow-sm'
+                    ? theme === 'light'
+                      ? 'bg-[#8a1c32] text-white font-semibold shadow-md shadow-[#8a1c32]/25'
+                      : 'bg-[#f3cf98]/15 text-[#f3cf98] font-semibold border border-[#f3cf98]/40 shadow-sm'
+                    : theme === 'light'
+                    ? 'text-[#4a383e] hover:text-[#8a1c32] hover:bg-[#8a1c32]/10'
                     : 'text-[#fff7f2]/80 hover:text-[#f3cf98] hover:bg-white/5'
                 }`}
               >
@@ -103,7 +115,11 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, theme =
           {onToggleTheme && (
             <button
               onClick={onToggleTheme}
-              className="p-2 sm:p-2.5 rounded-full liquid-glass border border-[#f3cf98]/30 hover:border-[#f3cf98] transition-all hover:scale-105 active:scale-95 shadow-md flex items-center justify-center text-[#f3cf98]"
+              className={`p-2 sm:p-2.5 rounded-full transition-all hover:scale-105 active:scale-95 shadow-md flex items-center justify-center ${
+                theme === 'light'
+                  ? 'bg-white border border-[#8a1c32]/25 text-[#8a1c32] hover:border-[#8a1c32]'
+                  : 'liquid-glass border border-[#f3cf98]/30 hover:border-[#f3cf98] text-[#f3cf98]'
+              }`}
               title={theme === 'light' ? 'Switch to Royal Dark Velvet Mode' : 'Switch to Pearl Silk Light Mode'}
               aria-label="Toggle Light/Dark Theme"
             >
@@ -127,7 +143,9 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, theme =
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-full text-[#fff7f2] hover:bg-white/10 transition-colors"
+            className={`md:hidden p-2 rounded-full transition-colors ${
+              theme === 'light' ? 'text-[#1a060c] hover:bg-[#8a1c32]/10' : 'text-[#fff7f2] hover:bg-white/10'
+            }`}
             aria-label="Toggle Menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -137,17 +155,25 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, theme =
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden mt-2 max-w-7xl mx-auto rounded-3xl liquid-glass p-5 flex flex-col gap-2 text-sm border border-[#f3cf98]/30 shadow-2xl animate-fadeIn bg-[#120407]/95">
+        <div className={`md:hidden mt-2 max-w-7xl mx-auto rounded-3xl p-5 flex flex-col gap-2 text-sm border shadow-2xl animate-fadeIn ${
+          theme === 'light'
+            ? 'bg-white/98 border-[#8a1c32]/20 text-[#1a060c]'
+            : 'liquid-glass border-[#f3cf98]/30 bg-[#120407]/95 text-[#fff7f2]'
+        }`}>
           {navItems.map((item) => {
             const isActive = currentPage === item.id;
             return (
               <button 
                 key={item.id}
-                onClick={() => handleNavClick(item.id)} 
-                className={`text-left py-2.5 px-3 rounded-xl transition-colors flex items-center justify-between ${
-                  isActive 
-                    ? 'bg-[#f3cf98]/20 text-[#f3cf98] font-bold border border-[#f3cf98]/30' 
-                    : 'text-[#fff7f2] hover:bg-white/5'
+                onClick={() => handleNavClick(item.id)}
+                className={`p-3 rounded-2xl text-left flex items-center justify-between transition-colors ${
+                  isActive
+                    ? theme === 'light'
+                      ? 'bg-[#8a1c32] text-white font-semibold'
+                      : 'bg-[#f3cf98]/20 text-[#f3cf98] font-bold border border-[#f3cf98]/30'
+                    : theme === 'light'
+                    ? 'text-[#4a383e] hover:bg-[#8a1c32]/10 hover:text-[#8a1c32]'
+                    : 'text-[#fff7f2]/80 hover:bg-white/5 hover:text-white'
                 }`}
               >
                 <div className="flex items-center gap-2">
