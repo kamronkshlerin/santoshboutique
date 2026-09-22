@@ -1,5 +1,6 @@
 import React from 'react';
 import { Scissors, Clock, HeartHandshake } from 'lucide-react';
+import { AnimatedCounter } from './MotionSiteExperience';
 
 export const TrustBar: React.FC = () => {
   return (
@@ -22,33 +23,42 @@ export const TrustBar: React.FC = () => {
 
           {/* Quick Metrics */}
           <div className="flex flex-wrap items-center gap-6 sm:gap-10 text-xs sm:text-sm text-[#fff7f2]/90">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-[#d85c72]/20 border border-[#d85c72]/40 flex items-center justify-center text-[#d85c72]">
+            <div className="flex items-center gap-2.5 group cursor-default">
+              <div className="w-9 h-9 rounded-full bg-[#d85c72]/20 border border-[#d85c72]/40 flex items-center justify-center text-[#d85c72] group-hover:scale-110 group-hover:rotate-12 transition-transform">
                 <Clock className="w-4 h-4" />
               </div>
               <div>
-                <p className="font-semibold text-[#fff7f2]">Express Turnaround</p>
-                <p className="text-[11px] text-[#d1b8b8]">24 - 48 Hour Delivery Available</p>
+                <p className="font-semibold text-[#fff7f2] flex items-center gap-1">
+                  <span>Express Turnaround:</span>
+                  <span className="text-[#d85c72] font-bold"><AnimatedCounter end={24} suffix="h" /></span>
+                </p>
+                <p className="text-[11px] text-[#d1b8b8]">Delivery available across Bilaspur</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-[#f3cf98]/20 border border-[#f3cf98]/40 flex items-center justify-center text-[#f3cf98]">
-                <Scissors className="w-4 h-4" />
+            <div className="flex items-center gap-2.5 group cursor-default">
+              <div className="w-9 h-9 rounded-full bg-[#f3cf98]/20 border border-[#f3cf98]/40 flex items-center justify-center text-[#f3cf98] group-hover:scale-110 group-hover:-rotate-12 transition-transform">
+                <Scissors className="w-4 h-4 -rotate-45" />
               </div>
               <div>
-                <p className="font-semibold text-[#fff7f2]">Bespoke Made-to-Measure</p>
-                <p className="text-[11px] text-[#d1b8b8]">100% Guaranteed Custom Fitting</p>
+                <p className="font-semibold text-[#fff7f2] flex items-center gap-1">
+                  <span>Custom Fitting:</span>
+                  <span className="text-[#f3cf98] font-bold"><AnimatedCounter end={100} suffix="%" /></span>
+                </p>
+                <p className="text-[11px] text-[#d1b8b8]">Guaranteed zero armhole gaping</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-[#25D366]/20 border border-[#25D366]/40 flex items-center justify-center text-[#25D366]">
+            <div className="flex items-center gap-2.5 group cursor-default">
+              <div className="w-9 h-9 rounded-full bg-[#25D366]/20 border border-[#25D366]/40 flex items-center justify-center text-[#25D366] group-hover:scale-110 transition-transform">
                 <HeartHandshake className="w-4 h-4" />
               </div>
               <div>
-                <p className="font-semibold text-[#fff7f2]">Local Tailor Trusted</p>
-                <p className="text-[11px] text-[#d1b8b8]">By Your Bilaspur Neighbours</p>
+                <p className="font-semibold text-[#fff7f2] flex items-center gap-1">
+                  <span>Trusted Atelier:</span>
+                  <span className="text-[#25D366] font-bold"><AnimatedCounter end={1500} suffix="+" /></span>
+                </p>
+                <p className="text-[11px] text-[#d1b8b8]">Local Bilaspur clients styled</p>
               </div>
             </div>
           </div>

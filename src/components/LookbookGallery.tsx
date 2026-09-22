@@ -99,7 +99,7 @@ export const LookbookGallery: React.FC = () => {
           {filteredItems.map(item => (
             <div
               key={item.id}
-              className="liquid-glass-card rounded-3xl overflow-hidden group cursor-pointer flex flex-col justify-between"
+              className="liquid-glass-card card-spotlight rounded-3xl overflow-hidden group cursor-pointer flex flex-col justify-between"
               onClick={() => setActiveModal(item)}
             >
               <div className="relative h-72 overflow-hidden">

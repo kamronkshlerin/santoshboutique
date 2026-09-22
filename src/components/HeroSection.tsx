@@ -157,7 +157,7 @@ export const HeroSection: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-10">
             <button
               onClick={scrollToConfigurator}
-              className="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-[#d85c72] via-[#b53c52] to-[#8a1c32] text-white font-semibold text-sm sm:text-base shadow-xl hover:shadow-[#d85c72]/30 hover:scale-[1.02] transition-all flex items-center justify-center gap-2.5 group"
+              className="shimmer-btn w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-[#d85c72] via-[#b53c52] to-[#8a1c32] text-white font-semibold text-sm sm:text-base shadow-xl hover:shadow-[#d85c72]/30 hover:scale-[1.02] transition-all flex items-center justify-center gap-2.5 group"
             >
               <Sparkles className="w-4 h-4 text-[#f3cf98] group-hover:rotate-12 transition-transform" />
               <span>Design Your Outfit & Get Quote</span>

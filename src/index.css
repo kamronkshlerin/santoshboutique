@@ -89,6 +89,107 @@
 }
 
 /* ======================================================= */
+/* MOTIONSITES AWWWARDS ANIMATION SUITE                    */
+/* ======================================================= */
+
+/* 1. Infinite Luxury Marquee Track */
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 32s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* 2. Button Shimmer Sweep Effect */
+.shimmer-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 25%,
+    rgba(255, 255, 255, 0.22) 46%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0.22) 54%,
+    transparent 75%
+  );
+  transform: translateX(-100%) rotate(25deg);
+  animation: buttonShine 4.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes buttonShine {
+  0%, 75% {
+    transform: translateX(-100%) rotate(25deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(25deg);
+  }
+}
+
+/* 3. Card Spotlight Ambient Glow */
+.card-spotlight {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-spotlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    450px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(216, 92, 114, 0.14),
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card-spotlight:hover::before {
+  opacity: 1;
+}
+
+/* 4. Subtle Floating Animation */
+@keyframes floatSubtle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-7px); }
+}
+
+.animate-float-subtle {
+  animation: floatSubtle 4s ease-in-out infinite;
+}
+
+/* 5. WhatsApp Floating Pulse Ring */
+@keyframes pulseRing {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55); }
+  70% { transform: scale(1); box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+.pulse-ring-whatsapp {
+  animation: pulseRing 2.4s infinite;
+}
+
+/* ======================================================= */
 /* LUXURY LIGHT MODE: ROYAL PEARL SILK & ROSE GOLD THEME  */
 /* ======================================================= */
 .light-mode {

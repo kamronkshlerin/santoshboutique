@@ -16,10 +16,12 @@ import { ProcessPage } from './pages/ProcessPage';
 import { PricingPage } from './pages/PricingPage';
 import { ContactPage } from './pages/ContactPage';
 import { AdminBookingsDashboard } from './components/AdminBookingsDashboard';
+import { ScrollProgressBar, LuxuryMarqueeRibbon, useGlobalCardSpotlight } from './components/MotionSiteExperience';
 
 export type PageTab = 'home' | 'about' | 'designs' | 'process' | 'pricing' | 'contact' | 'admin';
 
 export const App: React.FC = () => {
+  useGlobalCardSpotlight();
   const resolveCurrentPage = (): PageTab => {
     if (typeof window === 'undefined') return 'home';
     const path = window.location.pathname.toLowerCase();
@@ -100,6 +102,9 @@ export const App: React.FC = () => {
 
   return (
     <div className={`min-h-screen ${theme === 'light' ? 'light-mode bg-[#faf7f5] text-[#1f070e]' : 'bg-[#120407] text-[#fff7f2]'} font-sans overflow-x-hidden selection:bg-[#d85c72] selection:text-white transition-colors duration-300`}>
+      {/* Top Motionsite Scroll Progress Bar */}
+      <ScrollProgressBar theme={theme} />
+
       {/* Top Floating Glass Navigation with Multi-Page Routing & Theme Toggle */}
       <Navbar 
         currentPage={currentPage} 
@@ -118,6 +123,9 @@ export const App: React.FC = () => {
             {/* Local Trust & Guarantee Bar */}
             <div id="trust"><TrustBar /></div>
 
+            {/* Haute-Couture Infinite Marquee Ticker */}
+            <LuxuryMarqueeRibbon theme={theme} />
+
             {/* 5 Core Atelier Tailoring Services */}
             <div id="services"><ServicesGrid /></div>
 
@@ -129,6 +137,9 @@ export const App: React.FC = () => {
 
             {/* Atelier Lookbook Gallery */}
             <div id="lookbook"><LookbookGallery /></div>
+
+            {/* Haute-Couture Secondary Ticker */}
+            <LuxuryMarqueeRibbon theme={theme} />
 
             {/* Studio Location & Fatoh Landmark Map */}
             <div id="location"><StudioLocationSection /></div>

@@ -48,7 +48,7 @@ export const FloatingWhatsApp: React.FC = () => {
       {/* Pulsing Action Button */}
       <button
         onClick={openWhatsApp}
-        className="relative group p-4 rounded-full bg-gradient-to-tr from-[#25D366] via-[#128C7E] to-[#25D366] text-white shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center"
+        className="pulse-ring-whatsapp shimmer-btn relative group p-4 rounded-full bg-gradient-to-tr from-[#25D366] via-[#128C7E] to-[#25D366] text-white shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center"
         aria-label="Contact on WhatsApp"
       >
         {/* Glow Ping Ring */}

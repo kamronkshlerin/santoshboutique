@@ -105,7 +105,7 @@ export const ServicesGrid: React.FC = () => {
           {/* Row 1: Featured 2-Column Wide Spotlight + 1-Column Express Alteration */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
             {/* Spotlight Card: Lehenga & Party Wear (Span 2 cols on desktop) */}
-            <div className="lg:col-span-2 liquid-glass-card rounded-3xl overflow-hidden flex flex-col md:flex-row group">
+            <div className="lg:col-span-2 liquid-glass-card card-spotlight rounded-3xl overflow-hidden flex flex-col md:flex-row group">
               <div className="relative md:w-5/12 h-64 md:h-auto overflow-hidden shrink-0">
                 <img
                   src={featuredService.image}
@@ -181,7 +181,7 @@ export const ServicesGrid: React.FC = () => {
             </div>
 
             {/* Card 2: Express Alteration Services (Span 1 col) */}
-            <div className="liquid-glass-card rounded-3xl overflow-hidden flex flex-col justify-between group">
+            <div className="liquid-glass-card card-spotlight rounded-3xl overflow-hidden flex flex-col justify-between group">
               <div className="relative h-52 overflow-hidden">
                 <img
                   src={alterationService.image}
@@ -253,7 +253,7 @@ export const ServicesGrid: React.FC = () => {
             {regularServices.map((service) => (
               <div
                 key={service.id}
-                className="liquid-glass-card rounded-3xl overflow-hidden flex flex-col justify-between group"
+                className="liquid-glass-card card-spotlight rounded-3xl overflow-hidden flex flex-col justify-between group"
               >
                 {/* Card Image Header */}
                 <div className="relative h-56 overflow-hidden">
