@@ -36,12 +36,14 @@ export const DEFAULT_CONFIG: BoutiqueConfig = {
   announcement: 'Festive Season Stitching Slots Open | Express 24-48h Alteration Service',
 };
 
+const LIVE_STORAGE_KEY = 'sb_live_config_v1';
+
 export function parseBloggerConfig(): BoutiqueConfig {
   const config = { ...DEFAULT_CONFIG };
 
   if (typeof document === 'undefined') return config;
 
-  // Search for any .cms-block elements rendered by Blogger widgets
+  // 1. Search for any .cms-block elements rendered by Blogger widgets
   const blocks = document.querySelectorAll('.cms-block');
   blocks.forEach((el) => {
     const rawText = el.textContent || '';
@@ -54,7 +56,6 @@ export function parseBloggerConfig(): BoutiqueConfig {
         const key = trimmed.slice(0, colonIndex).trim() as keyof BoutiqueConfig;
         const val = trimmed.slice(colonIndex + 1).trim();
         if (key && val && key in config) {
-          // Clean quotes if any
           const cleanVal = val.replace(/^["']|["']$/g, '');
           config[key] = cleanVal;
         }
@@ -62,17 +63,47 @@ export function parseBloggerConfig(): BoutiqueConfig {
     });
   });
 
+  // 2. Override with live admin settings if saved via Admin Dashboard
+  try {
+    const liveRaw = localStorage.getItem(LIVE_STORAGE_KEY);
+    if (liveRaw) {
+      const live = JSON.parse(liveRaw);
+      return { ...config, ...live };
+    }
+  } catch (e) {}
+
   return config;
 }
 
-// React Hook for dynamic Blogger Layout settings
+export function saveLiveConfig(newConfig: Partial<BoutiqueConfig>): void {
+  try {
+    const current = parseBloggerConfig();
+    const merged = { ...current, ...newConfig };
+    localStorage.setItem(LIVE_STORAGE_KEY, JSON.stringify(merged));
+    window.dispatchEvent(new Event('sb_config_updated'));
+  } catch (e) {
+    console.error('Failed to save live config:', e);
+  }
+}
+
+export function resetLiveConfig(): void {
+  try {
+    localStorage.removeItem(LIVE_STORAGE_KEY);
+    window.dispatchEvent(new Event('sb_config_updated'));
+  } catch (e) {
+    console.error('Failed to reset config:', e);
+  }
+}
+
+// React Hook for dynamic live settings
 export function useBloggerConfig(): BoutiqueConfig {
   const [config, setConfig] = useState<BoutiqueConfig>(() => parseBloggerConfig());
 
   useEffect(() => {
-    // Re-check after full DOM load in case Blogger widgets loaded asynchronously
-    const updated = parseBloggerConfig();
-    setConfig(updated);
+    const refresh = () => setConfig(parseBloggerConfig());
+    window.addEventListener('sb_config_updated', refresh);
+    refresh();
+    return () => window.removeEventListener('sb_config_updated', refresh);
   }, []);
 
   return config;
