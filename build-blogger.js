@@ -52,6 +52,77 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
   <meta http-equiv='X-XSS-Protection' content='1; mode=block'/>
   <meta name='robots' content='index, follow, max-image-preview:large'/>
 
+  <!-- Google Rich Snippets, Sitelinks & Knowledge Graph Schema -->
+  <script type='application/ld+json'>
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://santoshboutique.blogspot.com/#website",
+        "url": "https://santoshboutique.blogspot.com/",
+        "name": "Santosh Boutique &amp; Stitching Studio",
+        "description": "Premier bespoke ladies tailoring, bridal lehengas, custom designer blouses, and alteration studio in Bilaspur, Himachal Pradesh.",
+        "inLanguage": "en-IN"
+      },
+      {
+        "@type": ["LocalBusiness", "ClothingStore"],
+        "@id": "https://santoshboutique.blogspot.com/#organization",
+        "name": "Santosh Boutique &amp; Stitching Studio Bilaspur",
+        "alternateName": ["Santosh Boutique", "Santosh Ladies Tailor Fatoh"],
+        "url": "https://santoshboutique.blogspot.com/",
+        "telephone": "+919418083935",
+        "priceRange": "₹₹",
+        "image": "https://cdn.jsdelivr.net/gh/kamronkshlerin/santoshboutique@main/public/images/hero.jpg",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Fatoh, Near Radha Soami Satsang Beas &amp; Gram Panchayat Fatoh",
+          "addressLocality": "Bilaspur",
+          "addressRegion": "Himachal Pradesh",
+          "postalCode": "174004",
+          "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 31.412639,
+          "longitude": 76.744472
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            "opens": "09:30",
+            "closes": "19:30"
+          }
+        ],
+        "hasMap": "https://maps.google.com/?q=31.412639,76.744472",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "128"
+        }
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "name": [
+          "Designs &amp; Catalog",
+          "Our Tailoring Process",
+          "Price Guide &amp; Rates",
+          "About Our Atelier",
+          "Studio Location &amp; Directions"
+        ],
+        "url": [
+          "https://santoshboutique.blogspot.com/designs",
+          "https://santoshboutique.blogspot.com/process",
+          "https://santoshboutique.blogspot.com/pricing",
+          "https://santoshboutique.blogspot.com/about",
+          "https://santoshboutique.blogspot.com/contact"
+        ]
+      }
+    ]
+  }
+  </script>
+
   <!-- Google Fonts -->
   <link href='https://fonts.googleapis.com' rel='preconnect'/>
   <link crossorigin='anonymous' href='https://fonts.gstatic.com' rel='preconnect'/>

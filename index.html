@@ -18,29 +18,73 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet" />
     
-    <!-- JSON-LD LocalBusiness Schema -->
+    <!-- JSON-LD Full Knowledge Graph & Sitelinks Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Santosh Boutique & Stitching Studio",
-      "image": "https://santoshboutique.com/logo.jpg",
-      "telephone": "+919816000000",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Near Baba Balak Nath Temple, Sarti",
-        "addressLocality": "Bilaspur",
-        "addressRegion": "Himachal Pradesh",
-        "postalCode": "174004",
-        "addressCountry": "IN"
-      },
-      "priceRange": "₹₹",
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        "opens": "09:30",
-        "closes": "19:30"
-      }
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://santoshboutique.blogspot.com/#website",
+          "url": "https://santoshboutique.blogspot.com/",
+          "name": "Santosh Boutique & Stitching Studio",
+          "description": "Premier bespoke ladies tailoring, bridal lehengas, custom designer blouses, and alteration studio in Bilaspur, Himachal Pradesh.",
+          "inLanguage": "en-IN"
+        },
+        {
+          "@type": ["LocalBusiness", "ClothingStore"],
+          "@id": "https://santoshboutique.blogspot.com/#organization",
+          "name": "Santosh Boutique & Stitching Studio Bilaspur",
+          "alternateName": ["Santosh Boutique", "Santosh Ladies Tailor Fatoh"],
+          "url": "https://santoshboutique.blogspot.com/",
+          "telephone": "+919418083935",
+          "priceRange": "₹₹",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Fatoh, Near Radha Soami Satsang Beas & Gram Panchayat Fatoh",
+            "addressLocality": "Bilaspur",
+            "addressRegion": "Himachal Pradesh",
+            "postalCode": "174004",
+            "addressCountry": "IN"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 31.412639,
+            "longitude": 76.744472
+          },
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+              "opens": "09:30",
+              "closes": "19:30"
+            }
+          ],
+          "hasMap": "https://maps.google.com/?q=31.412639,76.744472",
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "128"
+          }
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "name": [
+            "Designs & Catalog",
+            "Our Tailoring Process",
+            "Price Guide & Rates",
+            "About Our Atelier",
+            "Studio Location & Directions"
+          ],
+          "url": [
+            "https://santoshboutique.blogspot.com/designs",
+            "https://santoshboutique.blogspot.com/process",
+            "https://santoshboutique.blogspot.com/pricing",
+            "https://santoshboutique.blogspot.com/about",
+            "https://santoshboutique.blogspot.com/contact"
+          ]
+        }
+      ]
     }
     </script>
   </head>
