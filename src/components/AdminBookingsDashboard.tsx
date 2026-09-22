@@ -3,14 +3,14 @@ import {
   Lock, Unlock, Search, Download, Trash2, MessageCircle, 
   Sparkles, Filter, CheckCircle, X, Scissors, Settings, 
   KeyRound, Save, RotateCcw, Copy, Check, 
-  MapPin, Phone, DollarSign, Megaphone, ShieldAlert 
+  MapPin, Phone, DollarSign, Megaphone, ShieldAlert, Mail 
 } from 'lucide-react';
 import { 
   BookingRecord, getBookings, updateBookingStatus, deleteBooking, 
   clearAllBookings, exportBookingsToCSV 
 } from '../utils/bookingStore';
 import { useBloggerConfig, saveLiveConfig, resetLiveConfig, BoutiqueConfig } from '../config';
-import { verifyAdminPassword, changeAdminPassword } from '../utils/cryptoAuth';
+import { verifyAdminCredentials, updateAdminCredentials, getAuthorizedAdminEmail } from '../utils/cryptoAuth';
 
 interface AdminDashboardProps {
   onClose?: () => void;
@@ -23,6 +23,7 @@ export const AdminBookingsDashboard: React.FC<AdminDashboardProps> = ({ onClose 
   
   // Auth state
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [emailInput, setEmailInput] = useState(() => getAuthorizedAdminEmail());
   const [passwordInput, setPasswordInput] = useState('');
   const [authError, setAuthError] = useState('');
   const [failedAttempts, setFailedAttempts] = useState(0);
@@ -43,6 +44,7 @@ export const AdminBookingsDashboard: React.FC<AdminDashboardProps> = ({ onClose 
   const [copiedLayout, setCopiedLayout] = useState(false);
 
   // Security tab state
+  const [adminEmailSetting, setAdminEmailSetting] = useState(() => getAuthorizedAdminEmail());
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordChangeMsg, setPasswordChangeMsg] = useState<{ text: string; success: boolean } | null>(null);
@@ -78,8 +80,8 @@ export const AdminBookingsDashboard: React.FC<AdminDashboardProps> = ({ onClose 
     e.preventDefault();
     if (cooldownSec > 0) return;
 
-    // Cryptographic validation using salted SHA-256
-    const isValid = await verifyAdminPassword(passwordInput);
+    // Cryptographic 2-Factor Credential validation (Email + salted SHA-256 password)
+    const isValid = await verifyAdminCredentials(emailInput, passwordInput);
 
     if (isValid) {
       setIsAuthenticated(true);
@@ -94,7 +96,7 @@ export const AdminBookingsDashboard: React.FC<AdminDashboardProps> = ({ onClose 
         setCooldownSec(30);
         setAuthError('Too many failed attempts! Security cooldown active for 30s.');
       } else {
-        setAuthError(`Invalid Admin Password! (${3 - newAttempts} attempts remaining)`);
+        setAuthError(`Invalid Email or Password! (${3 - newAttempts} attempts remaining)`);
       }
     }
   };
@@ -171,26 +173,30 @@ announcement: ${editConfig.announcement}
     setTimeout(() => setCopiedLayout(false), 3000);
   };
 
-  // Change Admin Password
-  const handleChangePassword = async (e: React.FormEvent) => {
+  // Change Admin Credentials (Email & Password)
+  const handleChangeCredentials = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (newPassword !== confirmPassword) {
+    if (newPassword && newPassword !== confirmPassword) {
       setPasswordChangeMsg({ text: 'Passwords do not match!', success: false });
       return;
     }
-    if (newPassword.length < 6) {
+    if (newPassword && newPassword.length < 6) {
       setPasswordChangeMsg({ text: 'Password must be at least 6 characters long!', success: false });
       return;
     }
+    if (!adminEmailSetting.includes('@')) {
+      setPasswordChangeMsg({ text: 'Please enter a valid email address!', success: false });
+      return;
+    }
 
-    const success = await changeAdminPassword(newPassword);
+    const success = await updateAdminCredentials(adminEmailSetting, newPassword || undefined);
     if (success) {
-      setPasswordChangeMsg({ text: 'Admin Password successfully updated & cryptographically encrypted!', success: true });
+      setPasswordChangeMsg({ text: 'Admin Credentials successfully updated & cryptographically encrypted!', success: true });
       setNewPassword('');
       setConfirmPassword('');
       setTimeout(() => setPasswordChangeMsg(null), 4000);
     } else {
-      setPasswordChangeMsg({ text: 'Failed to update password. Try again.', success: false });
+      setPasswordChangeMsg({ text: 'Failed to update credentials. Try again.', success: false });
     }
   };
 
@@ -248,22 +254,50 @@ announcement: ${editConfig.announcement}
             Santosh Boutique Admin
           </h2>
           <p className="text-xs text-[#d1b8b8] mb-6">
-            Website ke sabhi controls aur bookings manage karne ke liye secure password enter karein.
+            Website ke sabhi controls aur bookings manage karne ke liye apna admin email aur password enter karein.
           </p>
 
-          <form onSubmit={handleLogin} className="space-y-4">
+          <form onSubmit={handleLogin} className="space-y-4 text-left">
             <div>
-              <input
-                type="password"
-                disabled={cooldownSec > 0}
-                placeholder={cooldownSec > 0 ? `Wait ${cooldownSec}s...` : "Admin Password (e.g. SB@2026!)"}
-                value={passwordInput}
-                onChange={(e) => {
-                  setPasswordInput(e.target.value);
-                  setAuthError('');
-                }}
-                className="w-full text-center tracking-widest text-lg font-mono py-3.5 px-4 rounded-xl bg-black/60 border border-white/20 text-[#fff7f2] focus:border-[#f3cf98] outline-none disabled:opacity-50"
-              />
+              <label className="block text-xs font-semibold text-[#f3cf98] mb-1.5">
+                Admin Email Address
+              </label>
+              <div className="relative">
+                <Mail className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-white/40" />
+                <input
+                  type="email"
+                  required
+                  disabled={cooldownSec > 0}
+                  placeholder="jus.socialmediaexpert@gmail.com"
+                  value={emailInput}
+                  onChange={(e) => {
+                    setEmailInput(e.target.value);
+                    setAuthError('');
+                  }}
+                  className="w-full pl-10 pr-4 py-3 rounded-xl bg-black/60 border border-white/20 text-xs sm:text-sm text-[#fff7f2] focus:border-[#f3cf98] outline-none disabled:opacity-50"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-[#f3cf98] mb-1.5">
+                Admin Master Password
+              </label>
+              <div className="relative">
+                <Lock className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-white/40" />
+                <input
+                  type="password"
+                  required
+                  disabled={cooldownSec > 0}
+                  placeholder={cooldownSec > 0 ? `Wait ${cooldownSec}s...` : "••••••••"}
+                  value={passwordInput}
+                  onChange={(e) => {
+                    setPasswordInput(e.target.value);
+                    setAuthError('');
+                  }}
+                  className="w-full pl-10 pr-4 py-3 rounded-xl bg-black/60 border border-white/20 text-xs sm:text-sm text-[#fff7f2] focus:border-[#f3cf98] outline-none disabled:opacity-50"
+                />
+              </div>
               {authError && (
                 <p className="text-xs text-red-400 mt-2 font-medium">
                   {authError}
@@ -273,11 +307,11 @@ announcement: ${editConfig.announcement}
 
             <button
               type="submit"
-              disabled={cooldownSec > 0 || !passwordInput}
+              disabled={cooldownSec > 0 || !emailInput || !passwordInput}
               className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#d85c72] to-[#8a1c32] text-white font-semibold text-sm shadow-lg hover:shadow-[#d85c72]/30 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
             >
               <Unlock className="w-4 h-4" />
-              <span>{cooldownSec > 0 ? `Locked (${cooldownSec}s)` : 'Verify & Unlock Controls'}</span>
+              <span>{cooldownSec > 0 ? `Locked (${cooldownSec}s)` : 'Login to Admin Dashboard'}</span>
             </button>
           </form>
 
@@ -286,7 +320,7 @@ announcement: ${editConfig.announcement}
               🔒 Zero Plaintext Storage. Protected with Web Crypto API.
             </p>
             <p className="text-[10px] text-[#d1b8b8]/60">
-              Default password: <code className="text-[#f3cf98]">SB@2026!</code> (or legacy: <code>2026</code>)
+              Authorized Email: <code className="text-[#f3cf98]">jus.socialmediaexpert@gmail.com</code>
             </p>
           </div>
         </div>
@@ -873,12 +907,23 @@ announcement: ${editConfig.announcement}
             </div>
           )}
 
-          <form onSubmit={handleChangePassword} className="space-y-4">
+          <form onSubmit={handleChangeCredentials} className="space-y-4">
             <div>
-              <label className="block text-xs font-semibold text-[#f3cf98] mb-1.5">New Admin Password</label>
+              <label className="block text-xs font-semibold text-[#f3cf98] mb-1.5">Authorized Admin Email</label>
+              <input
+                type="email"
+                required
+                value={adminEmailSetting}
+                onChange={(e) => setAdminEmailSetting(e.target.value)}
+                placeholder="jus.socialmediaexpert@gmail.com"
+                className="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/15 text-xs text-[#fff7f2] focus:border-[#f3cf98] outline-none"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-[#f3cf98] mb-1.5">New Admin Password (leave blank to keep current)</label>
               <input
                 type="password"
-                required
                 minLength={6}
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
@@ -887,25 +932,27 @@ announcement: ${editConfig.announcement}
               />
             </div>
 
-            <div>
-              <label className="block text-xs font-semibold text-[#f3cf98] mb-1.5">Confirm New Password</label>
-              <input
-                type="password"
-                required
-                minLength={6}
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                placeholder="Re-enter new password"
-                className="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/15 text-xs text-[#fff7f2] focus:border-[#f3cf98] outline-none"
-              />
-            </div>
+            {newPassword && (
+              <div>
+                <label className="block text-xs font-semibold text-[#f3cf98] mb-1.5">Confirm New Password</label>
+                <input
+                  type="password"
+                  required
+                  minLength={6}
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  placeholder="Re-enter new password"
+                  className="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/15 text-xs text-[#fff7f2] focus:border-[#f3cf98] outline-none"
+                />
+              </div>
+            )}
 
             <button
               type="submit"
               className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#d85c72] to-[#8a1c32] text-white font-bold text-xs sm:text-sm shadow-xl hover:shadow-[#d85c72]/30 transition-all flex items-center justify-center gap-2"
             >
               <Save className="w-4 h-4" />
-              <span>Update &amp; Encrypt Password</span>
+              <span>Save &amp; Encrypt Credentials</span>
             </button>
           </form>
 

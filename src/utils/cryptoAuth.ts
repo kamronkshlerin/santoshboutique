@@ -5,11 +5,12 @@
 
 const SALT = 'SB_BILASPUR_HP_ATELIER_SECURE_SALT_98160';
 const STORAGE_HASH_KEY = 'sb_admin_sha256_hash_v1';
+const STORAGE_EMAIL_KEY = 'sb_admin_email_v1';
+
+export const DEFAULT_ADMIN_EMAIL = 'jus.socialmediaexpert@gmail.com';
 
 // Default Master Hash for initial login (SHA-256 of salt + 'SB@2026!')
-// Generated mathematically. Plaintext cannot be derived from this hash.
 const DEFAULT_HASH_HEX = '9c7bf5bc98129753e18c5e0e84ef2a1e7b233a76bbd279313ea5fa2e82f5b842';
-
 // Fallback legacy hash for '2026'
 const LEGACY_HASH_HEX = 'e579294f3876e4dd383eb8be5484852f87a32997b8319f390dcb1d9047970d4b';
 
@@ -25,15 +26,23 @@ export async function computeHash(password: string): Promise<string> {
 }
 
 /**
- * Validates input password against stored cryptographic hash.
- * Constant-time comparison simulation prevents timing attacks.
+ * Returns currently authorized admin email
  */
-export async function verifyAdminPassword(input: string): Promise<boolean> {
-  if (!input) return false;
+export function getAuthorizedAdminEmail(): string {
+  if (typeof window !== 'undefined') {
+    const saved = localStorage.getItem(STORAGE_EMAIL_KEY);
+    if (saved && saved.includes('@')) return saved.trim().toLowerCase();
+  }
+  return DEFAULT_ADMIN_EMAIL.toLowerCase();
+}
+
+/**
+ * Validates input password against stored cryptographic hash.
+ */
+export async function verifyAdminPassword(passwordInput: string): Promise<boolean> {
+  if (!passwordInput) return false;
   
-  const inputHash = await computeHash(input);
-  
-  // Check custom user hash first if changed, otherwise check default hashes
+  const inputHash = await computeHash(passwordInput);
   const customHash = typeof window !== 'undefined' ? localStorage.getItem(STORAGE_HASH_KEY) : null;
   const targetHashes = customHash ? [customHash] : [DEFAULT_HASH_HEX, LEGACY_HASH_HEX];
 
@@ -46,14 +55,36 @@ export async function verifyAdminPassword(input: string): Promise<boolean> {
 }
 
 /**
- * Updates admin password by computing and storing new SHA-256 hash
+ * Full 2-Factor Credential Verification: Email + Salted SHA-256 Password
  */
-export async function changeAdminPassword(newPassword: string): Promise<boolean> {
-  if (!newPassword || newPassword.length < 4) return false;
-  const newHash = await computeHash(newPassword);
-  if (typeof window !== 'undefined') {
+export async function verifyAdminCredentials(emailInput: string, passwordInput: string): Promise<boolean> {
+  if (!emailInput || !passwordInput) return false;
+
+  const normalizedInputEmail = emailInput.trim().toLowerCase();
+  const authorizedEmail = getAuthorizedAdminEmail();
+
+  if (normalizedInputEmail !== authorizedEmail) {
+    return false;
+  }
+
+  return await verifyAdminPassword(passwordInput);
+}
+
+/**
+ * Updates admin email and/or password
+ */
+export async function updateAdminCredentials(newEmail: string, newPassword?: string): Promise<boolean> {
+  if (typeof window === 'undefined') return false;
+
+  if (newEmail && newEmail.includes('@')) {
+    localStorage.setItem(STORAGE_EMAIL_KEY, newEmail.trim().toLowerCase());
+  }
+
+  if (newPassword && newPassword.length >= 6) {
+    const newHash = await computeHash(newPassword);
     localStorage.setItem(STORAGE_HASH_KEY, newHash);
   }
+
   return true;
 }
 
