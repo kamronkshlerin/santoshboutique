@@ -1,14 +1,16 @@
-﻿import React, { useState, useEffect } from 'react';
-import { Scissors, MessageCircle, Menu, X, MapPin } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Scissors, MessageCircle, Menu, X, MapPin, Sun, Moon } from 'lucide-react';
 import { useBloggerConfig } from '../config';
 import { PageTab } from '../App';
 
 interface NavbarProps {
   currentPage: PageTab;
   onNavigate: (page: PageTab) => void;
+  theme?: 'dark' | 'light';
+  onToggleTheme?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
+export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, theme = 'dark', onToggleTheme }) => {
   const config = useBloggerConfig();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -95,8 +97,24 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
           })}
         </div>
 
-        {/* Action Button & Mobile Toggle */}
+        {/* Action Button & Theme Toggle */}
         <div className="flex items-center gap-2 sm:gap-3">
+          {/* Light / Dark Mode Toggle Button */}
+          {onToggleTheme && (
+            <button
+              onClick={onToggleTheme}
+              className="p-2 sm:p-2.5 rounded-full liquid-glass border border-[#f3cf98]/30 hover:border-[#f3cf98] transition-all hover:scale-105 active:scale-95 shadow-md flex items-center justify-center text-[#f3cf98]"
+              title={theme === 'light' ? 'Switch to Royal Dark Velvet Mode' : 'Switch to Pearl Silk Light Mode'}
+              aria-label="Toggle Light/Dark Theme"
+            >
+              {theme === 'light' ? (
+                <Moon className="w-4 h-4 text-[#8a1c32]" />
+              ) : (
+                <Sun className="w-4 h-4 text-[#f3cf98]" />
+              )}
+            </button>
+          )}
+
           <button
             onClick={openWhatsApp}
             className="relative group overflow-hidden rounded-full bg-gradient-to-r from-[#25D366] to-[#128C7E] px-3.5 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-white shadow-lg hover:shadow-emerald-500/25 transition-all flex items-center gap-1.5 active:scale-95"

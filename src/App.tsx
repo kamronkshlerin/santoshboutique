@@ -37,6 +37,27 @@ export const App: React.FC = () => {
   };
 
   const [currentPage, setCurrentPage] = useState<PageTab>(() => resolveCurrentPage());
+  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('sb_theme');
+      if (saved === 'light' || saved === 'dark') return saved;
+    }
+    return 'dark';
+  });
+
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.documentElement.classList.toggle('light-mode', theme === 'light');
+      document.body.classList.toggle('light-mode', theme === 'light');
+    }
+    try {
+      localStorage.setItem('sb_theme', theme);
+    } catch (e) {}
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
+  };
 
   useEffect(() => {
     // If user arrived with an old hash (e.g. /#/about), immediately upgrade to clean /about
@@ -78,9 +99,14 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#120407] text-[#fff7f2] font-sans overflow-x-hidden selection:bg-[#d85c72] selection:text-white">
-      {/* Top Floating Glass Navigation with Multi-Page Routing */}
-      <Navbar currentPage={currentPage} onNavigate={navigateTo} />
+    <div className={`min-h-screen ${theme === 'light' ? 'light-mode bg-[#faf7f5] text-[#1f070e]' : 'bg-[#120407] text-[#fff7f2]'} font-sans overflow-x-hidden selection:bg-[#d85c72] selection:text-white transition-colors duration-300`}>
+      {/* Top Floating Glass Navigation with Multi-Page Routing & Theme Toggle */}
+      <Navbar 
+        currentPage={currentPage} 
+        onNavigate={navigateTo} 
+        theme={theme}
+        onToggleTheme={toggleTheme}
+      />
 
       <main className="min-h-screen">
         {/* ================= PAGE 1: HOME (COMPLETE ORIGINAL EXPERIENCE) ================= */}

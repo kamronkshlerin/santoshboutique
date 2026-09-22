@@ -87,3 +87,95 @@
 .animate-ambient-glow {
   animation: ambientGlow 8s ease-in-out infinite;
 }
+
+/* ======================================================= */
+/* LUXURY LIGHT MODE: ROYAL PEARL SILK & ROSE GOLD THEME  */
+/* ======================================================= */
+.light-mode {
+  --bg: #faf7f5;
+  --bg-surface: #ffffff;
+  --text-main: #1f070e;
+  --text-muted: #5e4b52;
+  --accent-rose: #b8324f;
+  --accent-gold: #9e7529;
+  --accent-gold-dark: #7a5817;
+  background-color: #faf7f5 !important;
+  color: #1f070e !important;
+}
+
+.light-mode .liquid-glass {
+  background: rgba(255, 255, 255, 0.82) !important;
+  border-color: rgba(184, 50, 79, 0.18) !important;
+  box-shadow: 0 10px 30px rgba(184, 50, 79, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.9) !important;
+  color: #1f070e !important;
+}
+
+.light-mode .liquid-glass-nav {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border-color: rgba(184, 50, 79, 0.22) !important;
+  box-shadow: 0 12px 36px rgba(184, 50, 79, 0.12), inset 0 1px 2px rgba(255, 255, 255, 1) !important;
+  color: #1f070e !important;
+}
+
+.light-mode .liquid-glass-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(253, 245, 247, 0.98) 100%) !important;
+  border-color: rgba(184, 50, 79, 0.18) !important;
+  box-shadow: 0 12px 30px rgba(184, 50, 79, 0.08) !important;
+  color: #1f070e !important;
+}
+
+.light-mode .liquid-glass-card:hover {
+  border-color: #b8324f !important;
+  box-shadow: 0 20px 40px rgba(184, 50, 79, 0.16) !important;
+}
+
+.light-mode .gold-gradient-text {
+  background: linear-gradient(135deg, #8a1c32 0%, #c59b27 50%, #8a1c32 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.light-mode .bg-\[\#120407\],
+.light-mode .bg-\[\#150409\],
+.light-mode .bg-\[\#1a080e\],
+.light-mode .bg-\[\#1e0811\],
+.light-mode .bg-\[\#100306\] {
+  background-color: #faf7f5 !important;
+}
+
+.light-mode .text-\[\#fff7f2\] {
+  color: #1f070e !important;
+}
+
+.light-mode .text-\[\#d1b8b8\] {
+  color: #5e4b52 !important;
+}
+
+.light-mode .border-white\/5,
+.light-mode .border-white\/10,
+.light-mode .border-white\/15,
+.light-mode .border-white\/20,
+.light-mode .border-white\/25 {
+  border-color: rgba(184, 50, 79, 0.18) !important;
+}
+
+.light-mode .bg-white\/5,
+.light-mode .bg-white\/10 {
+  background-color: rgba(184, 50, 79, 0.05) !important;
+  color: #1f070e !important;
+}
+
+.light-mode .bg-black\/40,
+.light-mode .bg-black\/60,
+.light-mode .bg-black\/80 {
+  background-color: rgba(255, 255, 255, 0.88) !important;
+  color: #1f070e !important;
+}
+
+.light-mode select,
+.light-mode input,
+.light-mode textarea {
+  background-color: #ffffff !important;
+  color: #1f070e !important;
+  border-color: rgba(184, 50, 79, 0.25) !important;
+}
