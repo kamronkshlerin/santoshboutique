@@ -1,5 +1,5 @@
 // Fast CDN base URL for assets hosted on GitHub repo
-export const CDN_BASE = 'https://cdn.jsdelivr.net/gh/kamronkshlerin/santoshboutique@dffa8f8/public';
+export const CDN_BASE = 'https://cdn.jsdelivr.net/gh/kamronkshlerin/santoshboutique@main/public';
 
 export const ASSETS = {
   hero: `${CDN_BASE}/images/hero.jpg`,

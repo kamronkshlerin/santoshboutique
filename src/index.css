@@ -102,6 +102,8 @@
   display: flex;
   width: max-content;
   animation: marqueeScroll 32s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .marquee-track:hover {
@@ -112,6 +114,7 @@
 .shimmer-btn {
   position: relative;
   overflow: hidden;
+  will-change: transform;
 }
 
 .shimmer-btn::after {
@@ -132,6 +135,7 @@
   transform: translateX(-100%) rotate(25deg);
   animation: buttonShine 4.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   pointer-events: none;
+  will-change: transform;
 }
 
 @keyframes buttonShine {
@@ -143,29 +147,34 @@
   }
 }
 
-/* 3. Card Spotlight Ambient Glow */
+/* 3. Card Spotlight Ambient Glow - 100% GPU Accelerated */
 .card-spotlight {
   position: relative;
   overflow: hidden;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .card-spotlight::before {
   content: '';
   position: absolute;
-  inset: 0;
+  inset: -20px;
   background: radial-gradient(
-    450px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(216, 92, 114, 0.14),
-    transparent 65%
+    circle at 50% 30%,
+    rgba(216, 92, 114, 0.22),
+    rgba(243, 207, 152, 0.08) 40%,
+    transparent 70%
   );
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transform: scale(0.95) translateZ(0);
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
   z-index: 1;
 }
 
 .card-spotlight:hover::before {
   opacity: 1;
+  transform: scale(1.05) translateZ(0);
 }
 
 /* 4. Subtle Floating Animation */

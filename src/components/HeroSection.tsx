@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Sparkles, MessageCircle, Heart, ShieldCheck, MapPin, ChevronDown, Award } from 'lucide-react';
 import { ASSETS } from '../constants';
 import { useBloggerConfig } from '../config';
@@ -7,9 +7,9 @@ import { MODEL_STORY_IMG } from '../assets_models';
 export const HeroSection: React.FC = () => {
   const config = useBloggerConfig();
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const heroRef = useRef<HTMLDivElement>(null);
 
-  // Floating gold zari thread & dust particle canvas
+  // Floating gold zari thread & dust particle canvas (Pauses automatically when offscreen)
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -17,6 +17,7 @@ export const HeroSection: React.FC = () => {
     if (!ctx) return;
 
     let animationFrameId: number;
+    let isVisible = true;
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
@@ -25,19 +26,36 @@ export const HeroSection: React.FC = () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
     };
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize, { passive: true });
 
-    const particles = Array.from({ length: 40 }, () => ({
+    // IntersectionObserver to freeze canvas when scrolled down for 60fps buttery speed
+    const observer = new IntersectionObserver(
+      (entries) => {
+        isVisible = entries[0].isIntersecting;
+        if (isVisible) {
+          cancelAnimationFrame(animationFrameId);
+          render();
+        } else {
+          cancelAnimationFrame(animationFrameId);
+        }
+      },
+      { threshold: 0.05 }
+    );
+
+    if (heroRef.current) observer.observe(heroRef.current);
+
+    const particles = Array.from({ length: 20 }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      size: Math.random() * 2.2 + 0.6,
-      speedX: (Math.random() - 0.5) * 0.4,
-      speedY: -Math.random() * 0.6 - 0.2,
-      opacity: Math.random() * 0.7 + 0.2,
+      size: Math.random() * 2.0 + 0.6,
+      speedX: (Math.random() - 0.5) * 0.3,
+      speedY: -Math.random() * 0.5 - 0.15,
+      opacity: Math.random() * 0.6 + 0.2,
     }));
 
     let step = 0;
     const render = () => {
+      if (!isVisible) return;
       ctx.clearRect(0, 0, width, height);
 
       particles.forEach((p) => {
@@ -56,12 +74,12 @@ export const HeroSection: React.FC = () => {
       });
 
       step += 0.008;
-      ctx.strokeStyle = 'rgba(216, 92, 114, 0.15)';
-      ctx.lineWidth = 1.5;
+      ctx.strokeStyle = 'rgba(216, 92, 114, 0.12)';
+      ctx.lineWidth = 1.2;
       ctx.setLineDash([8, 6]);
       ctx.beginPath();
-      for (let x = 0; x < width; x += 15) {
-        const y = height * 0.55 + Math.sin(x * 0.003 + step) * 70 + Math.cos(x * 0.007) * 30;
+      for (let x = 0; x < width; x += 20) {
+        const y = height * 0.55 + Math.sin(x * 0.003 + step) * 60 + Math.cos(x * 0.007) * 25;
         if (x === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
       }
@@ -75,20 +93,9 @@ export const HeroSection: React.FC = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animationFrameId);
+      observer.disconnect();
     };
   }, []);
-
-  // 3D Parallax Mouse Tracking for Model Card
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
-    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
-    setMousePos({ x, y });
-  };
-
-  const handleMouseLeave = () => {
-    setMousePos({ x: 0, y: 0 });
-  };
 
   const openWhatsApp = (msg?: string) => {
     const defaultText = `Namaste ${config.boutiqueName}! I saw your website and want to discuss custom stitching.`;
@@ -102,8 +109,7 @@ export const HeroSection: React.FC = () => {
 
   return (
     <section 
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      ref={heroRef}
       className="relative min-h-[92svh] flex items-center justify-center pt-24 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
       {/* Background Image with Deep Luxury Gradients */}
@@ -203,10 +209,7 @@ export const HeroSection: React.FC = () => {
         {/* ================= RIGHT COLUMN: 3D Atelier Haute Couture Model Stage (5 Cols) ================= */}
         <div className="lg:col-span-5 flex items-center justify-center lg:justify-end">
           <div 
-            className="relative w-full max-w-[420px] sm:max-w-[440px] rounded-[32px] overflow-hidden p-2.5 transition-transform duration-300 ease-out will-change-transform group"
-            style={{
-              transform: `perspective(1000px) rotateY(${mousePos.x * 8}deg) rotateX(${-mousePos.y * 6}deg)`,
-            }}
+            className="relative w-full max-w-[420px] sm:max-w-[440px] rounded-[32px] overflow-hidden p-2.5 transition-transform duration-500 ease-out will-change-transform group hover:[transform:perspective(1000px)_rotateY(-3deg)_rotateX(2deg)_scale(1.01)]"
           >
             {/* Glowing Golden Aura Border */}
             <div className="absolute -inset-1 rounded-[36px] bg-gradient-to-tr from-[#8a1c32]/50 via-[#f3cf98]/30 to-[#d85c72]/40 blur-xl opacity-80 group-hover:opacity-100 transition-opacity" />
