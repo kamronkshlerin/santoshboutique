@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Sparkles, ChevronDown, Maximize2, Minimize2, ArrowRight } from 'lucide-react';
 import { MODEL_STORY_IMG, MODEL_FITTING_IMG } from '../assets_models';
 
@@ -41,17 +41,8 @@ const CHAPTERS: Chapter[] = [
     model: 'story',
   },
   {
-    id: 'configurator',
-    number: '04 / 07',
-    title: 'Custom Measurement Studio',
-    quote: '"18 anatomical body measurements for a zero-wrinkle contour."',
-    tag: 'Live Fitting & Quote',
-    targetId: 'configurator',
-    model: 'fitting',
-  },
-  {
     id: 'alteration',
-    number: '05 / 07',
+    number: '04 / 07',
     title: 'Express 24h Alteration Lab',
     quote: '"Transforming loose ready-made clothes into bespoke fits."',
     tag: 'Precision Restyling',
@@ -60,12 +51,21 @@ const CHAPTERS: Chapter[] = [
   },
   {
     id: 'lookbook',
-    number: '06 / 07',
+    number: '05 / 07',
     title: 'Real Client Creations',
     quote: '"Over 1,000+ bridal lehengas crafted for Himachal brides."',
     tag: 'Atelier Portfolio',
     targetId: 'lookbook',
     model: 'story',
+  },
+  {
+    id: 'configurator',
+    number: '06 / 07',
+    title: 'Consultation & Booking',
+    quote: '"Book your outfit fitting slot with Masterji on WhatsApp in 1 click."',
+    tag: 'Direct Booking',
+    targetId: 'configurator',
+    model: 'fitting',
   },
   {
     id: 'location',
@@ -91,7 +91,7 @@ export const StoryScrollMuse: React.FC = () => {
       setScrollProgress(progress);
 
       // Determine active section based on DOM element positions
-      const sectionIds = ['hero', 'trust', 'services', 'configurator', 'alteration', 'lookbook', 'location'];
+      const sectionIds = ['hero', 'trust', 'services', 'alteration', 'lookbook', 'configurator', 'location'];
       let currentIdx = 0;
 
       for (let i = sectionIds.length - 1; i >= 0; i--) {

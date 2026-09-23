@@ -1,10 +1,11 @@
 import React from 'react';
-import { Scissors, Phone, MessageCircle, Heart, Star, Instagram } from 'lucide-react';
+import { Phone, MessageCircle, Heart, Star, Instagram } from 'lucide-react';
 import { PageTab } from '../App';
 import { 
   BUSINESS_NAME, FULL_ADDRESS, PHONE_DISPLAY, WHATSAPP_NUMBER, 
   INSTAGRAM_URL, FACEBOOK_URL, GOOGLE_REVIEW_URL 
 } from '../constants';
+import { BoutiqueLogo } from './BoutiqueLogo';
 
 interface FooterProps {
   onNavigate?: (page: PageTab) => void;
@@ -32,20 +33,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Col 1: Brand Info & Exact NAP */}
           <div>
-            <div 
-              onClick={(e) => handleLink(e, 'home')}
-              className="flex items-center gap-2.5 mb-4 cursor-pointer"
-            >
-              <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-[#8a1c32] to-[#f3cf98] flex items-center justify-center text-[#120407]">
-                <Scissors className="w-4 h-4 -rotate-45" />
-              </div>
-              <span className="font-display font-bold text-2xl gold-gradient-text">
-                {BUSINESS_NAME}
-              </span>
-            </div>
-            <p className="text-xs uppercase tracking-widest text-[#f3cf98] font-semibold mb-3">
-              Boutique &amp; Stitching Studio
-            </p>
+            <BoutiqueLogo 
+              variant="footer" 
+              onClick={(e: any) => handleLink(e, 'home')} 
+              className="mb-4" 
+            />
             <p className="text-xs leading-relaxed text-[#d1b8b8] mb-4">
               LADIES FASHION • CUSTOM TAILORING • PERFECT FITTING. Serving Bilaspur, Ghumarwin, Fatoh, and Himachal Pradesh with master craftsmanship.
             </p>

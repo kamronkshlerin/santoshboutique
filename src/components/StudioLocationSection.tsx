@@ -3,7 +3,7 @@ import { MapPin, Clock, Phone, MessageCircle, Navigation, ShieldCheck, Heart, Im
 import { 
   BUSINESS_NAME, FULL_ADDRESS, LANDMARK_NOTE, 
   WHATSAPP_NUMBER, GOOGLE_MAPS_URL, 
-  REAL_ASSETS, getAssetUrl 
+  REAL_ASSETS 
 } from '../constants';
 
 export const StudioLocationSection: React.FC = () => {
@@ -170,51 +170,61 @@ export const StudioLocationSection: React.FC = () => {
             {/* View Mode: Real Landmark & Shop Photos */}
             {viewMode === 'photos' ? (
               <div className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {/* Photo 1: Actual Shop Front */}
-                  <div className="group relative rounded-2xl overflow-hidden border border-black/10 sm:border-white/15 bg-black shadow-lg">
-                    <img
-                      src={getAssetUrl(REAL_ASSETS.shopFront)}
-                      alt="Santosh Boutique real storefront and tailoring studio entrance in Fatoh Ghumarwin Bilaspur Himachal Pradesh"
-                      className="w-full h-56 sm:h-64 object-cover group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent pointer-events-none" />
-                    
-                    <div className="photo-overlay-badge absolute top-3 left-3 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/20 text-[10px] font-bold text-white uppercase tracking-wider shadow-md">
-                      Shop Front
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  {/* Photo 1: Actual Shop Building */}
+                  <div className="group rounded-2xl overflow-hidden border border-white/15 bg-[#120407] shadow-xl flex flex-col">
+                    <div className="flex items-center justify-between px-3.5 py-2.5 bg-[#1a080e] border-b border-white/10 text-[11px]">
+                      <span className="font-bold text-[#f3cf98] uppercase tracking-wider flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                        Actual Shop Building
+                      </span>
+                      <span className="text-[10px] text-[#d1b8b8]">Fatoh</span>
                     </div>
 
-                    <div className="photo-overlay-text absolute bottom-3 left-3 right-3 z-10">
-                      <p className="photo-title text-sm sm:text-base font-bold text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] leading-tight mb-0.5">
-                        Santosh Boutique &amp; Stitching Studio
+                    <div className="relative aspect-[16/10] w-full bg-black overflow-hidden">
+                      <img
+                        src={REAL_ASSETS.shopExterior}
+                        alt="Santosh Boutique real storefront and tailoring studio building in Fatoh Ghumarwin Bilaspur Himachal Pradesh"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                    </div>
+
+                    <div className="p-3.5 bg-[#120407] border-t border-white/10">
+                      <p className="text-sm font-bold text-white leading-tight mb-1">
+                        Santosh Boutique &amp; Studio
                       </p>
-                      <p className="photo-desc text-xs text-[#fce8eb] drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">
-                        Located near Baba Balak Nath Temple, Fatoh
+                      <p className="text-xs text-[#d1b8b8] leading-relaxed">
+                        Main building entrance at Fatoh, Ghumarwin (HP).
                       </p>
                     </div>
                   </div>
 
-                  {/* Photo 2: Real Studio Signboard */}
-                  <div className="group relative rounded-2xl overflow-hidden border border-black/10 sm:border-white/15 bg-black shadow-lg">
-                    <img
-                      src={getAssetUrl(REAL_ASSETS.realStudioSign)}
-                      alt="Official Santosh Boutique signboard in Fatoh Ghumarwin Bilaspur 174021"
-                      className="w-full h-56 sm:h-64 object-cover group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent pointer-events-none" />
-
-                    <div className="photo-overlay-badge absolute top-3 left-3 px-3 py-1 rounded-full bg-[#8a1c32]/95 backdrop-blur-md border border-white/20 text-[10px] font-bold text-white uppercase tracking-wider flex items-center gap-1 shadow-md">
-                      <span>📍 Studio Signboard</span>
+                  {/* Photo 2: Baba Balak Nath Temple Arch Landmark */}
+                  <div className="group rounded-2xl overflow-hidden border border-white/15 bg-[#120407] shadow-xl flex flex-col">
+                    <div className="flex items-center justify-between px-3.5 py-2.5 bg-[#1a080e] border-b border-white/10 text-[11px]">
+                      <span className="font-bold text-[#f3cf98] uppercase tracking-wider flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-cyan-400" />
+                        Key Landmark
+                      </span>
+                      <span className="text-[10px] text-[#d1b8b8]">Temple Arch</span>
                     </div>
 
-                    <div className="photo-overlay-text absolute bottom-3 left-3 right-3 z-10">
-                      <p className="photo-title text-sm sm:text-base font-bold text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] leading-tight mb-0.5">
-                        Official Studio Entrance Sign
+                    <div className="relative aspect-[16/10] w-full bg-black overflow-hidden">
+                      <img
+                        src={REAL_ASSETS.templeLandmark}
+                        alt="Baba Balak Nath Temple Arch Landmark near Santosh Boutique Fatoh Ghumarwin"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                    </div>
+
+                    <div className="p-3.5 bg-[#120407] border-t border-white/10">
+                      <p className="text-sm font-bold text-white leading-tight mb-1">
+                        Baba Balak Nath Temple Arch
                       </p>
-                      <p className="photo-desc text-xs text-[#fce1b6] drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)] font-medium">
-                        Spot this board easily on the main road
+                      <p className="text-xs text-[#d1b8b8] leading-relaxed">
+                        Major landmark on road; shop is right next to it.
                       </p>
                     </div>
                   </div>

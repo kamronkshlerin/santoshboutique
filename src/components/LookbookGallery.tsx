@@ -6,7 +6,7 @@ export interface GalleryItem {
   id: string;
   title: string;
   altText: string;
-  category: 'blouse' | 'suit' | 'partywear' | 'studio' | 'craft';
+  category: 'blouse' | 'suit' | 'partywear' | 'craft';
   categoryLabel: string;
   image: string;
   price: string;
@@ -82,59 +82,15 @@ const GALLERY_ITEMS: GalleryItem[] = [
     tag: 'Daily Comfort'
   },
   {
-    id: 'shop-front',
-    title: 'Santosh Boutique Atelier Studio Exterior',
-    altText: 'santosh boutique stitching studio fatoh ghumarwin bilaspur 174021',
-    category: 'studio',
-    categoryLabel: 'Studio & Shop Front',
-    image: REAL_ASSETS.shopFront,
-    price: 'Visit Studio',
-    details: 'Our welcoming stitching studio located near Baba Balak Nath Temple in Fatoh, Ghumarwin.',
-    tag: 'Fatoh Studio'
-  },
-  {
     id: 'craft-1',
     title: 'Atelier Workshop Craftsmanship Session',
     altText: 'santosh boutique workshop tailoring process fatoh ghumarwin bilaspur',
     category: 'craft',
     categoryLabel: 'Master Tailoring',
-    image: REAL_ASSETS.realWorkshop1,
+    image: REAL_ASSETS.workshopStudio,
     price: 'Hand Crafted',
     details: 'Inside look at our daily stitching process with industrial precision machines and master craftsmanship.',
     tag: 'Workshop View'
-  },
-  {
-    id: 'signage',
-    title: 'Santosh Boutique Official Landmark Signboard',
-    altText: 'santosh boutique official landmark signboard near baba balak nath temple fatoh ghumarwin',
-    category: 'studio',
-    categoryLabel: 'Studio & Shop Front',
-    image: REAL_ASSETS.realStudioSign,
-    price: 'Landmark',
-    details: 'Look for our prominent signage right on the road near Baba Balak Nath Temple in Fatoh, Ghumarwin.',
-    tag: 'Easy to Find'
-  },
-  {
-    id: 'craft-2',
-    title: 'Precision Sewing & Thread Alignment Bench',
-    altText: 'fine stitching and alteration bench santosh boutique ghumarwin himachal',
-    category: 'craft',
-    categoryLabel: 'Master Tailoring',
-    image: REAL_ASSETS.realWorkshop2,
-    price: 'Express Alteration',
-    details: 'Quick 24-48h alteration setup with reinforced seams and perfect hem lengths.',
-    tag: 'Express Bench'
-  },
-  {
-    id: 'couture-1',
-    title: 'Designer Sample Cut & Bridal Inspiration',
-    altText: 'couture bridal blouse and suit stitching samples bilaspur himachal pradesh',
-    category: 'partywear',
-    categoryLabel: 'Partywear & Sharara',
-    image: REAL_ASSETS.coutureSample,
-    price: 'Custom Quote',
-    details: 'Bring any Instagram or Pinterest design photo; Masterji can replicate and tailor it to your exact size.',
-    tag: 'Custom Replicate'
   }
 ];
 
@@ -179,8 +135,7 @@ export const LookbookGallery: React.FC = () => {
             { id: 'blouse', label: 'Designer Blouses' },
             { id: 'suit', label: 'Suit Stitching' },
             { id: 'partywear', label: 'Sharara & Partywear' },
-            { id: 'craft', label: 'Master Tailor Craft' },
-            { id: 'studio', label: 'Studio & Landmark' }
+            { id: 'craft', label: 'Master Tailor Craft' }
           ].map(tab => (
             <button
               key={tab.id}
@@ -204,25 +159,28 @@ export const LookbookGallery: React.FC = () => {
               onClick={() => setActiveModal(item)}
               className="group cursor-pointer rounded-2xl overflow-hidden liquid-glass border border-white/10 hover:border-[#f3cf98]/50 transition-all duration-300 shadow-xl flex flex-col justify-between"
             >
-              {/* Image Container with Zoom Badge */}
-              <div className="relative aspect-square overflow-hidden bg-black/40">
+              {/* Card Header Strip (Keeps image completely unobstructed) */}
+              <div className="flex items-center justify-between px-3.5 py-2 bg-[#18070d] border-b border-white/5 text-[10px]">
+                <span className="font-semibold text-[#f3cf98] uppercase tracking-wider">{item.categoryLabel}</span>
+                <span className="font-semibold text-white/80 px-2 py-0.5 rounded-full bg-white/10 border border-white/10">
+                  {item.tag}
+                </span>
+              </div>
+
+              {/* Image Container - Zero Badges Over Photo */}
+              <div className="relative aspect-square overflow-hidden bg-black/60 flex items-center justify-center">
                 <img
                   src={item.image}
                   alt={item.altText}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-contain sm:object-cover transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"
                 />
 
-                {/* Floating Tag */}
-                <span className="absolute top-3 left-3 text-[10px] font-bold px-2.5 py-1 rounded-full bg-black/70 text-[#f3cf98] backdrop-blur-md border border-white/15">
-                  {item.tag}
-                </span>
-
                 {/* Hover Quick Zoom Action */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <div className="p-3 rounded-full bg-[#f3cf98] text-[#120407] transform translate-y-3 group-hover:translate-y-0 transition-transform shadow-2xl flex items-center gap-1.5 text-xs font-bold">
-                    <ZoomIn className="w-4 h-4" />
-                    <span>Click to Zoom</span>
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                  <div className="p-2.5 rounded-full bg-[#f3cf98] text-[#120407] transform translate-y-2 group-hover:translate-y-0 transition-transform shadow-2xl flex items-center gap-1.5 text-xs font-bold">
+                    <ZoomIn className="w-3.5 h-3.5" />
+                    <span>View Full Photo</span>
                   </div>
                 </div>
               </div>

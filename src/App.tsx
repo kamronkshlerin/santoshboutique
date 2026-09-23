@@ -153,9 +153,6 @@ export const App: React.FC = () => {
             {/* 5 Core Atelier Tailoring Services */}
             <div id="services"><ServicesGrid /></div>
 
-            {/* Interactive Custom Style & Measurement Configurator */}
-            <div id="configurator"><StyleConfigurator /></div>
-
             {/* Interactive Before & After Alterations Slider */}
             <div id="alteration"><BeforeAfterAlteration /></div>
 
@@ -167,6 +164,9 @@ export const App: React.FC = () => {
 
             {/* Haute-Couture Secondary Ticker */}
             <LuxuryMarqueeRibbon theme={theme} />
+
+            {/* Simplified Direct Consultation & Booking Section (Right Above FAQs) */}
+            <div id="configurator"><StyleConfigurator theme={theme} /></div>
 
             {/* AEO / Answer Engine Optimization (ChatGPT & Perplexity Search Q&As) */}
             <div id="faqs"><FaqAeoSection /></div>

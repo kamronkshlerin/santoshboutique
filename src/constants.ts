@@ -41,27 +41,45 @@ export const GOOGLE_MAPS_URL = 'https://maps.google.com/?q=31.412639,76.744472';
 
 // 100% Real Boutique Atelier & Work Photos (Self-Contained Embedded WebP)
 export const REAL_ASSETS = {
-  shopFront: REAL_BASE64.shopFront,
   designerBlouse: REAL_BASE64.designerBlouse,
   ladiesSuit: REAL_BASE64.ladiesSuit,
   shararaKurti: REAL_BASE64.shararaKurti,
   partywear: REAL_BASE64.partywear,
   masterTailorFit: REAL_BASE64.masterTailorFit,
   cottonSuit: REAL_BASE64.cottonSuit,
-  realWorkshop1: REAL_BASE64.realWorkshop1,
+  workshopStudio: REAL_BASE64.workshopStudio,
   realStudioSign: REAL_BASE64.realStudioSign,
-  realWorkshop2: REAL_BASE64.realWorkshop2,
-  coutureSample: REAL_BASE64.coutureSample,
+  
+  // Original Before/After Alteration & Landmark Assets
+  alterationBefore: REAL_BASE64.alterationBefore,
+  alterationAfter: REAL_BASE64.alterationAfter,
+  shopExterior: REAL_BASE64.shopExterior,
+  templeLandmark: REAL_BASE64.templeLandmark,
+
+  // Dedicated Service Images (100% matched to text, zero text overlays)
+  svcLehenga: REAL_BASE64.svcLehenga,
+  svcAlteration: REAL_BASE64.svcAlteration,
+  svcSuit: REAL_BASE64.svcSuit,
+  svcBlouse: REAL_BASE64.svcBlouse,
+  svcCustom: REAL_BASE64.svcCustom,
+
+  // Backwards compatibility aliases
+  shopFront: REAL_BASE64.shopExterior,
+  realWorkshop1: REAL_BASE64.workshopStudio,
+  realWorkshop2: REAL_BASE64.workshopStudio,
+  coutureSample: REAL_BASE64.partywear,
 };
 
-// Legacy alias mapping for backwards compatibility
+// Legacy alias mapping with 100% matched service visuals
 export const ASSETS = {
-  hero: REAL_ASSETS.shopFront,
-  blouse: REAL_ASSETS.designerBlouse,
-  lehenga: REAL_ASSETS.partywear,
-  suit: REAL_ASSETS.ladiesSuit,
-  shopExterior: REAL_ASSETS.shopFront,
-  templeLandmark: REAL_ASSETS.realStudioSign,
-  flyer: REAL_ASSETS.coutureSample,
+  hero: REAL_ASSETS.alterationAfter,
+  suit: REAL_ASSETS.svcSuit,
+  blouse: REAL_ASSETS.svcBlouse,
+  lehenga: REAL_ASSETS.svcLehenga,
+  alteration: REAL_ASSETS.svcAlteration,
+  custom: REAL_ASSETS.svcCustom,
+  shopExterior: REAL_ASSETS.shopExterior,
+  templeLandmark: REAL_ASSETS.templeLandmark,
+  flyer: REAL_ASSETS.svcLehenga,
 };
 

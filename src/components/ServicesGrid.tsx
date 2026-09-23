@@ -30,7 +30,7 @@ export const ServicesGrid: React.FC = () => {
       startingPrice: config.priceAlteration,
       turnaround: 'Same Day / 24 Hours',
       popularCuts: ['Waist Tapering', 'Bust Resizing', 'Length Alteration', 'Shoulder Fit', 'Zip Replacement'],
-      image: ASSETS.hero,
+      image: ASSETS.alteration,
     },
     {
       id: 'suit',
@@ -66,7 +66,7 @@ export const ServicesGrid: React.FC = () => {
       startingPrice: 'Custom Estimate',
       turnaround: 'Based on Design',
       popularCuts: ['Co-ord Sets', 'Western Fusion Indo', 'Jackets & Capes', 'Draped Gowns', 'Mother-Daughter Matching'],
-      image: ASSETS.hero,
+      image: ASSETS.custom,
     },
   ];
 
@@ -182,46 +182,45 @@ export const ServicesGrid: React.FC = () => {
 
             {/* Card 2: Express Alteration Services (Span 1 col) */}
             <div className="liquid-glass-card card-spotlight rounded-3xl overflow-hidden flex flex-col justify-between group">
-              <div className="relative h-52 overflow-hidden">
+              <div className="relative h-48 sm:h-52 overflow-hidden bg-black/40">
                 <img
                   src={alterationService.image}
                   alt={alterationService.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-[0.85]"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1a080e] via-[#1a080e]/40 to-transparent" />
 
                 <div className="absolute top-4 left-4 flex items-center gap-2">
-                  <span className="px-3 py-1 rounded-full bg-[#10b981]/90 backdrop-blur-md text-white text-xs font-bold flex items-center gap-1">
+                  <span className="px-3 py-1 rounded-full bg-[#10b981] text-white text-xs font-bold flex items-center gap-1 shadow-md">
                     <Zap className="w-3 h-3 fill-white" />
                     <span>Express 24h</span>
                   </span>
                 </div>
 
                 <div className="absolute top-4 right-4">
-                  <span className="px-2.5 py-1 rounded-full bg-[#120407]/80 backdrop-blur-md border border-[#f3cf98]/30 text-xs font-bold text-[#f3cf98]">
+                  <span className="px-3 py-1 rounded-full bg-[#120407]/90 border border-[#f3cf98]/40 text-xs font-bold text-[#f3cf98] shadow-md">
                     {alterationService.startingPrice}
                   </span>
                 </div>
+              </div>
 
-                <div className="absolute bottom-3 left-4 right-4">
-                  <div className="flex items-baseline justify-between">
+              <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-baseline justify-between mb-1">
                     <h3 className="font-display text-xl sm:text-2xl font-bold text-[#fff7f2]">
                       {alterationService.title}
                     </h3>
-                    <span className="font-hindi text-xs text-[#f3cf98]/80 font-medium">
+                    <span className="font-hindi text-xs sm:text-sm text-[#f3cf98] font-medium">
                       {alterationService.hindiTitle}
                     </span>
                   </div>
-                  <p className="text-xs text-[#f3cf98] font-medium tracking-wide mt-0.5">
+                  <p className="text-xs text-[#f3cf98] font-semibold tracking-wide mb-3">
                     {alterationService.tagline}
                   </p>
-                </div>
-              </div>
 
-              <div className="p-6 flex-1 flex flex-col justify-between">
-                <p className="text-xs sm:text-sm text-[#d1b8b8] leading-relaxed mb-4">
-                  {alterationService.description}
-                </p>
+                  <p className="text-xs sm:text-sm text-[#d1b8b8] leading-relaxed mb-4">
+                    {alterationService.description}
+                  </p>
+                </div>
 
                 <div className="mb-6">
                   <div className="flex flex-wrap gap-1.5">
@@ -256,47 +255,45 @@ export const ServicesGrid: React.FC = () => {
                 className="liquid-glass-card card-spotlight rounded-3xl overflow-hidden flex flex-col justify-between group"
               >
                 {/* Card Image Header */}
-                <div className="relative h-56 overflow-hidden">
+                <div className="relative h-48 sm:h-56 overflow-hidden bg-black/40">
                   <img
                     src={service.image}
                     alt={service.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-[0.85]"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1a080e] via-[#1a080e]/30 to-transparent" />
 
                   {/* Price & Turnaround Tags */}
                   <div className="absolute top-4 left-4 flex items-center gap-2">
-                    <span className="px-3 py-1 rounded-full bg-[#120407]/80 backdrop-blur-md border border-[#f3cf98]/30 text-xs font-bold text-[#f3cf98]">
+                    <span className="px-3 py-1 rounded-full bg-[#120407]/90 border border-[#f3cf98]/40 text-xs font-bold text-[#f3cf98] shadow-md">
                       {service.startingPrice}
                     </span>
                   </div>
 
-                  <div className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#120407]/80 backdrop-blur-md border border-white/10 text-xs text-[#fff7f2]">
+                  <div className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#120407]/90 border border-white/20 text-xs text-[#fff7f2] shadow-md">
                     <Clock className="w-3 h-3 text-[#d85c72]" />
                     <span>{service.turnaround}</span>
-                  </div>
-
-                  {/* Title */}
-                  <div className="absolute bottom-3 left-4 right-4">
-                    <div className="flex items-baseline justify-between">
-                      <h3 className="font-display text-2xl font-bold text-[#fff7f2]">
-                        {service.title}
-                      </h3>
-                      <span className="font-hindi text-sm text-[#f3cf98]/80 font-medium">
-                        {service.hindiTitle}
-                      </span>
-                    </div>
-                    <p className="text-xs text-[#f3cf98] font-medium tracking-wide mt-0.5">
-                      {service.tagline}
-                    </p>
                   </div>
                 </div>
 
                 {/* Card Body */}
-                <div className="p-6 flex-1 flex flex-col justify-between">
-                  <p className="text-xs sm:text-sm text-[#d1b8b8] leading-relaxed mb-4">
-                    {service.description}
-                  </p>
+                <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-baseline justify-between mb-1">
+                      <h3 className="font-display text-xl sm:text-2xl font-bold text-[#fff7f2]">
+                        {service.title}
+                      </h3>
+                      <span className="font-hindi text-xs sm:text-sm text-[#f3cf98] font-medium">
+                        {service.hindiTitle}
+                      </span>
+                    </div>
+                    <p className="text-xs text-[#f3cf98] font-semibold tracking-wide mb-3">
+                      {service.tagline}
+                    </p>
+
+                    <p className="text-xs sm:text-sm text-[#d1b8b8] leading-relaxed mb-4">
+                      {service.description}
+                    </p>
+                  </div>
 
                   <div className="mb-6">
                     <p className="text-[10px] font-semibold text-[#fff7f2]/70 uppercase tracking-wider mb-2">

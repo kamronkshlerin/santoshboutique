@@ -218,55 +218,51 @@ export const HeroSection: React.FC = () => {
         {/* ================= RIGHT COLUMN: 3D Atelier Haute Couture Model Stage (5 Cols) ================= */}
         <div className="lg:col-span-5 flex items-center justify-center lg:justify-end">
           <div 
-            className="relative w-full max-w-[420px] sm:max-w-[440px] rounded-[32px] overflow-hidden p-2.5 transition-transform duration-500 ease-out will-change-transform group cursor-float-card hover:[transform:perspective(1000px)_rotateY(-3deg)_rotateX(2deg)_scale(1.02)]"
+            className="relative w-full max-w-[460px] sm:max-w-[480px] rounded-[32px] overflow-hidden p-2 transition-transform duration-500 ease-out will-change-transform group cursor-float-card hover:[transform:perspective(1000px)_rotateY(-2deg)_rotateX(2deg)_scale(1.01)]"
           >
             {/* Glowing Golden Aura Border */}
             <div className="absolute -inset-1 rounded-[36px] bg-gradient-to-tr from-[#8a1c32]/50 via-[#f3cf98]/30 to-[#d85c72]/40 blur-xl opacity-80 group-hover:opacity-100 transition-opacity" />
 
             {/* Inner Frame */}
-            <div className="relative rounded-[28px] overflow-hidden border border-[#f3cf98]/40 bg-[#1a080e]/90 shadow-2xl">
+            <div className="relative rounded-[26px] overflow-hidden border border-[#f3cf98]/40 bg-[#16060c] shadow-2xl flex flex-col">
               
-              {/* Couture Image Showcase */}
-              <div className="relative h-[480px] sm:h-[540px] overflow-hidden">
-                <img
-                  src={REAL_ASSETS.designerBlouse}
-                  alt="designer bridal blouse stitching Bilaspur Himachal Pradesh - Santosh Boutique Fatoh"
-                  className="w-full h-full object-cover object-top filter contrast-[1.05] brightness-[0.96] group-hover:scale-105 transition-transform duration-700"
-                />
-
-                {/* Soft Vignette Gradients */}
-                <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#120407]/90 via-[#120407]/30 to-transparent pointer-events-none" />
-                <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#120407] via-[#120407]/80 to-transparent pointer-events-none" />
-
-                {/* Top Badge: Bespoke Atelier Muse */}
-                <div className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
-                  <div className="hero-muse-top-badge inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#120407]/85 backdrop-blur-md border border-[#f3cf98]/40 shadow-lg">
-                    <Sparkles className="w-3.5 h-3.5 text-[#f3cf98]" />
-                    <span className="text-[11px] font-bold text-[#f3cf98] uppercase tracking-wider">
-                      Bespoke Atelier Muse
-                    </span>
-                  </div>
-
-                  <span className="px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[10px] text-[#fff7f2]/90 font-mono">
-                    HP • BILASPUR
+              {/* Card Header (Above Image - does NOT hide photo text) */}
+              <div className="flex items-center justify-between px-4 py-2.5 bg-[#120407] border-b border-[#f3cf98]/20">
+                <div className="inline-flex items-center gap-2">
+                  <Sparkles className="w-3.5 h-3.5 text-[#f3cf98]" />
+                  <span className="text-[11px] font-bold text-[#f3cf98] uppercase tracking-wider">
+                    Real Studio Masterpiece
                   </span>
                 </div>
-
-                {/* Bottom Card Annotation: Craftsmanship Info */}
-                <div className="hero-muse-bottom-annotation absolute bottom-4 left-4 right-4 p-3.5 rounded-2xl bg-[#120407]/90 backdrop-blur-xl border border-[#f3cf98]/30 shadow-2xl">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs font-bold text-[#fff7f2]">
-                      Royal Bridal & Festive Silhouettes
-                    </span>
-                    <span className="text-[11px] font-semibold text-[#f3cf98]">
-                      Custom Tailored
-                    </span>
-                  </div>
-                  <p className="text-[11px] text-[#d1b8b8] leading-tight">
-                    16-Kalidar flair, can-can volume, and contour blouse tailoring shaped to your measurements.
-                  </p>
-                </div>
+                <span className="px-2.5 py-0.5 rounded-full bg-white/10 text-[10px] font-mono text-[#f3cf98] border border-[#f3cf98]/25">
+                  HP • BILASPUR
+                </span>
               </div>
+
+              {/* Couture Image Showcase - 100% Clean Uncut Image with Zero Overlays */}
+              <div className="relative aspect-square w-full bg-[#0a0204] overflow-hidden flex items-center justify-center">
+                <img
+                  src={REAL_ASSETS.designerBlouse}
+                  alt="Santosh Boutique & Stitching Studio - Designer bridal blouse stitching Bilaspur Himachal Pradesh Fatoh"
+                  className="w-full h-full object-contain sm:object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                />
+              </div>
+
+              {/* Card Footer (Below Image - does NOT hide photo text) */}
+              <div className="p-4 bg-[#120407] border-t border-[#f3cf98]/20">
+                <div className="flex items-center justify-between gap-2 mb-1">
+                  <h3 className="text-sm font-bold text-[#fff7f2] font-display">
+                    Royal Bridal &amp; Festive Silhouettes
+                  </h3>
+                  <span className="text-[10px] font-bold text-[#f3cf98] bg-[#f3cf98]/15 px-2.5 py-0.5 rounded-full border border-[#f3cf98]/30 shrink-0">
+                    Custom Tailored
+                  </span>
+                </div>
+                <p className="text-xs text-[#d1b8b8] leading-relaxed">
+                  Contour blouse tailoring, bridal embroidery, can-can flair, and perfect fitting at Fatoh, Bilaspur.
+                </p>
+              </div>
+
             </div>
           </div>
         </div>

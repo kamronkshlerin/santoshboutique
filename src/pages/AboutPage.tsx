@@ -13,6 +13,7 @@ import {
   BUSINESS_NAME, LANDMARK_NOTE, 
   WHATSAPP_NUMBER, REAL_ASSETS, getAssetUrl, GOOGLE_REVIEW_URL 
 } from '../constants';
+import { BoutiqueLogo } from '../components/BoutiqueLogo';
 
 interface AboutPageProps {
   onNavigate?: (page: any) => void;
@@ -66,9 +67,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
           <span className="text-[#f3cf98] font-semibold">About Us</span>
         </nav>
 
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#f3cf98]/10 border border-[#f3cf98]/20 text-[#f3cf98] text-xs font-semibold tracking-wider uppercase mb-4">
-          <Award className="w-3.5 h-3.5" />
-          The Atelier Heritage &amp; Craftsmanship
+        <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
+          <BoutiqueLogo variant="hero" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#f3cf98]/10 border border-[#f3cf98]/20 text-[#f3cf98] text-xs font-semibold tracking-wider uppercase self-start">
+            <Award className="w-3.5 h-3.5" />
+            The Atelier Heritage &amp; Craftsmanship
+          </div>
         </div>
 
         <h1 className="text-4xl sm:text-6xl font-display font-bold text-[#fff7f2] tracking-tight leading-[1.1] mb-6">

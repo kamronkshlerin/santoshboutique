@@ -33,22 +33,10 @@ const RECENT_POSTS: SocialPost[] = [
     likes: 189,
   },
   {
-    image: REAL_ASSETS.realWorkshop1,
-    caption: 'Masterji working on precision trial cut measurements at our Fatoh studio.',
-    category: 'Atelier Life',
-    likes: 420,
-  },
-  {
     image: REAL_ASSETS.masterTailorFit,
     caption: 'Perfect silhouette tailoring tailored to flatter your personal posture.',
     category: 'Master Tailoring',
     likes: 276,
-  },
-  {
-    image: REAL_ASSETS.cottonSuit,
-    caption: 'Pure cotton summer suit with clean hand-cut collar and matching trousers.',
-    category: 'Daily Wear',
-    likes: 195,
   },
 ];
 
@@ -99,7 +87,7 @@ export const SocialFeedShowcase: React.FC = () => {
         </div>
 
         {/* Instagram Visual Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
           {RECENT_POSTS.map((post, idx) => (
             <a
               key={idx}
