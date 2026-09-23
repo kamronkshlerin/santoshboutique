@@ -1,12 +1,24 @@
-// Fast CDN base URL for assets hosted on GitHub repo
+import { REAL_BASE64 } from './real_assets_base64';
+
+// Fast CDN base URL fallback
 export const CDN_BASE = 'https://cdn.jsdelivr.net/gh/kamronkshlerin/santoshboutique@main/public';
 
-// Smart asset resolver: prefers localhost local path when developing, CDN when deployed
-export const getAssetUrl = (fileName: string) => {
-  if (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
-    return `/images/${fileName}`;
+// Smart asset resolver: Returns self-contained Base64 WebP or local/CDN URL
+export const getAssetUrl = (assetOrFileName: string) => {
+  if (!assetOrFileName) return '';
+  if (assetOrFileName.startsWith('data:') || assetOrFileName.startsWith('http')) {
+    return assetOrFileName;
   }
-  return `${CDN_BASE}/images/${fileName}`;
+  const cleanKey = assetOrFileName
+    .replace('.webp', '')
+    .replace(/_([a-z])/g, (_, letter) => letter.toUpperCase()) as keyof typeof REAL_BASE64;
+  if (REAL_BASE64[cleanKey]) {
+    return REAL_BASE64[cleanKey];
+  }
+  if (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+    return `/images/${assetOrFileName}`;
+  }
+  return `${CDN_BASE}/images/${assetOrFileName}`;
 };
 
 // Official NAP Constants (Google Business Profile Exact Match)
@@ -27,19 +39,19 @@ export const FACEBOOK_URL = 'https://www.facebook.com/santoshboutiquehp/';
 export const GOOGLE_REVIEW_URL = 'https://share.google/VjLoLEBNcQzAPxhq5';
 export const GOOGLE_MAPS_URL = 'https://maps.google.com/?q=31.412639,76.744472';
 
-// 100% Real Boutique Atelier & Work Photos (WebP compressed <200KB)
+// 100% Real Boutique Atelier & Work Photos (Self-Contained Embedded WebP)
 export const REAL_ASSETS = {
-  shopFront: getAssetUrl('shop_front.webp'),
-  designerBlouse: getAssetUrl('designer_blouse.webp'),
-  ladiesSuit: getAssetUrl('ladies_suit.webp'),
-  shararaKurti: getAssetUrl('sharara_kurti.webp'),
-  partywear: getAssetUrl('partywear.webp'),
-  masterTailorFit: getAssetUrl('master_tailor_fit.webp'),
-  cottonSuit: getAssetUrl('cotton_suit.webp'),
-  realWorkshop1: getAssetUrl('real_workshop_1.webp'),
-  realStudioSign: getAssetUrl('real_studio_sign.webp'),
-  realWorkshop2: getAssetUrl('real_workshop_2.webp'),
-  coutureSample: getAssetUrl('couture_sample.webp'),
+  shopFront: REAL_BASE64.shopFront,
+  designerBlouse: REAL_BASE64.designerBlouse,
+  ladiesSuit: REAL_BASE64.ladiesSuit,
+  shararaKurti: REAL_BASE64.shararaKurti,
+  partywear: REAL_BASE64.partywear,
+  masterTailorFit: REAL_BASE64.masterTailorFit,
+  cottonSuit: REAL_BASE64.cottonSuit,
+  realWorkshop1: REAL_BASE64.realWorkshop1,
+  realStudioSign: REAL_BASE64.realStudioSign,
+  realWorkshop2: REAL_BASE64.realWorkshop2,
+  coutureSample: REAL_BASE64.coutureSample,
 };
 
 // Legacy alias mapping for backwards compatibility
