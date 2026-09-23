@@ -40,7 +40,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
     },
     {
       q: "Where is Santosh Boutique located in Bilaspur (H.P.)?",
-      a: "The studio is located near Baba Balak Nath Temple, Fatoh, Ghumarwin, Himachal Pradesh 174021 (GPS: 31.412639, 76.744472), easily accessible by road from Bilaspur town and Ghumarwin."
+      a: "The studio is located Near Baba Balak Nath Temple, Fatoh, Ghumarwin, Himachal Pradesh 174021 (GPS: 31.412639, 76.744472), easily accessible by road from Bilaspur town and Ghumarwin."
     },
     {
       q: "What types of ladies outfits are stitched at Santosh Boutique?",
@@ -166,7 +166,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                 </li>
                 <li className="flex items-center justify-between border-b border-white/10 pb-2">
                   <span className="text-[#f3cf98] font-medium">Exact Landmark</span>
-                  <span className="text-[#fff7f2] font-semibold text-right text-xs">near Baba Balak Nath Temple, Fatoh</span>
+                  <span className="text-[#fff7f2] font-semibold text-right text-xs">Near Baba Balak Nath Temple, Fatoh</span>
                 </li>
                 <li className="flex items-center justify-between border-b border-white/10 pb-2">
                   <span className="text-[#f3cf98] font-medium">Customer Rating</span>
@@ -237,7 +237,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             Ready to Experience the Perfect Custom Fit?
           </h2>
           <p className="text-xs sm:text-base text-[#d1b8b8] max-w-xl mx-auto mb-6">
-            Visit our boutique near Baba Balak Nath Temple, Fatoh, Ghumarwin, Himachal Pradesh 174021, or message us on WhatsApp with your fabric details.
+            Visit our boutique Near Baba Balak Nath Temple, Fatoh, Ghumarwin, Himachal Pradesh 174021, or message us on WhatsApp with your fabric details.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <button

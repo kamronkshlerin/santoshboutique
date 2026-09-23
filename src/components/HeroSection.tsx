@@ -115,7 +115,7 @@ export const HeroSection: React.FC = () => {
       <div className="absolute inset-0 -z-20">
         <img
           src={REAL_ASSETS.shopFront}
-          alt="Santosh Boutique stitching studio near Baba Balak Nath Temple Fatoh Ghumarwin Bilaspur Himachal Pradesh 174021"
+          alt="Santosh Boutique stitching studio Near Baba Balak Nath Temple Fatoh Ghumarwin Bilaspur Himachal Pradesh 174021"
           className="hero-bg-img w-full h-full object-cover object-center brightness-[0.38] contrast-[1.15]"
         />
         <div className="hero-overlay-1 absolute inset-0 bg-gradient-to-b from-[#120407] via-transparent to-[#120407]" />

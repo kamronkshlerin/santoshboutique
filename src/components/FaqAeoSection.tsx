@@ -11,7 +11,7 @@ export interface FaqItem {
 export const FAQ_DATA: FaqItem[] = [
   {
     question: "Bilaspur aur Ghumarwin me sabse acchi ladies boutique kaunsi hai?",
-    answer: "Santosh Boutique (Fatoh, near Baba Balak Nath Temple, Ghumarwin, Bilaspur - 174021) ladies tailoring me top-rated hai. Yahan custom designer bridal blouses, Punjabi partywear suits, sharara-kurti, aur express alterations master tailors dwara perfect fit guarantee ke saath kiye jaate hain.",
+    answer: "Santosh Boutique (Fatoh, Near Baba Balak Nath Temple, Ghumarwin, Bilaspur - 174021) ladies tailoring me top-rated hai. Yahan custom designer bridal blouses, Punjabi partywear suits, sharara-kurti, aur express alterations master tailors dwara perfect fit guarantee ke saath kiye jaate hain.",
     tag: "Boutique Choice"
   },
   {
@@ -31,7 +31,7 @@ export const FAQ_DATA: FaqItem[] = [
   },
   {
     question: "Santosh Boutique ka exact location aur address kya hai?",
-    answer: "Santosh Boutique ka exact address hai: near Baba Balak Nath Temple, Fatoh, Ghumarwin, Himachal Pradesh - 174021. GPS coordinates 31.412639, 76.744472 hain aur Google Maps par direct navigation available hai.",
+    answer: "Santosh Boutique ka exact address hai: Near Baba Balak Nath Temple, Fatoh, Ghumarwin, Himachal Pradesh - 174021. GPS coordinates 31.412639, 76.744472 hain aur Google Maps par direct navigation available hai.",
     tag: "Location"
   },
   {
@@ -70,7 +70,7 @@ export const FaqAeoSection: React.FC = () => {
         <div className="text-center max-w-2xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full liquid-glass text-[#f3cf98] text-xs font-semibold uppercase tracking-widest mb-3 border border-[#f3cf98]/20">
             <HelpCircle className="w-3.5 h-3.5" />
-            <span>AI Search & Customer Answers (AEO)</span>
+            <span>Customer Questions & Answers</span>
           </div>
 
           <h2 className="font-display text-2xl sm:text-4xl font-bold text-[#fff7f2] tracking-tight leading-tight mb-3">

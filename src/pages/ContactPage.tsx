@@ -27,7 +27,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
 
   const openWhatsApp = () => {
     const text = encodeURIComponent(
-      `Namaste ${BUSINESS_NAME}! I would like to visit your boutique near Baba Balak Nath Temple in Fatoh, Ghumarwin and need directions / an appointment.`
+      `Namaste ${BUSINESS_NAME}! I would like to visit your boutique Near Baba Balak Nath Temple in Fatoh, Ghumarwin and need directions / an appointment.`
     );
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, '_blank');
   };

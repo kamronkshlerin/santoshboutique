@@ -135,7 +135,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               🕒 Monday – Sunday: 9:00 AM – 7:30 PM
             </p>
             <p className="text-xs text-[#d1b8b8] mt-2">
-              🧭 Landmark: near Baba Balak Nath Temple, Fatoh, Ghumarwin. Roadside parking available.
+              🧭 Landmark: Near Baba Balak Nath Temple, Fatoh, Ghumarwin. Roadside parking available.
             </p>
           </div>
 

@@ -24,8 +24,8 @@ export const getAssetUrl = (assetOrFileName: string) => {
 // Official NAP Constants (Google Business Profile Exact Match)
 export const BUSINESS_NAME = 'Santosh Boutique';
 export const OFFICIAL_TAGLINE = 'Stitching Your Dreams With Care';
-export const FULL_ADDRESS = 'near Baba Balak Nath Temple, Fatoh, Ghumarwin, Himachal Pradesh 174021';
-export const SHORT_LANDMARK = 'near Baba Balak Nath Temple, Fatoh, Ghumarwin';
+export const FULL_ADDRESS = 'Near Baba Balak Nath Temple, Fatoh, Ghumarwin, Himachal Pradesh 174021';
+export const SHORT_LANDMARK = 'Near Baba Balak Nath Temple, Fatoh, Ghumarwin';
 export const LANDMARK_NOTE = SHORT_LANDMARK;
 export const PINCODE = '174021';
 export const PHONE_DISPLAY = '+91 94181 03213';

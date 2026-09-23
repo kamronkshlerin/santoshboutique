@@ -38,8 +38,8 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=5.0' name='viewport'/>
   <title>Santosh Boutique | Ladies Fashion &amp; Custom Tailoring Bilaspur (HP)</title>
 
-  <meta content='Santosh Boutique in Fatoh, Ghumarwin, Bilaspur (HP) near Baba Balak Nath Temple - 174021. Designer bridal blouses, custom suit stitching, lehenga tailoring &amp; express alteration services. Call +91 94181 03213.' name='description'/>
-  <meta content='Santosh Boutique, Boutique Bilaspur, Ladies Tailor Ghumarwin, Designer Blouse Bilaspur, Suit Stitching Himachal, Tailor near Baba Balak Nath Temple Fatoh' name='keywords'/>
+  <meta content='Santosh Boutique in Fatoh, Ghumarwin, Bilaspur (HP) Near Baba Balak Nath Temple - 174021. Designer bridal blouses, custom suit stitching, lehenga tailoring &amp; express alteration services. Call +91 94181 03213.' name='description'/>
+  <meta content='Santosh Boutique, Boutique Bilaspur, Ladies Tailor Ghumarwin, Designer Blouse Bilaspur, Suit Stitching Himachal, Tailor Near Baba Balak Nath Temple Fatoh' name='keywords'/>
 
   <!-- Open Graph -->
   <meta content='website' property='og:type'/>
@@ -85,7 +85,7 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
         ],
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "near Baba Balak Nath Temple, Fatoh, Ghumarwin",
+          "streetAddress": "Near Baba Balak Nath Temple, Fatoh, Ghumarwin",
           "addressLocality": "Ghumarwin, Bilaspur",
           "addressRegion": "Himachal Pradesh",
           "postalCode": "174021",
@@ -125,7 +125,7 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
             "name": "Bilaspur me sabse acchi ladies boutique kaunsi hai?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Santosh Boutique (Fatoh, Ghumarwin, Bilaspur HP - 174021 near Baba Balak Nath Temple) 15+ salon ke anubhav ke saath Punjabi suit stitching, designer bridal blouse aur express alteration ke liye sabse lokpriya boutique hai."
+              "text": "Santosh Boutique (Fatoh, Ghumarwin, Bilaspur HP - 174021 Near Baba Balak Nath Temple) 15+ salon ke anubhav ke saath Punjabi suit stitching, designer bridal blouse aur express alteration ke liye sabse lokpriya boutique hai."
             }
           },
           {

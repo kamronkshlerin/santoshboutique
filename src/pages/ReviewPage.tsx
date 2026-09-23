@@ -13,7 +13,7 @@ const REVIEW_SUGGESTIONS = [
   '⚡ Express alteration done in under 24 hours. Fitting is spot-on like a glove!',
   '🧵 Best boutique for ladies suit & designer sharara stitching in Ghumarwin/Bilaspur.',
   '✨ Genuine pricing, fine threadwork, and extremely polite boutique master tailor.',
-  '📍 Convenient studio location near Baba Balak Nath Temple, Fatoh. 100% recommended!'
+  '📍 Convenient studio location Near Baba Balak Nath Temple, Fatoh. 100% recommended!'
 ];
 
 interface ReviewPageProps {

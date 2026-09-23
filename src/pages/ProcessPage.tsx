@@ -30,7 +30,7 @@ export const ProcessPage: React.FC<ProcessPageProps> = ({ onNavigate }) => {
       num: '01',
       title: 'Consultation & Fabric Inspection',
       subtitle: 'Understanding your dream silhouette & testing fabric grain',
-      desc: 'You bring your unstitched suit fabric, saree, or dress material to our studio near Baba Balak Nath Temple in Sarti (or send photos on WhatsApp). We inspect the fabric fall, check for stretch, and discuss neckline, sleeve, and trouser preferences.'
+      desc: 'You bring your unstitched suit fabric, saree, or dress material to our studio Near Baba Balak Nath Temple in Sarti (or send photos on WhatsApp). We inspect the fabric fall, check for stretch, and discuss neckline, sleeve, and trouser preferences.'
     },
     {
       num: '02',

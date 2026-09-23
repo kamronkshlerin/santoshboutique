@@ -18,7 +18,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: 'blouse-1',
     title: 'Designer Bridal Sweetheart Neck Blouse',
-    altText: 'designer bridal blouse stitching Bilaspur Himachal Pradesh near Baba Balak Nath Temple',
+    altText: 'designer bridal blouse stitching Bilaspur Himachal Pradesh Near Baba Balak Nath Temple',
     category: 'blouse',
     categoryLabel: 'Designer Blouse',
     image: REAL_ASSETS.designerBlouse,
