@@ -1,23 +1,25 @@
 import React, { useState } from 'react';
 import { MapPin, Clock, Phone, MessageCircle, Navigation, ShieldCheck, Heart, Image as ImageIcon, Map as MapIcon, ExternalLink } from 'lucide-react';
-import { ASSETS } from '../constants';
-import { useBloggerConfig } from '../config';
+import { 
+  BUSINESS_NAME, FULL_ADDRESS, LANDMARK_NOTE, 
+  WHATSAPP_NUMBER, GOOGLE_MAPS_URL, 
+  REAL_ASSETS, getAssetUrl 
+} from '../constants';
 
 export const StudioLocationSection: React.FC = () => {
-  const config = useBloggerConfig();
   const [viewMode, setViewMode] = useState<'photos' | 'map'>('photos');
 
   const openGoogleMaps = () => {
-    window.open("https://maps.google.com/?q=31.412639,76.744472", "_blank");
+    window.open(GOOGLE_MAPS_URL, '_blank');
   };
 
   const openCall = () => {
-    window.open(`tel:${config.phone.replace(/\s+/g, '')}`, '_self');
+    window.open(`tel:${WHATSAPP_NUMBER}`, '_self');
   };
 
   const openWhatsApp = () => {
-    const text = encodeURIComponent(`Namaste ${config.boutiqueName}! I am visiting near ${config.landmark}. Please share exact boutique landmark directions.`);
-    window.open(`https://wa.me/${config.whatsapp}?text=${text}`, '_blank');
+    const text = encodeURIComponent(`Namaste ${BUSINESS_NAME}! I am visiting near ${LANDMARK_NOTE}. Please share exact boutique landmark directions.`);
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, '_blank');
   };
 
   return (
@@ -27,15 +29,15 @@ export const StudioLocationSection: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full liquid-glass text-[#f3cf98] text-xs font-semibold uppercase tracking-widest mb-4 border border-[#f3cf98]/20">
             <MapPin className="w-3.5 h-3.5 text-[#d85c72]" />
-            <span>Actual Studio Location & Landmark</span>
+            <span>Actual Studio Location &amp; Landmark</span>
           </div>
 
           <h2 className="font-display text-3xl sm:text-5xl font-bold text-[#fff7f2] tracking-tight leading-tight mb-4">
-            Visit Our Atelier in <span className="italic gold-gradient-text">Fatoh, Bilaspur</span>
+            Visit Our Atelier in <span className="italic gold-gradient-text">Fatoh, Ghumarwin</span>
           </h2>
 
           <p className="text-sm sm:text-base text-[#d1b8b8] font-light">
-            Conveniently located directly near the revered Baba Balak Nath Temple in Sarti. Check real photos of our shop and landmark gate below for easy navigation.
+            Conveniently located {LANDMARK_NOTE}. Check real photos of our shop and landmark gate below for easy navigation.
           </p>
         </div>
 
@@ -51,7 +53,7 @@ export const StudioLocationSection: React.FC = () => {
               </div>
 
               <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#fff7f2] mb-6">
-                Santosh Boutique & Stitching Studio
+                {BUSINESS_NAME}
               </h3>
 
               {/* Address Details */}
@@ -62,10 +64,10 @@ export const StudioLocationSection: React.FC = () => {
                   </div>
                   <div>
                     <strong className="text-[#fff7f2] block text-base font-semibold">
-                      Exact Address & Landmark:
+                      Exact Address (NAP):
                     </strong>
-                    <p className="mt-0.5 leading-relaxed">
-                      {config.address}
+                    <p className="mt-0.5 leading-relaxed text-[#fff7f2]">
+                      {FULL_ADDRESS}
                     </p>
                   </div>
                 </div>
@@ -79,7 +81,7 @@ export const StudioLocationSection: React.FC = () => {
                       Studio Hours:
                     </strong>
                     <p className="mt-0.5">
-                      {config.hours}
+                      Monday – Sunday: 9:00 AM – 7:30 PM (Open 7 Days)
                     </p>
                   </div>
                 </div>
@@ -93,7 +95,7 @@ export const StudioLocationSection: React.FC = () => {
                       Easy Landmark Identification:
                     </strong>
                     <p className="mt-0.5">
-                      Look for the white 3-dome Temple Archway gate in Sarti. Our studio building is located right adjacent with vehicle parking space.
+                      {LANDMARK_NOTE}. Look for the Santosh Boutique signboard with ample roadside parking.
                     </p>
                   </div>
                 </div>
@@ -169,48 +171,50 @@ export const StudioLocationSection: React.FC = () => {
             {viewMode === 'photos' ? (
               <div className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {/* Photo 1: Actual Shop Exterior */}
+                  {/* Photo 1: Actual Shop Front */}
                   <div className="group relative rounded-2xl overflow-hidden border border-black/10 sm:border-white/15 bg-black shadow-lg">
                     <img
-                      src={ASSETS.shopExterior}
-                      alt="Santosh Boutique Shop Building in Fatoh, Bilaspur"
+                      src={getAssetUrl(REAL_ASSETS.shopFront)}
+                      alt="Santosh Boutique real storefront and tailoring studio entrance in Fatoh Ghumarwin Bilaspur Himachal Pradesh"
                       className="w-full h-56 sm:h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent pointer-events-none" />
                     
                     <div className="photo-overlay-badge absolute top-3 left-3 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/20 text-[10px] font-bold text-white uppercase tracking-wider shadow-md">
-                      Shop Building
+                      Shop Front
                     </div>
 
                     <div className="photo-overlay-text absolute bottom-3 left-3 right-3 z-10">
                       <p className="photo-title text-sm sm:text-base font-bold text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] leading-tight mb-0.5">
-                        Santosh Boutique & Studio Building
+                        Santosh Boutique &amp; Stitching Studio
                       </p>
                       <p className="photo-desc text-xs text-[#fce8eb] drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">
-                        Located on the main Fatoh approach road
+                        Located near Baba Balak Nath Temple, Fatoh
                       </p>
                     </div>
                   </div>
 
-                  {/* Photo 2: Baba Balak Nath Temple Landmark Gate */}
+                  {/* Photo 2: Real Studio Signboard */}
                   <div className="group relative rounded-2xl overflow-hidden border border-black/10 sm:border-white/15 bg-black shadow-lg">
                     <img
-                      src={ASSETS.templeLandmark}
-                      alt="Baba Balak Nath Temple Gate Landmark in Fatoh, Bilaspur"
+                      src={getAssetUrl(REAL_ASSETS.realStudioSign)}
+                      alt="Official Santosh Boutique signboard in Fatoh Ghumarwin Bilaspur 174021"
                       className="w-full h-56 sm:h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent pointer-events-none" />
 
                     <div className="photo-overlay-badge absolute top-3 left-3 px-3 py-1 rounded-full bg-[#8a1c32]/95 backdrop-blur-md border border-white/20 text-[10px] font-bold text-white uppercase tracking-wider flex items-center gap-1 shadow-md">
-                      <span>🛕 Key Landmark</span>
+                      <span>📍 Studio Signboard</span>
                     </div>
 
                     <div className="photo-overlay-text absolute bottom-3 left-3 right-3 z-10">
                       <p className="photo-title text-sm sm:text-base font-bold text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] leading-tight mb-0.5">
-                        Baba Balak Nath Temple Gate
+                        Official Studio Entrance Sign
                       </p>
                       <p className="photo-desc text-xs text-[#fce1b6] drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)] font-medium">
-                        White 3-dome archway with stone staircase
+                        Spot this board easily on the main road
                       </p>
                     </div>
                   </div>

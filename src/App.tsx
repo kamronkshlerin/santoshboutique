@@ -15,11 +15,14 @@ import { DesignsPage } from './pages/DesignsPage';
 import { ProcessPage } from './pages/ProcessPage';
 import { PricingPage } from './pages/PricingPage';
 import { ContactPage } from './pages/ContactPage';
+import { ReviewPage } from './pages/ReviewPage';
+import { FaqAeoSection } from './components/FaqAeoSection';
+import { SocialFeedShowcase } from './components/SocialFeedShowcase';
 import { AdminBookingsDashboard } from './components/AdminBookingsDashboard';
 import { ScrollProgressBar, LuxuryMarqueeRibbon, useGlobalCardSpotlight } from './components/MotionSiteExperience';
 import { MotionCoutureCursor } from './components/MotionCoutureCursor';
 
-export type PageTab = 'home' | 'about' | 'designs' | 'process' | 'pricing' | 'contact' | 'admin';
+export type PageTab = 'home' | 'about' | 'designs' | 'process' | 'pricing' | 'contact' | 'review' | 'admin';
 
 export const App: React.FC = () => {
   useGlobalCardSpotlight();
@@ -30,11 +33,12 @@ export const App: React.FC = () => {
     const search = window.location.search.toLowerCase();
     const combined = `${path} ${hash} ${search}`;
 
-    if (combined.includes('admin') || combined.includes('booking') || combined.includes('crm')) return 'admin';
+    if (combined.includes('admin') || combined.includes('crm')) return 'admin';
+    if (combined.includes('review') || combined.includes('feedback') || combined.includes('rating') || combined.includes('gmb')) return 'review';
     if (combined.includes('about')) return 'about';
     if (combined.includes('design') || combined.includes('catalog') || combined.includes('lookbook')) return 'designs';
     if (combined.includes('process') || combined.includes('how-it-works')) return 'process';
-    if (combined.includes('pricing') || combined.includes('rate')) return 'pricing';
+    if (combined.includes('pricing') || combined.includes('rate-card') || combined.includes('price')) return 'pricing';
     if (combined.includes('contact') || combined.includes('location')) return 'contact';
     return 'home';
   };
@@ -86,6 +90,22 @@ export const App: React.FC = () => {
       window.removeEventListener('hashchange', handleRouteChange);
     };
   }, []);
+
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      let metaRobots = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
+      if (!metaRobots) {
+        metaRobots = document.createElement('meta');
+        metaRobots.name = 'robots';
+        document.head.appendChild(metaRobots);
+      }
+      if (currentPage === 'admin') {
+        metaRobots.content = 'noindex, nofollow, noarchive';
+      } else {
+        metaRobots.content = 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
+      }
+    }
+  }, [currentPage]);
 
   const navigateTo = (page: PageTab) => {
     setCurrentPage(page);
@@ -139,11 +159,17 @@ export const App: React.FC = () => {
             {/* Interactive Before & After Alterations Slider */}
             <div id="alteration"><BeforeAfterAlteration /></div>
 
-            {/* Atelier Lookbook Gallery */}
+            {/* Atelier Lookbook Gallery with Fullscreen Lightbox Zoom */}
             <div id="lookbook"><LookbookGallery /></div>
+
+            {/* Social Media Showcase (Instagram & Facebook) */}
+            <div id="social-showcase"><SocialFeedShowcase /></div>
 
             {/* Haute-Couture Secondary Ticker */}
             <LuxuryMarqueeRibbon theme={theme} />
+
+            {/* AEO / Answer Engine Optimization (ChatGPT & Perplexity Search Q&As) */}
+            <div id="faqs"><FaqAeoSection /></div>
 
             {/* Studio Location & Fatoh Landmark Map */}
             <div id="location"><StudioLocationSection /></div>
@@ -175,7 +201,12 @@ export const App: React.FC = () => {
           <ContactPage onNavigate={navigateTo} />
         )}
 
-        {/* ================= PAGE 7: ADMIN BOOKINGS CRM (SECURE ACCESS) ================= */}
+        {/* ================= PAGE 7: GOOGLE REVIEWS & RATING PORTAL ================= */}
+        {currentPage === 'review' && (
+          <ReviewPage onNavigate={navigateTo} />
+        )}
+
+        {/* ================= PAGE 8: ADMIN BOOKINGS CRM (SECURE ACCESS) ================= */}
         {currentPage === 'admin' && (
           <AdminBookingsDashboard onClose={() => navigateTo('home')} />
         )}

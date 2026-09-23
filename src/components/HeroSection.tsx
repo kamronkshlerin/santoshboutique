@@ -1,8 +1,7 @@
 import React, { useEffect, useRef } from 'react';
-import { Sparkles, MessageCircle, Heart, ShieldCheck, MapPin, ChevronDown, Award } from 'lucide-react';
-import { ASSETS } from '../constants';
+import { Sparkles, MessageCircle, Heart, ShieldCheck, MapPin, ChevronDown, Award, Star } from 'lucide-react';
+import { REAL_ASSETS, GOOGLE_REVIEW_URL } from '../constants';
 import { useBloggerConfig } from '../config';
-import { MODEL_STORY_IMG } from '../assets_models';
 
 export const HeroSection: React.FC = () => {
   const config = useBloggerConfig();
@@ -115,8 +114,8 @@ export const HeroSection: React.FC = () => {
       {/* Background Image with Deep Luxury Gradients */}
       <div className="absolute inset-0 -z-20">
         <img
-          src={ASSETS.hero}
-          alt="Santosh Boutique Bridal Atelier Display"
+          src={REAL_ASSETS.shopFront}
+          alt="Santosh Boutique stitching studio near Baba Balak Nath Temple Fatoh Ghumarwin Bilaspur Himachal Pradesh 174021"
           className="hero-bg-img w-full h-full object-cover object-center brightness-[0.38] contrast-[1.15]"
         />
         <div className="hero-overlay-1 absolute inset-0 bg-gradient-to-b from-[#120407] via-transparent to-[#120407]" />
@@ -160,22 +159,32 @@ export const HeroSection: React.FC = () => {
           </p>
 
           {/* Primary Action Buttons */}
-          <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-10">
+          <div className="flex flex-wrap items-center gap-3.5 w-full sm:w-auto mb-10 justify-center lg:justify-start">
             <button
               onClick={scrollToConfigurator}
-              className="shimmer-btn w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-[#d85c72] via-[#b53c52] to-[#8a1c32] text-white font-semibold text-sm sm:text-base shadow-xl hover:shadow-[#d85c72]/30 hover:scale-[1.02] transition-all flex items-center justify-center gap-2.5 group"
+              className="shimmer-btn px-7 py-3.5 rounded-full bg-gradient-to-r from-[#d85c72] via-[#b53c52] to-[#8a1c32] text-white font-semibold text-xs sm:text-sm shadow-xl hover:shadow-[#d85c72]/30 hover:scale-[1.02] transition-all flex items-center justify-center gap-2 group"
             >
               <Sparkles className="w-4 h-4 text-[#f3cf98] group-hover:rotate-12 transition-transform" />
-              <span>Design Your Outfit & Get Quote</span>
+              <span>Design Your Outfit &amp; Quote</span>
             </button>
 
             <button
               onClick={() => openWhatsApp()}
-              className="hero-secondary-btn w-full sm:w-auto px-7 py-4 rounded-full liquid-glass text-[#fff7f2] font-semibold text-sm sm:text-base hover:bg-white/10 border border-[#f3cf98]/30 transition-all flex items-center justify-center gap-2.5 active:scale-95"
+              className="hero-secondary-btn px-6 py-3.5 rounded-full liquid-glass text-[#fff7f2] font-semibold text-xs sm:text-sm hover:bg-white/10 border border-[#f3cf98]/30 transition-all flex items-center justify-center gap-2 active:scale-95"
             >
-              <MessageCircle className="w-5 h-5 text-[#25D366]" />
-              <span>Order & Enquiry on WhatsApp</span>
+              <MessageCircle className="w-4 h-4 text-[#25D366]" />
+              <span>WhatsApp Us</span>
             </button>
+
+            <a
+              href={GOOGLE_REVIEW_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-3.5 rounded-full bg-white/5 border border-amber-400/40 text-[#fff7f2] hover:bg-white/10 transition-all flex items-center gap-1.5 text-xs font-semibold"
+            >
+              <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+              <span>4.9★ Google Reviews</span>
+            </a>
           </div>
 
           {/* Trust Stamp Badges From Flyer */}
@@ -220,8 +229,8 @@ export const HeroSection: React.FC = () => {
               {/* Couture Image Showcase */}
               <div className="relative h-[480px] sm:h-[540px] overflow-hidden">
                 <img
-                  src={MODEL_STORY_IMG}
-                  alt="Santosh Boutique Royal Bridal Lehenga Couture"
+                  src={REAL_ASSETS.designerBlouse}
+                  alt="designer bridal blouse stitching Bilaspur Himachal Pradesh - Santosh Boutique Fatoh"
                   className="w-full h-full object-cover object-top filter contrast-[1.05] brightness-[0.96] group-hover:scale-105 transition-transform duration-700"
                 />
 

@@ -1,41 +1,45 @@
-﻿import React, { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { 
   Scissors, 
   Award, 
   CheckCircle2, 
   MapPin, 
   MessageCircle, 
-  HelpCircle
+  HelpCircle,
+  Star,
+  Sparkles
 } from 'lucide-react';
-import { useBloggerConfig } from '../config';
+import { 
+  BUSINESS_NAME, LANDMARK_NOTE, 
+  WHATSAPP_NUMBER, REAL_ASSETS, getAssetUrl, GOOGLE_REVIEW_URL 
+} from '../constants';
 
 interface AboutPageProps {
   onNavigate?: (page: any) => void;
 }
 
 export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
-  const config = useBloggerConfig();
 
   useEffect(() => {
-    document.title = "About Us | Santosh Boutique & Stitching Studio Bilaspur (HP)";
+    document.title = `About Us | ${BUSINESS_NAME} - Fatoh, Ghumarwin, Bilaspur (HP)`;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   const openWhatsApp = () => {
     const text = encodeURIComponent(
-      `Namaste ${config.boutiqueName}! I was reading about your boutique on your website and want to schedule a consultation.`
+      `Namaste ${BUSINESS_NAME}! I was reading about your boutique on your website and want to schedule a consultation.`
     );
-    window.open(`https://wa.me/${config.whatsapp}?text=${text}`, '_blank');
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, '_blank');
   };
 
   const faqs = [
     {
       q: "Who is the lead tailor and owner of Santosh Boutique in Bilaspur?",
-      a: "Santosh Boutique & Stitching Studio is led by Master Santosh, bringing over 15+ years of bespoke ladies tailoring and couture design experience to Sarti and Bilaspur, Himachal Pradesh."
+      a: "Santosh Boutique & Stitching Studio is led by Master Santosh, bringing over 15+ years of bespoke ladies tailoring and couture design experience to Fatoh, Ghumarwin and Bilaspur, Himachal Pradesh."
     },
     {
       q: "Where is Santosh Boutique located in Bilaspur (H.P.)?",
-      a: "The studio is located in Fatoh, District Bilaspur, Himachal Pradesh (PIN: 174004), near Radha Soami Satsang Beas and Gram Panchayat Fatoh (GPS: 31°24′45.5″N 76°44′40.1″E), easily accessible by road from Bilaspur town and Ghumarwin."
+      a: "The studio is located near Baba Balak Nath Temple, Fatoh, Ghumarwin, Himachal Pradesh 174021 (GPS: 31.412639, 76.744472), easily accessible by road from Bilaspur town and Ghumarwin."
     },
     {
       q: "What types of ladies outfits are stitched at Santosh Boutique?",
@@ -50,7 +54,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
   return (
     <div className="pt-28 pb-20 animate-fadeIn">
       {/* Breadcrumb & Hero */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
         <nav className="flex items-center gap-2 text-xs text-[#d1b8b8] mb-4">
           <button 
             onClick={() => onNavigate && onNavigate('home')} 
@@ -64,15 +68,39 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
 
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#f3cf98]/10 border border-[#f3cf98]/20 text-[#f3cf98] text-xs font-semibold tracking-wider uppercase mb-4">
           <Award className="w-3.5 h-3.5" />
-          The Atelier Heritage
+          The Atelier Heritage &amp; Craftsmanship
         </div>
 
         <h1 className="text-4xl sm:text-6xl font-display font-bold text-[#fff7f2] tracking-tight leading-[1.1] mb-6">
           Crafting Timeless Fits in the Hills of Bilaspur
         </h1>
         <p className="max-w-3xl text-[#d1b8b8] text-base sm:text-lg leading-relaxed">
-          Santosh Boutique & Stitching Studio is dedicated to ladies fashion, bridal craftsmanship, and precision tailoring. Located beside Baba Balak Nath Temple in Sarti, we bridge authentic Himachali traditions with modern haute-couture silhouettes.
+          {BUSINESS_NAME} is dedicated to ladies fashion, bridal craftsmanship, and precision tailoring. Located {LANDMARK_NOTE}, we bridge authentic Himachali traditions with modern haute-couture silhouettes.
         </p>
+      </div>
+
+      {/* Real Workshop Photo Showcase */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+        <div className="relative rounded-3xl overflow-hidden border border-[#f3cf98]/30 shadow-2xl group">
+          <img 
+            src={getAssetUrl(REAL_ASSETS.realWorkshop1)} 
+            alt="Master tailor cutting fabric and stitching designer bridal blouses at Santosh Boutique Fatoh Ghumarwin Bilaspur Himachal Pradesh"
+            className="w-full h-80 sm:h-[460px] object-cover object-center group-hover:scale-105 transition-transform duration-700"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-6 sm:p-10">
+            <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-[#f3cf98] font-bold mb-1">
+              <Sparkles className="w-4 h-4" />
+              <span>Real Workshop &amp; Studio Floor</span>
+            </div>
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+              Every Stitch Guided by Master Hands
+            </h3>
+            <p className="text-xs sm:text-sm text-[#d1b8b8] max-w-2xl">
+              From individual pattern drafting to hand-finished basting trials, our dedicated tailoring desk at Fatoh ensures zero puckering and a custom silhouette crafted exclusively for you.
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* Story & Philosophy Grid */}
@@ -83,10 +111,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               "Create • Stitch • Empower" — Our Guiding Promise
             </h2>
             <p>
-              Founded with the vision that every woman deserves clothing cut specifically to her unique body proportions, Santosh Boutique rejected the concept of one-size-fits-all fast fashion. Whether you are dressing for a festive wedding in Bilaspur, an office event, or daily comfort, our atelier ensures seamless elegance and comfort.
+              Founded with the vision that every woman deserves clothing cut specifically to her unique body proportions, {BUSINESS_NAME} rejected the concept of one-size-fits-all fast fashion. Whether you are dressing for a festive wedding in Bilaspur, an office event, or daily comfort, our atelier ensures seamless elegance and comfort.
             </p>
             <p>
-              Over the last decade and a half, we have measured, cut, and stitched thousands of bridal lehengas, Patiala salwars, and architectural blouses for clients across Bilaspur, Ghumarwin, Hamirpur, and Shimla regions.
+              Over the last decade and a half, we have measured, cut, and stitched thousands of bridal lehengas, Patiala salwars, and architectural blouses for clients across Fatoh, Ghumarwin, Bilaspur, Hamirpur, and Himachal Pradesh.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
               <div className="p-4 rounded-2xl liquid-glass border border-white/10 flex items-start gap-3">
@@ -126,25 +154,43 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                 </li>
                 <li className="flex items-center justify-between border-b border-white/10 pb-2">
                   <span className="text-[#f3cf98] font-medium">Core Speciality</span>
-                  <span className="text-[#fff7f2] font-semibold">Bridal Blouses & Patiala Suits</span>
+                  <span className="text-[#fff7f2] font-semibold">Bridal Blouses &amp; Patiala Suits</span>
                 </li>
                 <li className="flex items-center justify-between border-b border-white/10 pb-2">
                   <span className="text-[#f3cf98] font-medium">Turnaround</span>
                   <span className="text-[#fff7f2] font-semibold">24h Alterations • 3-5 Days Suits</span>
                 </li>
                 <li className="flex items-center justify-between border-b border-white/10 pb-2">
-                  <span className="text-[#f3cf98] font-medium">Primary Landmark</span>
-                  <span className="text-[#fff7f2] font-semibold">Baba Balak Nath Temple, Sarti</span>
+                  <span className="text-[#f3cf98] font-medium">Exact Landmark</span>
+                  <span className="text-[#fff7f2] font-semibold text-right text-xs">near Baba Balak Nath Temple, Fatoh</span>
+                </li>
+                <li className="flex items-center justify-between border-b border-white/10 pb-2">
+                  <span className="text-[#f3cf98] font-medium">Customer Rating</span>
+                  <span className="text-[#fbbf24] font-semibold flex items-center gap-1">
+                    <Star className="w-3.5 h-3.5 fill-[#fbbf24]" /> 4.9 / 5.0 on Google
+                  </span>
                 </li>
               </ul>
 
-              <button
-                onClick={openWhatsApp}
-                className="w-full mt-6 py-3 px-4 rounded-xl bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 hover:shadow-lg transition-all"
-              >
-                <MessageCircle className="w-4 h-4 fill-white" />
-                <span>Chat Directly with Masterji</span>
-              </button>
+              <div className="space-y-2.5 mt-6">
+                <button
+                  onClick={openWhatsApp}
+                  className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 hover:shadow-lg transition-all"
+                >
+                  <MessageCircle className="w-4 h-4 fill-white" />
+                  <span>Chat Directly on WhatsApp</span>
+                </button>
+
+                <a
+                  href={GOOGLE_REVIEW_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-2.5 px-4 rounded-xl bg-[#fbbf24]/10 border border-[#fbbf24]/30 text-[#fbbf24] text-xs font-semibold flex items-center justify-center gap-2 hover:bg-[#fbbf24]/20 transition-all"
+                >
+                  <Star className="w-3.5 h-3.5 fill-[#fbbf24]" />
+                  <span>View &amp; Write Google Reviews</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -187,7 +233,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             Ready to Experience the Perfect Custom Fit?
           </h2>
           <p className="text-xs sm:text-base text-[#d1b8b8] max-w-xl mx-auto mb-6">
-            Visit our boutique near Baba Balak Nath Temple in Sarti, or message us on WhatsApp with your fabric details.
+            Visit our boutique near Baba Balak Nath Temple, Fatoh, Ghumarwin, Himachal Pradesh 174021, or message us on WhatsApp with your fabric details.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <button
@@ -202,7 +248,14 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               className="px-6 py-3 rounded-full liquid-glass text-white text-xs sm:text-sm font-semibold border border-white/20 hover:bg-white/10 transition-all flex items-center gap-2"
             >
               <MapPin className="w-4 h-4 text-[#d85c72]" />
-              <span>View Location & Maps</span>
+              <span>View Location &amp; Maps</span>
+            </button>
+            <button
+              onClick={() => onNavigate && onNavigate('review')}
+              className="px-6 py-3 rounded-full bg-[#fbbf24]/20 border border-[#fbbf24]/40 text-[#fbbf24] text-xs sm:text-sm font-semibold hover:bg-[#fbbf24]/30 transition-all flex items-center gap-2"
+            >
+              <Star className="w-4 h-4 fill-[#fbbf24]" />
+              <span>Rate Us on Google</span>
             </button>
           </div>
         </div>

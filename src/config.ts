@@ -19,21 +19,21 @@ export interface BoutiqueConfig {
 }
 
 export const DEFAULT_CONFIG: BoutiqueConfig = {
-  boutiqueName: 'Santosh Boutique & Stitching Studio',
-  phone: '+91 98160 00000',
-  whatsapp: '919816000000',
-  address: 'Fatoh, Near Radha Soami Satsang Beas, Bilaspur, Himachal Pradesh - 174004 (GPS: 31°24′45.5″N 76°44′40.1″E)',
-  landmark: 'Near Radha Soami Satsang Beas & Gram Panchayat Fatoh',
-  hours: '9:00 AM - 8:00 PM (Daily)',
+  boutiqueName: 'Santosh Boutique',
+  phone: '+91 94180 83935',
+  whatsapp: '919418083935',
+  address: 'near Baba Balak Nath Temple, Fatoh, Ghumarwin, Himachal Pradesh 174021',
+  landmark: 'near Baba Balak Nath Temple, Fatoh, Ghumarwin (Pin: 174021)',
+  hours: '9:30 AM - 7:30 PM (Mon - Sat)',
   heroHeadline: 'Stitching Your Dreams With Care',
   heroSubtitle: 'Traditional Designs • Modern Styles • Perfect Fit',
-  heroTagline: 'Fatoh, Bilaspur (H.P.) • Near Radha Soami Satsang Beas',
+  heroTagline: 'near Baba Balak Nath Temple, Fatoh, Ghumarwin (H.P. 174021)',
   priceSuit: '₹350 onwards',
   priceBlouse: '₹400 onwards',
   priceAlteration: '₹80 onwards',
   priceLehenga: '₹1200 onwards',
   mapsUrl: 'https://maps.google.com/?q=31.412639,76.744472',
-  announcement: 'Festive Season Stitching Slots Open | Express 24-48h Alteration Service',
+  announcement: 'Festive & Wedding Season Stitching Slots Open | Express 24-48h Alteration Service',
 };
 
 const LIVE_STORAGE_KEY = 'sb_live_config_v1';

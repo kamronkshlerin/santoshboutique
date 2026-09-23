@@ -1,34 +1,39 @@
-﻿import React, { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { 
   MapPin, 
   Phone, 
   Clock, 
   MessageCircle, 
-  Navigation
+  Navigation,
+  Star,
+  Instagram
 } from 'lucide-react';
-import { useBloggerConfig } from '../config';
+import { 
+  BUSINESS_NAME, FULL_ADDRESS, LANDMARK_NOTE, PHONE_DISPLAY, 
+  WHATSAPP_NUMBER, GOOGLE_REVIEW_URL, GOOGLE_MAPS_URL,
+  INSTAGRAM_URL, FACEBOOK_URL 
+} from '../constants';
 
 interface ContactPageProps {
   onNavigate?: (page: any) => void;
 }
 
 export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
-  const config = useBloggerConfig();
 
   useEffect(() => {
-    document.title = "Contact Us & Studio Location | Santosh Boutique Bilaspur (HP)";
+    document.title = `Contact & Location | ${BUSINESS_NAME} - Fatoh, Ghumarwin, Bilaspur (HP)`;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   const openWhatsApp = () => {
     const text = encodeURIComponent(
-      `Namaste ${config.boutiqueName}! I would like to visit your boutique in Fatoh near Baba Balak Nath Temple and need directions / an appointment.`
+      `Namaste ${BUSINESS_NAME}! I would like to visit your boutique near Baba Balak Nath Temple in Fatoh, Ghumarwin and need directions / an appointment.`
     );
-    window.open(`https://wa.me/${config.whatsapp}?text=${text}`, '_blank');
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, '_blank');
   };
 
   const openGoogleMaps = () => {
-    window.open(config.mapsUrl, '_blank');
+    window.open(GOOGLE_MAPS_URL, '_blank');
   };
 
   return (
@@ -43,19 +48,19 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
             Home
           </button>
           <span>/</span>
-          <span className="text-[#f3cf98] font-semibold">Contact & Studio Location</span>
+          <span className="text-[#f3cf98] font-semibold">Contact &amp; Studio Location</span>
         </nav>
 
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#f3cf98]/10 border border-[#f3cf98]/20 text-[#f3cf98] text-xs font-semibold tracking-wider uppercase mb-4">
           <MapPin className="w-3.5 h-3.5 text-[#d85c72]" />
-          Himachal Pradesh Atelier
+          Fatoh, Ghumarwin, Bilaspur (HP) 174021
         </div>
 
         <h1 className="text-4xl sm:text-6xl font-display font-bold text-[#fff7f2] tracking-tight leading-[1.1] mb-6">
           Visit Our Boutique or Get In Touch
         </h1>
         <p className="max-w-3xl text-[#d1b8b8] text-base sm:text-lg leading-relaxed">
-          Conveniently located near the sacred Baba Balak Nath Temple in Fatoh, Bilaspur. Walk in with your fabric or book a dedicated fitting session via WhatsApp.
+          Conveniently located {LANDMARK_NOTE}. Walk in with your fabric or book a dedicated fitting session via WhatsApp.
         </p>
       </div>
 
@@ -70,13 +75,13 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                 <MapPin className="w-5 h-5" />
               </div>
               <h3 className="text-xl font-display font-bold text-[#fff7f2] mb-2">
-                Studio Address & Landmark
+                Studio Address &amp; Exact NAP
               </h3>
-              <p className="text-xs sm:text-sm text-[#d1b8b8] leading-relaxed mb-3">
-                {config.address}
+              <p className="text-xs sm:text-sm text-[#fff7f2] leading-relaxed mb-3">
+                {FULL_ADDRESS}
               </p>
               <p className="text-xs text-[#f3cf98] bg-[#f3cf98]/10 p-2.5 rounded-xl border border-[#f3cf98]/20">
-                🧭 <strong>Landmark:</strong> {config.landmark}
+                🧭 <strong>Landmark:</strong> {LANDMARK_NOTE}
               </p>
 
               <button
@@ -96,7 +101,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                 </div>
                 <div>
                   <h4 className="text-sm font-bold text-[#fff7f2]">Operating Hours</h4>
-                  <p className="text-xs text-[#d1b8b8] mt-0.5">{config.hours}</p>
+                  <p className="text-xs text-[#d1b8b8] mt-0.5">Monday – Sunday: 9:00 AM – 7:30 PM</p>
                   <p className="text-[11px] text-[#25D366] font-semibold mt-1">Open 7 Days A Week for Fittings</p>
                 </div>
               </div>
@@ -107,8 +112,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                 </div>
                 <div>
                   <h4 className="text-sm font-bold text-[#fff7f2]">Direct Phone Line</h4>
-                  <a href={`tel:${config.phone.replace(/\s+/g, '')}`} className="text-xs font-bold text-[#f3cf98] hover:underline block mt-0.5">
-                    {config.phone}
+                  <a href={`tel:${WHATSAPP_NUMBER}`} className="text-xs font-bold text-[#f3cf98] hover:underline block mt-0.5">
+                    {PHONE_DISPLAY}
                   </a>
                   <p className="text-[11px] text-[#d1b8b8]">Speak directly with Masterji</p>
                 </div>
@@ -118,11 +123,49 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
             {/* Direct WhatsApp Callout */}
             <button
               onClick={openWhatsApp}
-              className="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white font-semibold text-sm shadow-xl hover:scale-[1.02] transition-all flex items-center justify-center gap-2.5"
+              className="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white font-semibold text-sm shadow-xl hover:scale-[1.02] transition-all flex items-center justify-center gap-2.5"
             >
               <MessageCircle className="w-5 h-5 fill-white" />
-              <span>Message on WhatsApp Now</span>
+              <span>Message on WhatsApp ({PHONE_DISPLAY})</span>
             </button>
+
+            {/* Google Review Callout */}
+            <a
+              href={GOOGLE_REVIEW_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full py-3 px-6 rounded-2xl bg-[#fbbf24]/10 border border-[#fbbf24]/30 text-[#fbbf24] font-semibold text-xs shadow-lg hover:bg-[#fbbf24]/20 transition-all flex items-center justify-center gap-2"
+            >
+              <Star className="w-4 h-4 fill-[#fbbf24]" />
+              <span>Leave a Review on Google Business Profile</span>
+            </a>
+
+            {/* Social Media Follow Box */}
+            <div className="p-4 rounded-2xl liquid-glass border border-white/10 flex items-center justify-between">
+              <span className="text-xs text-[#d1b8b8]">Follow our work online:</span>
+              <div className="flex items-center gap-2">
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 rounded-xl bg-[#E1306C]/20 border border-[#E1306C]/40 text-[#fff7f2] text-xs font-medium flex items-center gap-1.5 hover:bg-[#E1306C] transition-colors"
+                >
+                  <Instagram className="w-3.5 h-3.5 text-[#E1306C]" />
+                  <span>Instagram</span>
+                </a>
+                <a
+                  href={FACEBOOK_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 rounded-xl bg-[#1877F2]/20 border border-[#1877F2]/40 text-[#fff7f2] text-xs font-medium flex items-center gap-1.5 hover:bg-[#1877F2] transition-colors"
+                >
+                  <svg className="w-3.5 h-3.5 fill-[#1877F2]" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                  </svg>
+                  <span>Facebook</span>
+                </a>
+              </div>
+            </div>
           </div>
 
           {/* Col 2: Interactive Google Map + Directions Guide (7 cols) */}

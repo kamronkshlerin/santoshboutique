@@ -36,16 +36,16 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
 <head>
   <meta charset='UTF-8'/>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=5.0' name='viewport'/>
-  <title>Santosh Boutique &amp; Stitching Studio | Ladies Fashion &amp; Custom Tailoring Bilaspur</title>
+  <title>Santosh Boutique | Ladies Fashion &amp; Custom Tailoring Bilaspur (HP)</title>
 
-  <meta content='Santosh Boutique &amp; Stitching Studio in Bilaspur (HP) near Baba Balak Nath Temple, Sarti. Premium suit stitching, designer bridal blouses, custom tailoring, and express alteration services.' name='description'/>
-  <meta content='Santosh Boutique, Boutique Bilaspur, Ladies Tailor Sarti Bilaspur, Designer Blouse Bilaspur, Suit Stitching Himachal, Tailor near Baba Balak Nath Temple' name='keywords'/>
+  <meta content='Santosh Boutique in Fatoh, Ghumarwin, Bilaspur (HP) near Baba Balak Nath Temple - 174021. Designer bridal blouses, custom suit stitching, lehenga tailoring &amp; express alteration services. Call +91 94180 83935.' name='description'/>
+  <meta content='Santosh Boutique, Boutique Bilaspur, Ladies Tailor Ghumarwin, Designer Blouse Bilaspur, Suit Stitching Himachal, Tailor near Baba Balak Nath Temple Fatoh' name='keywords'/>
 
   <!-- Open Graph -->
   <meta content='website' property='og:type'/>
-  <meta content='Santosh Boutique &amp; Stitching Studio' property='og:title'/>
-  <meta content='Exquisite bespoke tailoring, designer bridal couture &amp; master alterations in Bilaspur, Himachal Pradesh.' property='og:description'/>
-  <meta content='https://cdn.jsdelivr.net/gh/kamronkshlerin/santoshboutique@dffa8f8/public/images/hero.jpg' property='og:image'/>
+  <meta content='Santosh Boutique | Fatoh, Ghumarwin, Bilaspur (HP)' property='og:title'/>
+  <meta content='Exquisite bespoke tailoring, designer bridal blouses &amp; master alterations in Fatoh, Ghumarwin, Bilaspur, Himachal Pradesh.' property='og:description'/>
+  <meta content='https://cdn.jsdelivr.net/gh/kamronkshlerin/santoshboutique@main/public/images/shop_front.webp' property='og:image'/>
 
   <!-- Security & Anti-Injection Protection -->
   <meta http-equiv='X-Content-Type-Options' content='nosniff'/>
@@ -61,25 +61,34 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
         "@type": "WebSite",
         "@id": "https://santoshboutique.blogspot.com/#website",
         "url": "https://santoshboutique.blogspot.com/",
-        "name": "Santosh Boutique &amp; Stitching Studio",
-        "description": "Premier bespoke ladies tailoring, bridal lehengas, custom designer blouses, and alteration studio in Bilaspur, Himachal Pradesh.",
+        "name": "Santosh Boutique",
+        "description": "Premier bespoke ladies tailoring, bridal lehengas, custom designer blouses, and alteration studio in Fatoh, Ghumarwin, Bilaspur, Himachal Pradesh 174021.",
         "inLanguage": "en-IN"
       },
       {
         "@type": ["LocalBusiness", "ClothingStore"],
         "@id": "https://santoshboutique.blogspot.com/#organization",
-        "name": "Santosh Boutique &amp; Stitching Studio Bilaspur",
-        "alternateName": ["Santosh Boutique", "Santosh Ladies Tailor Fatoh"],
+        "name": "Santosh Boutique",
+        "alternateName": [
+          "Santosh Boutique &amp; Stitching Studio",
+          "Santosh Ladies Tailor Fatoh",
+          "Santosh Tailor Ghumarwin"
+        ],
         "url": "https://santoshboutique.blogspot.com/",
         "telephone": "+919418083935",
-        "priceRange": "₹₹",
-        "image": "https://cdn.jsdelivr.net/gh/kamronkshlerin/santoshboutique@main/public/images/hero.jpg",
+        "priceRange": "₹80 - ₹1200",
+        "image": [
+          "https://cdn.jsdelivr.net/gh/kamronkshlerin/santoshboutique@main/public/images/shop_front.webp",
+          "https://cdn.jsdelivr.net/gh/kamronkshlerin/santoshboutique@main/public/images/designer_blouse.webp",
+          "https://cdn.jsdelivr.net/gh/kamronkshlerin/santoshboutique@main/public/images/ladies_suit.webp",
+          "https://cdn.jsdelivr.net/gh/kamronkshlerin/santoshboutique@main/public/images/sharara_kurti.webp"
+        ],
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Fatoh, Near Radha Soami Satsang Beas &amp; Gram Panchayat Fatoh",
-          "addressLocality": "Bilaspur",
+          "streetAddress": "near Baba Balak Nath Temple, Fatoh, Ghumarwin",
+          "addressLocality": "Ghumarwin, Bilaspur",
           "addressRegion": "Himachal Pradesh",
-          "postalCode": "174004",
+          "postalCode": "174021",
           "addressCountry": "IN"
         },
         "geo": {
@@ -90,17 +99,76 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            "opens": "09:30",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "09:00",
             "closes": "19:30"
           }
+        ],
+        "sameAs": [
+          "https://www.instagram.com/santoshboutiquehp/",
+          "https://www.facebook.com/santoshboutiquehp/",
+          "https://share.google/VjLoLEBNcQzAPxhq5"
         ],
         "hasMap": "https://maps.google.com/?q=31.412639,76.744472",
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "4.9",
-          "reviewCount": "128"
+          "reviewCount": "134"
         }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://santoshboutique.blogspot.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Bilaspur me sabse acchi ladies boutique kaunsi hai?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Santosh Boutique (Fatoh, Ghumarwin, Bilaspur HP - 174021 near Baba Balak Nath Temple) 15+ salon ke anubhav ke saath Punjabi suit stitching, designer bridal blouse aur express alteration ke liye sabse lokpriya boutique hai."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Suit stitching ka price kitna hai?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Santosh Boutique par plain simple suit stitching ₹250 se, lining/astar suit ₹350 se, designer Anarkali &amp; Sharara suit ₹500 se shuru hoti hai. Express 24-48 hours delivery bhi uplabdh hai."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Bridal blouse stitching kahan milegi Bilaspur me?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Santosh Boutique par premium bridal blouse stitching milti hai (Princess cut, padded cup, deep back dori latkan, heavy zari aari work). Rate ₹300 se ₹800 ke beech hai with perfect fitting guarantee."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Boutique ke opening hours kya hain?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Santosh Boutique Somwar se Ravivar (Monday to Sunday) subah 9:00 AM se shaam 7:30 PM tak saaton din khuli rehti hai. Fitting ya measurement ke liye kabhi bhi walk-in kar sakte hain."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Kya emergency ya express alteration service available hai?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Haan, Santosh Boutique express same-day aur 24-hour urgent alteration provide karti hai. Fitting loose/tight, pant length, blouse adjustment ₹80 se start hota hai."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Santosh Boutique ka exact location aur contact number kya hai?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Exact Address: near Baba Balak Nath Temple, Fatoh, Ghumarwin, Himachal Pradesh 174021. Phone/WhatsApp: +91 94180 83935. Ghumarwin aur Bilaspur Bus Stand se seedhi road connectivity hai."
+            }
+          }
+        ]
       },
       {
         "@type": "SiteNavigationElement",
@@ -109,6 +177,7 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
           "Our Tailoring Process",
           "Price Guide &amp; Rates",
           "About Our Atelier",
+          "Rate &amp; Review on Google",
           "Studio Location &amp; Directions"
         ],
         "url": [
@@ -116,6 +185,7 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
           "https://santoshboutique.blogspot.com/process",
           "https://santoshboutique.blogspot.com/pricing",
           "https://santoshboutique.blogspot.com/about",
+          "https://santoshboutique.blogspot.com/review",
           "https://santoshboutique.blogspot.com/contact"
         ]
       }
