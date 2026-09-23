@@ -168,7 +168,7 @@ export const FaqAeoSection: React.FC = () => {
               <span>Chat on WhatsApp</span>
             </a>
             <a
-              href={`tel:${PHONE_DISPLAY}`}
+              href={`tel:${PHONE_TEL}`}
               className="px-4 py-2 rounded-xl bg-white/10 border border-white/20 text-[#fff7f2] text-xs font-medium hover:bg-white/15 transition-all flex items-center gap-1.5"
             >
               <Phone className="w-3.5 h-3.5 text-[#f3cf98]" />

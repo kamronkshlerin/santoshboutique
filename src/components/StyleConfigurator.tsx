@@ -252,7 +252,7 @@ export const StyleConfigurator: React.FC<StyleConfiguratorProps> = ({ theme = 'd
                     <input
                       type="tel"
                       required
-                      placeholder="e.g. 98160 83935"
+                      placeholder="e.g. 94181 03213"
                       value={customerPhone}
                       onChange={(e) => {
                         setCustomerPhone(e.target.value);

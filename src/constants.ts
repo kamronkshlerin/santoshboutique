@@ -28,9 +28,9 @@ export const FULL_ADDRESS = 'near Baba Balak Nath Temple, Fatoh, Ghumarwin, Hima
 export const SHORT_LANDMARK = 'near Baba Balak Nath Temple, Fatoh, Ghumarwin';
 export const LANDMARK_NOTE = SHORT_LANDMARK;
 export const PINCODE = '174021';
-export const PHONE_DISPLAY = '+91 94180 83935';
-export const PHONE_TEL = '+919418083935';
-export const WHATSAPP_NUMBER = '919418083935';
+export const PHONE_DISPLAY = '+91 94181 03213';
+export const PHONE_TEL = '+919418103213';
+export const WHATSAPP_NUMBER = '919418103213';
 export const GEO_COORDS = { lat: 31.412639, lng: 76.744472 };
 
 // Social Media & Google Business Profile Links

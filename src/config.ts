@@ -20,8 +20,8 @@ export interface BoutiqueConfig {
 
 export const DEFAULT_CONFIG: BoutiqueConfig = {
   boutiqueName: 'Santosh Boutique',
-  phone: '+91 94180 83935',
-  whatsapp: '919418083935',
+  phone: '+91 94181 03213',
+  whatsapp: '919418103213',
   address: 'near Baba Balak Nath Temple, Fatoh, Ghumarwin, Himachal Pradesh 174021',
   landmark: 'near Baba Balak Nath Temple, Fatoh, Ghumarwin (Pin: 174021)',
   hours: '9:30 AM - 7:30 PM (Mon - Sat)',

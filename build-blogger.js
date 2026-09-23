@@ -38,7 +38,7 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=5.0' name='viewport'/>
   <title>Santosh Boutique | Ladies Fashion &amp; Custom Tailoring Bilaspur (HP)</title>
 
-  <meta content='Santosh Boutique in Fatoh, Ghumarwin, Bilaspur (HP) near Baba Balak Nath Temple - 174021. Designer bridal blouses, custom suit stitching, lehenga tailoring &amp; express alteration services. Call +91 94180 83935.' name='description'/>
+  <meta content='Santosh Boutique in Fatoh, Ghumarwin, Bilaspur (HP) near Baba Balak Nath Temple - 174021. Designer bridal blouses, custom suit stitching, lehenga tailoring &amp; express alteration services. Call +91 94181 03213.' name='description'/>
   <meta content='Santosh Boutique, Boutique Bilaspur, Ladies Tailor Ghumarwin, Designer Blouse Bilaspur, Suit Stitching Himachal, Tailor near Baba Balak Nath Temple Fatoh' name='keywords'/>
 
   <!-- Open Graph -->
@@ -75,7 +75,7 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
           "Santosh Tailor Ghumarwin"
         ],
         "url": "https://santoshboutique.blogspot.com/",
-        "telephone": "+919418083935",
+        "telephone": "+919418103213",
         "priceRange": "₹80 - ₹1200",
         "image": [
           "https://cdn.jsdelivr.net/gh/kamronkshlerin/santoshboutique@main/public/images/shop_front.webp",
@@ -165,7 +165,7 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
             "name": "Santosh Boutique ka exact location aur contact number kya hai?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Exact Address: near Baba Balak Nath Temple, Fatoh, Ghumarwin, Himachal Pradesh 174021. Phone/WhatsApp: +91 94180 83935. Ghumarwin aur Bilaspur Bus Stand se seedhi road connectivity hai."
+              "text": "Exact Address: near Baba Balak Nath Temple, Fatoh, Ghumarwin, Himachal Pradesh 174021. Phone/WhatsApp: +91 94181 03213. Ghumarwin aur Bilaspur Bus Stand se seedhi road connectivity hai."
             }
           }
         ]
@@ -363,8 +363,8 @@ instructions: Customer bookings Google Sheets me auto-sync karne ke liye apna Ap
     <b:section class='layout-section' id='sec-contact' name='1. 📱 Studio Contact &amp; WhatsApp Settings' showaddelement='yes'>
       <b:widget id='HTML101' locked='false' title='WhatsApp &amp; Calling Numbers' type='HTML' version='2'>
         <b:widget-settings>
-          <b:widget-setting name='content'><![CDATA[whatsapp: 919816000000
-phone: +91 98160 00000
+          <b:widget-setting name='content'><![CDATA[whatsapp: 919418103213
+phone: +91 94181 03213
 hours: 9:00 AM - 8:00 PM (Everyday)]]></b:widget-setting>
         </b:widget-settings>
         <b:includable id='main'>
