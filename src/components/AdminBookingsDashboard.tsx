@@ -4,10 +4,10 @@ import {
   Sparkles, Filter, CheckCircle, X, Scissors, Settings, 
   KeyRound, Save, RotateCcw, Copy, Check, 
   MapPin, Phone, DollarSign, Megaphone, ShieldAlert, Mail,
-  ArrowLeft, Key
+  ArrowLeft, Key, RotateCw, Plus
 } from 'lucide-react';
 import { 
-  BookingRecord, getBookings, updateBookingStatus, deleteBooking, 
+  BookingRecord, getBookings, saveBooking, updateBookingStatus, deleteBooking, 
   clearAllBookings, exportBookingsToCSV 
 } from '../utils/bookingStore';
 import { useBloggerConfig, saveLiveConfig, resetLiveConfig, BoutiqueConfig } from '../config';
@@ -91,6 +91,25 @@ export const AdminBookingsDashboard: React.FC<AdminDashboardProps> = ({ onClose 
   const loadBookings = () => {
     const list = getBookings();
     setBookings(list);
+  };
+
+  const handleAddSampleBooking = async () => {
+    const sampleNames = ['Pooja Sharma (Demo)', 'Simran Kaur (Demo)', 'Anjali Verma (Demo)', 'Neha Thakur (Demo)'];
+    const sampleServices = ['Designer Bridal Lehenga', 'Luxury Party Suit', 'Embroidered Blouse', 'Express Alteration'];
+    const randomIdx = Math.floor(Math.random() * sampleNames.length);
+
+    await saveBooking({
+      customerName: sampleNames[randomIdx],
+      customerPhone: '+91 98160 54321',
+      serviceType: sampleServices[randomIdx],
+      styleCut: 'Deep Sweetheart & Heavy Zardozi Handwork',
+      fabricStatus: 'Fabric ready at boutique',
+      urgency: 'Express (24-48 Hours)',
+      eventDate: new Date(Date.now() + 86400000 * 5).toISOString().slice(0, 10),
+      customerNote: 'Need perfect fitting for wedding sangeet function on Sunday.',
+      estimatedPrice: '₹3,500'
+    });
+    loadBookings();
   };
 
   // Stage 1 Secret Code Verification
@@ -534,8 +553,24 @@ announcement: ${editConfig.announcement}
         <div>
           {/* Action Bar */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <span className="text-xs font-semibold text-[#f3cf98]">Quick Actions:</span>
+              <button
+                onClick={loadBookings}
+                className="px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-[#fff7f2] text-xs font-medium flex items-center gap-1.5 hover:bg-white/15 transition-all"
+                title="Refresh list from storage"
+              >
+                <RotateCw className="w-3.5 h-3.5" />
+                <span>Refresh</span>
+              </button>
+              <button
+                onClick={handleAddSampleBooking}
+                className="px-3 py-1.5 rounded-lg bg-[#f3cf98]/20 border border-[#f3cf98]/40 text-[#f3cf98] text-xs font-medium flex items-center gap-1.5 hover:bg-[#f3cf98]/30 transition-all"
+                title="Add a test booking to verify dashboard display"
+              >
+                <Plus className="w-3.5 h-3.5" />
+                <span>+ Test Order</span>
+              </button>
               <button
                 onClick={() => exportBookingsToCSV(bookings)}
                 className="px-3 py-1.5 rounded-lg bg-[#25D366]/20 border border-[#25D366]/40 text-[#25D366] text-xs font-medium flex items-center gap-1.5 hover:bg-[#25D366]/30"
@@ -633,9 +668,25 @@ announcement: ${editConfig.announcement}
               <h3 className="text-lg font-bold text-[#fff7f2] mb-1">
                 Abhi koi bookings match nahi hui
               </h3>
-              <p className="text-xs text-[#d1b8b8] max-w-md mx-auto">
-                Customer website par outfit configure karke WhatsApp click karega, uska data instantly yahan appear hoga.
+              <p className="text-xs text-[#d1b8b8] max-w-md mx-auto mb-5">
+                Customer website par outfit configure karke WhatsApp click karega, uska order yahan instant appear hoga.
               </p>
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <button
+                  onClick={handleAddSampleBooking}
+                  className="px-4 py-2 rounded-xl bg-[#f3cf98] text-[#120407] text-xs font-bold hover:brightness-110 flex items-center gap-1.5 transition-all shadow-lg"
+                >
+                  <Plus className="w-4 h-4" />
+                  <span>➕ Add Demo Test Order</span>
+                </button>
+                <button
+                  onClick={loadBookings}
+                  className="px-4 py-2 rounded-xl bg-white/10 border border-white/20 text-[#fff7f2] text-xs font-medium hover:bg-white/15 flex items-center gap-1.5 transition-all"
+                >
+                  <RotateCw className="w-4 h-4" />
+                  <span>🔄 Refresh List</span>
+                </button>
+              </div>
             </div>
           ) : (
             <div className="space-y-4">
