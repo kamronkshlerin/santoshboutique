@@ -36,8 +36,8 @@ export const AdminBookingsDashboard: React.FC<AdminDashboardProps> = ({ onClose 
   const [cooldownSec, setCooldownSec] = useState(0);
   const [activeTab, setActiveTab] = useState<AdminTab>('bookings');
 
-  // Bookings state
-  const [bookings, setBookings] = useState<BookingRecord[]>([]);
+  // Bookings state - initialized directly from localStorage store
+  const [bookings, setBookings] = useState<BookingRecord[]>(() => getBookings());
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [webhookUrl, setWebhookUrl] = useState(() => {
@@ -60,14 +60,14 @@ export const AdminBookingsDashboard: React.FC<AdminDashboardProps> = ({ onClose 
     setEditConfig(config);
   }, [config]);
 
-  // Session persistence
+  // Session persistence & realtime storage listeners
   useEffect(() => {
     const authSession = sessionStorage.getItem('sb_admin_auth_token');
     if (authSession === 'valid_session') {
       setIsAuthenticated(true);
       setIsStage1Passed(true);
-      loadBookings();
     }
+    loadBookings();
 
     const handleBookingUpdate = () => {
       loadBookings();
@@ -79,6 +79,13 @@ export const AdminBookingsDashboard: React.FC<AdminDashboardProps> = ({ onClose 
       window.removeEventListener('sb_booking_created', handleBookingUpdate);
     };
   }, []);
+
+  // Reload bookings whenever authenticated
+  useEffect(() => {
+    if (isAuthenticated) {
+      loadBookings();
+    }
+  }, [isAuthenticated]);
 
   // Cooldown countdown timer
   useEffect(() => {
@@ -577,6 +584,15 @@ announcement: ${editConfig.announcement}
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>Export to Excel</span>
+              </button>
+
+              <button
+                onClick={loadBookings}
+                className="px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-[#fff7f2] text-xs font-medium flex items-center gap-1.5 hover:bg-white/20 transition-all"
+                title="Refresh latest customer orders"
+              >
+                <RotateCcw className="w-3.5 h-3.5 text-[#f3cf98]" />
+                <span>Refresh</span>
               </button>
             </div>
 

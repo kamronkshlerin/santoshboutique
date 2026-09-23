@@ -1,4 +1,4 @@
-﻿import React, { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { 
   CheckCircle2, 
   Ruler, 
@@ -130,7 +130,7 @@ export const ProcessPage: React.FC<ProcessPageProps> = ({ onNavigate }) => {
 
       {/* Turnaround Guarantees Card */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-        <div className="rounded-3xl liquid-glass p-8 sm:p-12 border border-[#f3cf98]/30 shadow-2xl bg-gradient-to-tr from-[#8a1c32]/25 via-transparent to-[#1a080e]">
+        <div className="rounded-3xl liquid-glass p-8 sm:p-12 border border-[#f3cf98]/30 shadow-2xl cta-experience-card">
           <div className="text-center max-w-3xl mx-auto mb-10">
             <h2 className="text-2xl sm:text-4xl font-display font-bold text-[#fff7f2] mb-3">
               Delivery Turnaround Timelines in Bilaspur

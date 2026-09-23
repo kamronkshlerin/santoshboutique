@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { 
   MessageCircle, 
   Camera 
@@ -194,16 +194,16 @@ export const DesignsPage: React.FC<DesignsPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* Pinterest & Instagram Recreation Card */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-[#8a1c32]/30 via-[#1a080e] to-[#8a1c32]/20 border border-[#f3cf98]/30 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+        <div className="p-8 sm:p-12 rounded-3xl liquid-glass border border-[#f3cf98]/30 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8 recreation-banner-card">
           <div className="space-y-3 max-w-2xl">
-            <span className="text-xs font-bold text-[#f3cf98] uppercase tracking-widest">
+            <span className="text-xs font-bold text-[#f3cf98] uppercase tracking-widest banner-eyebrow">
               Have a Photo or Screenshot?
             </span>
-            <h2 className="text-2xl sm:text-4xl font-display font-bold text-[#fff7f2]">
-              Instagram & Pinterest Recreation Studio
+            <h2 className="text-2xl sm:text-4xl font-display font-bold text-[#fff7f2] banner-heading">
+              Instagram &amp; Pinterest Recreation Studio
             </h2>
-            <p className="text-xs sm:text-sm text-[#d1b8b8] leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#d1b8b8] leading-relaxed banner-desc">
               Found a celebrity lehenga or an influencer suit design online? Send the screenshot to our WhatsApp. Our master tailor analyzes the stitching pattern, estimates fabric yardage, and stitches the exact fit for you in Bilaspur.
             </p>
           </div>
