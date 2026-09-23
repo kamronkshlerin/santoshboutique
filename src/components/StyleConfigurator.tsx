@@ -179,27 +179,29 @@ export const StyleConfigurator: React.FC<StyleConfiguratorProps> = ({ theme = 'd
                         type="button"
                         key={svc.id}
                         onClick={() => setSelectedService(svc.id)}
-                        className={`p-3 rounded-2xl border text-left flex flex-col justify-between transition-all ${
+                        className={`service-btn-item p-3 rounded-2xl border text-left flex flex-col justify-between transition-all ${
                           isSelected
-                            ? 'bg-[#8a1c32] border-[#f3cf98] text-white shadow-lg shadow-[#8a1c32]/30 ring-1 ring-[#f3cf98]'
+                            ? 'service-card-selected bg-[#8a1c32] border-[#f3cf98] text-white shadow-lg shadow-[#8a1c32]/30 ring-1 ring-[#f3cf98]'
                             : isLight
                               ? 'bg-[#faf5f0] border-gray-200 hover:border-[#8a1c32]/40 text-[#2b1016]'
                               : 'bg-white/5 border-white/10 hover:border-white/20 text-[#fff7f2]'
                         }`}
                       >
                         <div className="flex items-center justify-between mb-2">
-                          <span className={`p-1.5 rounded-lg ${isSelected ? 'bg-black/20' : isLight ? 'bg-white shadow-sm' : 'bg-black/20'}`}>
+                          <span className={`p-1.5 rounded-lg ${isSelected ? 'bg-black/20 text-white' : isLight ? 'bg-white shadow-sm text-[#8a1c32]' : 'bg-black/20 text-white'}`}>
                             {svc.icon}
                           </span>
                           {isSelected && <Check className="w-3.5 h-3.5 text-[#f3cf98]" />}
                         </div>
-                        <p className="text-xs font-bold leading-tight">{svc.label}</p>
-                        <p className={`text-[10px] mt-1 ${
+                        <p className={`text-xs font-bold leading-tight service-label ${isSelected ? '!text-white' : isLight ? '!text-[#1a060c]' : '!text-[#fff7f2]'}`}>
+                          {svc.label}
+                        </p>
+                        <p className={`text-[10px] mt-1 service-price ${
                           isSelected 
-                            ? 'text-[#fce1b6]' 
+                            ? '!text-[#fce1b6] font-semibold' 
                             : isLight 
-                              ? 'text-[#8a1c32] font-semibold' 
-                              : 'text-[#f3cf98]'
+                              ? '!text-[#8a1c32] font-semibold' 
+                              : '!text-[#f3cf98]'
                         }`}>
                           {svc.price}
                         </p>

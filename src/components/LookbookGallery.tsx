@@ -160,9 +160,9 @@ export const LookbookGallery: React.FC = () => {
               className="group cursor-pointer rounded-2xl overflow-hidden liquid-glass border border-white/10 hover:border-[#f3cf98]/50 transition-all duration-300 shadow-xl flex flex-col justify-between"
             >
               {/* Card Header Strip (Keeps image completely unobstructed) */}
-              <div className="flex items-center justify-between px-3.5 py-2 bg-[#18070d] border-b border-white/5 text-[10px]">
-                <span className="font-semibold text-[#f3cf98] uppercase tracking-wider">{item.categoryLabel}</span>
-                <span className="font-semibold text-white/80 px-2 py-0.5 rounded-full bg-white/10 border border-white/10">
+              <div className="lookbook-card-header flex items-center justify-between px-3.5 py-2 bg-[#18070d] border-b border-white/5 text-[10px]">
+                <span className="lookbook-cat-label font-semibold text-[#f3cf98] uppercase tracking-wider">{item.categoryLabel}</span>
+                <span className="lookbook-tag-pill font-semibold text-white/80 px-2 py-0.5 rounded-full bg-white/10 border border-white/10">
                   {item.tag}
                 </span>
               </div>

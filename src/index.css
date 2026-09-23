@@ -711,3 +711,98 @@
 .light-mode .cta-experience-card p {
   color: #523c44 !important;
 }
+
+
+/* ==========================================================================
+   FIX LIGHT MODE CONTRAST: SELECTED SERVICE CARDS & LOOKBOOK REAL GALLERY
+   ========================================================================== */
+
+/* 1. Style Configurator Selected Card in Light Mode */
+.light-mode .service-card-selected,
+.light-mode .service-btn-item.service-card-selected,
+.light-mode button.service-card-selected,
+.light-mode button[class*="service-card-selected"],
+.light-mode button[class*="bg-[#8a1c32]"] {
+  background-color: #8a1c32 !important;
+  border-color: #f3cf98 !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 24px -4px rgba(138, 28, 50, 0.35) !important;
+}
+
+.light-mode .service-card-selected p,
+.light-mode .service-card-selected .service-label,
+.light-mode .service-card-selected p.service-label,
+.light-mode button.service-card-selected p,
+.light-mode button.service-card-selected .service-label,
+.light-mode button[class*="bg-[#8a1c32]"] p,
+.light-mode button[class*="bg-[#8a1c32]"] .service-label {
+  color: #ffffff !important;
+}
+
+.light-mode .service-card-selected .service-price,
+.light-mode .service-card-selected p.service-price,
+.light-mode button.service-card-selected .service-price,
+.light-mode button.service-card-selected p.service-price,
+.light-mode button[class*="bg-[#8a1c32]"] .service-price,
+.light-mode button[class*="bg-[#8a1c32]"] p.service-price {
+  color: #fce1b6 !important;
+  font-weight: 600 !important;
+}
+
+.light-mode .service-card-selected svg,
+.light-mode button.service-card-selected svg {
+  color: #ffffff !important;
+}
+
+.light-mode .service-card-selected .lucide-check,
+.light-mode button.service-card-selected .lucide-check,
+.light-mode .service-card-selected svg[class*="text-[#f3cf98]"],
+.light-mode button.service-card-selected svg[class*="text-[#f3cf98]"] {
+  color: #fce1b6 !important;
+}
+
+/* Unselected Service Buttons in Light Mode */
+.light-mode .service-btn-item:not(.service-card-selected) {
+  background-color: #ffffff !important;
+  border-color: rgba(138, 28, 50, 0.15) !important;
+}
+.light-mode .service-btn-item:not(.service-card-selected):hover {
+  border-color: rgba(138, 28, 50, 0.4) !important;
+  background-color: #fff9fa !important;
+}
+.light-mode .service-btn-item:not(.service-card-selected) p.service-label {
+  color: #1a060c !important;
+}
+.light-mode .service-btn-item:not(.service-card-selected) p.service-price {
+  color: #8a1c32 !important;
+}
+
+/* 2. Lookbook Real Photo Gallery Card Header Strip */
+.light-mode .lookbook-card-header,
+.light-mode div.lookbook-card-header,
+.light-mode [class*="lookbook-card-header"],
+.light-mode div[class*="bg-[#18070d]"] {
+  background: #fdf2f4 !important;
+  background-color: #fdf2f4 !important;
+  border-bottom: 1px solid rgba(138, 28, 50, 0.12) !important;
+}
+
+.light-mode .lookbook-cat-label,
+.light-mode .lookbook-card-header .lookbook-cat-label,
+.light-mode .lookbook-card-header span:first-child,
+.light-mode div[class*="bg-[#18070d]"] span:first-child {
+  color: #8a1c32 !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+}
+
+.light-mode .lookbook-tag-pill,
+.light-mode .lookbook-card-header .lookbook-tag-pill,
+.light-mode .lookbook-card-header span:last-child,
+.light-mode div[class*="bg-[#18070d]"] span:last-child {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(138, 28, 50, 0.18) !important;
+  color: #8a1c32 !important;
+  font-weight: 600 !important;
+  box-shadow: 0 1px 3px rgba(138, 28, 50, 0.08) !important;
+}
