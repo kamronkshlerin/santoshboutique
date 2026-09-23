@@ -379,7 +379,7 @@ priceLehenga: ₹1200 onwards]]></b:widget-setting>
         <b:widget-settings>
           <b:widget-setting name='content'><![CDATA[address: Fatoh, Near Radha Soami Satsang Beas, Bilaspur, Himachal Pradesh - 174004 (GPS: 31°24'45.5"N 76°44'40.1"E)
 landmark: Near Radha Soami Satsang Beas & Gram Panchayat Fatoh (Coordinates: 31°24'45.5"N 76°44'40.1"E)
-mapsUrl: https://maps.google.com/?q=31.412639,76.744472</b:widget-setting>
+mapsUrl: https://maps.google.com/?q=31.412639,76.744472]]></b:widget-setting>
         </b:widget-settings>
         <b:includable id='main'>
           <div class='cms-block' data-key='location'>
