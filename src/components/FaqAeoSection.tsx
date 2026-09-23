@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { HelpCircle, ChevronDown, MessageCircle, Phone } from 'lucide-react';
-import { PHONE_DISPLAY, WHATSAPP_NUMBER } from '../constants';
+import { PHONE_TEL, WHATSAPP_NUMBER } from '../constants';
 
 export interface FaqItem {
   question: string;
