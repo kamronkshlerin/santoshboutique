@@ -38,13 +38,13 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=5.0' name='viewport'/>
   <title>Santosh Boutique | Ladies Fashion &amp; Custom Tailoring Bilaspur (HP)</title>
 
-  <meta content='Santosh Boutique in Fatoh, Ghumarwin, Bilaspur (HP) Near Baba Balak Nath Temple - 174021. Designer bridal blouses, custom suit stitching, lehenga tailoring &amp; express alteration services. Call +91 94181 03213.' name='description'/>
-  <meta content='Santosh Boutique, Boutique Bilaspur, Ladies Tailor Ghumarwin, Designer Blouse Bilaspur, Suit Stitching Himachal, Tailor Near Baba Balak Nath Temple Fatoh' name='keywords'/>
+  <meta content='Santosh Boutique at Siddh Temple, near Godriya Baba, Fatoh, Ghumarwin, Bilaspur (HP) - 174021. Designer bridal blouses, custom suit stitching, lehenga tailoring &amp; express alteration services. Call +91 94181 03213.' name='description'/>
+  <meta content='Santosh Boutique, Boutique Bilaspur, Ladies Tailor Ghumarwin, Designer Blouse Bilaspur, Suit Stitching Himachal, Tailor Near Siddh Temple Godriya Baba Fatoh, Boutique Himachal Pradesh' name='keywords'/>
 
   <!-- Open Graph -->
   <meta content='website' property='og:type'/>
   <meta content='Santosh Boutique | Fatoh, Ghumarwin, Bilaspur (HP)' property='og:title'/>
-  <meta content='Exquisite bespoke tailoring, designer bridal blouses &amp; master alterations in Fatoh, Ghumarwin, Bilaspur, Himachal Pradesh.' property='og:description'/>
+  <meta content='Exquisite bespoke tailoring, designer bridal blouses &amp; master alterations at Siddh Temple, near Godriya Baba, Fatoh, Ghumarwin, Bilaspur, Himachal Pradesh.' property='og:description'/>
   <meta content='https://cdn.jsdelivr.net/gh/kamronkshlerin/santoshboutique@main/public/images/shop_front.webp' property='og:image'/>
 
   <!-- Security & Anti-Injection Protection -->
@@ -62,7 +62,7 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
         "@id": "https://santoshboutique.blogspot.com/#website",
         "url": "https://santoshboutique.blogspot.com/",
         "name": "Santosh Boutique",
-        "description": "Premier bespoke ladies tailoring, bridal lehengas, custom designer blouses, and alteration studio in Fatoh, Ghumarwin, Bilaspur, Himachal Pradesh 174021.",
+        "description": "Premier bespoke ladies tailoring, bridal lehengas, custom designer blouses, and alteration studio at Siddh Temple, near Godriya Baba, Fatoh, Ghumarwin, Bilaspur, Himachal Pradesh 174021.",
         "inLanguage": "en-IN"
       },
       {
@@ -85,7 +85,7 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
         ],
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Near Baba Balak Nath Temple, Fatoh, Ghumarwin",
+          "streetAddress": "Siddh Temple, near Godriya Baba, Fatoh, Ghumarwin",
           "addressLocality": "Ghumarwin, Bilaspur",
           "addressRegion": "Himachal Pradesh",
           "postalCode": "174021",
@@ -109,7 +109,7 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
           "https://www.facebook.com/santoshboutiquehp/",
           "https://share.google/VjLoLEBNcQzAPxhq5"
         ],
-        "hasMap": "https://maps.google.com/?q=31.412639,76.744472",
+        "hasMap": "https://www.google.com/maps/place//data=!4m2!3m1!1s0x39053d637335a73b:0x62a94a2e6ba15c9d?sa=X&ved=1t:8290&ictx=111",
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "4.9",
@@ -125,7 +125,7 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
             "name": "Bilaspur me sabse acchi ladies boutique kaunsi hai?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Santosh Boutique (Fatoh, Ghumarwin, Bilaspur HP - 174021 Near Baba Balak Nath Temple) 15+ salon ke anubhav ke saath Punjabi suit stitching, designer bridal blouse aur express alteration ke liye sabse lokpriya boutique hai."
+              "text": "Santosh Boutique (Siddh Temple, near Godriya Baba, Fatoh, Ghumarwin, Bilaspur HP - 174021) 15+ salon ke anubhav ke saath Punjabi suit stitching, designer bridal blouse aur express alteration ke liye sabse lokpriya boutique hai."
             }
           },
           {
@@ -165,7 +165,7 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
             "name": "Santosh Boutique ka exact location aur contact number kya hai?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Exact Address: near Baba Balak Nath Temple, Fatoh, Ghumarwin, Himachal Pradesh 174021. Phone/WhatsApp: +91 94181 03213. Ghumarwin aur Bilaspur Bus Stand se seedhi road connectivity hai."
+              "text": "Exact Address: Siddh Temple, near Godriya Baba, Fatoh, Ghumarwin, Himachal Pradesh 174021, India. Phone/WhatsApp: +91 94181 03213. Google Maps: https://www.google.com/maps/place//data=!4m2!3m1!1s0x39053d637335a73b:0x62a94a2e6ba15c9d?sa=X&ved=1t:8290&ictx=111"
             }
           }
         ]
@@ -177,6 +177,7 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
           "Our Tailoring Process",
           "Price Guide &amp; Rates",
           "About Our Atelier",
+          "Himachal Fashion Blog (20 Guides)",
           "Rate &amp; Review on Google",
           "Studio Location &amp; Directions"
         ],
@@ -185,6 +186,7 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
           "https://santoshboutique.blogspot.com/process",
           "https://santoshboutique.blogspot.com/pricing",
           "https://santoshboutique.blogspot.com/about",
+          "https://santoshboutique.blogspot.com/blog",
           "https://santoshboutique.blogspot.com/review",
           "https://santoshboutique.blogspot.com/contact"
         ]
@@ -414,7 +416,7 @@ hours: 9:00 AM - 8:00 PM (Everyday)]]></b:widget-setting>
         <b:widget-settings>
           <b:widget-setting name='content'><![CDATA[heroHeadline: Stitching Your Dreams With Care
 heroSubtitle: Traditional Designs • Modern Styles • Perfect Fit
-heroTagline: Near Baba Balak Nath Temple, Fatoh, Bilaspur (H.P.)]]></b:widget-setting>
+heroTagline: Siddh Temple, near Godriya Baba, Fatoh, Ghumarwin, Bilaspur (H.P.)]]></b:widget-setting>
         </b:widget-settings>
         <b:includable id='main'>
           <div class='cms-block' data-key='hero'>
@@ -445,9 +447,9 @@ priceLehenga: ₹1200 onwards]]></b:widget-setting>
     <b:section class='layout-section' id='sec-location' name='4. 📍 Studio Address &amp; Maps' showaddelement='yes'>
       <b:widget id='HTML104' locked='false' title='Address &amp; Landmark Details' type='HTML' version='2'>
         <b:widget-settings>
-          <b:widget-setting name='content'><![CDATA[address: Fatoh, Near Radha Soami Satsang Beas, Bilaspur, Himachal Pradesh - 174004 (GPS: 31°24'45.5"N 76°44'40.1"E)
-landmark: Near Radha Soami Satsang Beas & Gram Panchayat Fatoh (Coordinates: 31°24'45.5"N 76°44'40.1"E)
-mapsUrl: https://maps.google.com/?q=31.412639,76.744472]]></b:widget-setting>
+          <b:widget-setting name='content'><![CDATA[address: Siddh Temple, near Godriya Baba, Fatoh, Ghumarwin, Himachal Pradesh 174021, India
+landmark: Siddh Temple, near Godriya Baba, Fatoh, Ghumarwin (HP - 174021)
+mapsUrl: https://www.google.com/maps/place//data=!4m2!3m1!1s0x39053d637335a73b:0x62a94a2e6ba15c9d?sa=X&ved=1t:8290&ictx=111]]></b:widget-setting>
         </b:widget-settings>
         <b:includable id='main'>
           <div class='cms-block' data-key='location'>

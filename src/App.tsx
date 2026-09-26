@@ -16,13 +16,14 @@ import { ProcessPage } from './pages/ProcessPage';
 import { PricingPage } from './pages/PricingPage';
 import { ContactPage } from './pages/ContactPage';
 import { ReviewPage } from './pages/ReviewPage';
+import { BlogPage } from './pages/BlogPage';
 import { FaqAeoSection } from './components/FaqAeoSection';
 import { SocialFeedShowcase } from './components/SocialFeedShowcase';
 import { AdminBookingsDashboard } from './components/AdminBookingsDashboard';
 import { ScrollProgressBar, LuxuryMarqueeRibbon, useGlobalCardSpotlight } from './components/MotionSiteExperience';
 import { MotionCoutureCursor } from './components/MotionCoutureCursor';
 
-export type PageTab = 'home' | 'about' | 'designs' | 'process' | 'pricing' | 'contact' | 'review' | 'admin';
+export type PageTab = 'home' | 'about' | 'designs' | 'process' | 'pricing' | 'contact' | 'review' | 'admin' | 'blog';
 
 export const App: React.FC = () => {
   useGlobalCardSpotlight();
@@ -34,6 +35,7 @@ export const App: React.FC = () => {
     const combined = `${path} ${hash} ${search}`;
 
     if (combined.includes('admin') || combined.includes('crm')) return 'admin';
+    if (combined.includes('blog') || combined.includes('article') || combined.includes('post') || combined.includes('guide')) return 'blog';
     if (combined.includes('review') || combined.includes('feedback') || combined.includes('rating') || combined.includes('gmb')) return 'review';
     if (combined.includes('about')) return 'about';
     if (combined.includes('design') || combined.includes('catalog') || combined.includes('lookbook')) return 'designs';
@@ -206,7 +208,12 @@ export const App: React.FC = () => {
           <ReviewPage onNavigate={navigateTo} />
         )}
 
-        {/* ================= PAGE 8: ADMIN BOOKINGS CRM (SECURE ACCESS) ================= */}
+        {/* ================= PAGE 8: FASHION & BRIDAL BLOG (20 SEO/GEO ARTICLES) ================= */}
+        {currentPage === 'blog' && (
+          <BlogPage onNavigate={navigateTo} />
+        )}
+
+        {/* ================= PAGE 9: ADMIN BOOKINGS CRM (SECURE ACCESS) ================= */}
         {currentPage === 'admin' && (
           <AdminBookingsDashboard onClose={() => navigateTo('home')} />
         )}

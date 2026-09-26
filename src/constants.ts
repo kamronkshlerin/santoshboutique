@@ -24,8 +24,8 @@ export const getAssetUrl = (assetOrFileName: string) => {
 // Official NAP Constants (Google Business Profile Exact Match)
 export const BUSINESS_NAME = 'Santosh Boutique';
 export const OFFICIAL_TAGLINE = 'Stitching Your Dreams With Care';
-export const FULL_ADDRESS = 'Near Baba Balak Nath Temple, Fatoh, Ghumarwin, Himachal Pradesh 174021';
-export const SHORT_LANDMARK = 'Near Baba Balak Nath Temple, Fatoh, Ghumarwin';
+export const FULL_ADDRESS = 'Siddh Temple, near Godriya Baba, Fatoh, Ghumarwin, Himachal Pradesh 174021, India';
+export const SHORT_LANDMARK = 'Siddh Temple, near Godriya Baba, Fatoh, Ghumarwin';
 export const LANDMARK_NOTE = SHORT_LANDMARK;
 export const PINCODE = '174021';
 export const PHONE_DISPLAY = '+91 94181 03213';
@@ -37,7 +37,7 @@ export const GEO_COORDS = { lat: 31.412639, lng: 76.744472 };
 export const INSTAGRAM_URL = 'https://www.instagram.com/santoshboutiquehp/';
 export const FACEBOOK_URL = 'https://www.facebook.com/santoshboutiquehp/';
 export const GOOGLE_REVIEW_URL = 'https://share.google/VjLoLEBNcQzAPxhq5';
-export const GOOGLE_MAPS_URL = 'https://maps.google.com/?q=31.412639,76.744472';
+export const GOOGLE_MAPS_URL = 'https://www.google.com/maps/place//data=!4m2!3m1!1s0x39053d637335a73b:0x62a94a2e6ba15c9d?sa=X&ved=1t:8290&ictx=111';
 
 // 100% Real Boutique Atelier & Work Photos (Self-Contained Embedded WebP)
 export const REAL_ASSETS = {

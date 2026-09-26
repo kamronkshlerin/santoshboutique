@@ -116,6 +116,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 </a>
               </li>
               <li>
+                <a href="#/blog" onClick={(e) => handleLink(e, 'blog')} className="text-[#f3cf98] font-semibold hover:underline transition-colors flex items-center gap-1">
+                  📚 Himachali Fashion &amp; Tailoring Blog (20 Guides)
+                </a>
+              </li>
+              <li>
                 <a href="#/review" onClick={(e) => handleLink(e, 'review')} className="text-[#fbbf24] font-semibold hover:underline transition-colors flex items-center gap-1">
                   ⭐ Rate &amp; Review on Google
                 </a>
@@ -135,7 +140,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               🕒 Monday – Sunday: 9:00 AM – 7:30 PM
             </p>
             <p className="text-xs text-[#d1b8b8] mt-2">
-              🧭 Landmark: Near Baba Balak Nath Temple, Fatoh, Ghumarwin. Roadside parking available.
+              🧭 Landmark: Siddh Temple, near Godriya Baba, Fatoh, Ghumarwin (HP 174021). Dedicated parking available.
             </p>
           </div>
 

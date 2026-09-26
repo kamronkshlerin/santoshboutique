@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MessageCircle, Menu, X, MapPin, Sun, Moon, Star, Instagram, Phone } from 'lucide-react';
+import { MessageCircle, Menu, X, MapPin, Sun, Moon, Star, Instagram, Phone, BookOpen } from 'lucide-react';
 import { useBloggerConfig } from '../config';
 import { PageTab } from '../App';
 import { 
@@ -46,6 +46,12 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, theme =
     { id: 'designs', label: 'Designs & Catalog', desktopLabel: 'Designs' },
     { id: 'process', label: 'Our Process', desktopLabel: 'Process' },
     { id: 'pricing', label: 'Pricing Guide', desktopLabel: 'Pricing' },
+    { 
+      id: 'blog', 
+      label: 'Fashion Blog (20 Guides)', 
+      desktopLabel: 'Blog', 
+      icon: <BookOpen className="w-3.5 h-3.5 text-[#f3cf98] shrink-0" /> 
+    },
     { 
       id: 'contact', 
       label: 'Contact & Location', 
