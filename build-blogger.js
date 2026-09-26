@@ -296,6 +296,25 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
       padding: 16px !important;
       box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
     }
+
+    /* Hide Default Blogger Cookie Banner */
+    #cookieChoiceInfo,
+    .cookie-choices-info,
+    .cookieChoicesInfo,
+    div[id*="cookieChoice"],
+    div[class*="cookieChoice"] {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      min-height: 0 !important;
+      max-height: 0 !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      position: absolute !important;
+      top: -9999px !important;
+      left: -9999px !important;
+      z-index: -9999 !important;
+    }
   ]]></b:skin>
 
   <!-- Tailwind & Boutique CSS Stylesheet -->
@@ -309,6 +328,20 @@ ${sanitizedCss}
   <script type='application/ld+json'>
   //<![CDATA[
 ${jsonLd}
+  //]]>
+  </script>
+
+  <!-- Disable Default Google Blogger EU Cookie Consent Banner -->
+  <script type='text/javascript'>
+  //<![CDATA[
+  window.cookieChoices = {
+    showCookieConsentBar: function() {},
+    showCookieConsentDialog: function() {}
+  };
+  document.addEventListener('DOMContentLoaded', function() {
+    var cb = document.getElementById('cookieChoiceInfo');
+    if (cb) { cb.style.display = 'none'; try { cb.remove(); } catch(e){} }
+  });
   //]]>
   </script>
 
