@@ -66,7 +66,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     "author": "Santosh Devi (Master Couturier)",
     "date": "2026-09-21",
     "readTime": "5 min read",
-    "imageAsset": "blogExpressAlteration",
+    "imageAsset": "blogExpressFitting",
     "summary": "Step-by-step navigation, local landmarks, and master tailoring services at Santosh Boutique located at Fatoh, near Siddh Temple and Godriya Baba in Ghumarwin, Bilaspur.",
     "keywords": [
       "Tailor in Ghumarwin",
@@ -126,7 +126,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     "author": "Santosh Devi (Master Couturier)",
     "date": "2026-09-23",
     "readTime": "5 min read",
-    "imageAsset": "shararaKurti",
+    "imageAsset": "blogHamirpurSharara",
     "summary": "Discover the latest trending Punjabi salwar suits, flared shararas, and straight pant kurtis tailored for clients in Hamirpur, Bhoranj, and Nadaun.",
     "keywords": [
       "Boutique in Hamirpur HP",
@@ -153,7 +153,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     "author": "Santosh Devi (Master Couturier)",
     "date": "2026-09-23",
     "readTime": "6 min read",
-    "imageAsset": "masterTailorFit",
+    "imageAsset": "blogKangraBridal",
     "summary": "High-definition couture tailoring for Kangra, Dharamshala, and Palampur brides. How Santosh Boutique delivers flawless bridal blouses and cocktail gowns across Himachal Pradesh.",
     "keywords": [
       "Boutique in Kangra",
@@ -180,7 +180,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     "author": "Santosh Devi (Master Couturier)",
     "date": "2026-09-24",
     "readTime": "6 min read",
-    "imageAsset": "partywear",
+    "imageAsset": "blogVelvetWinterSuit",
     "summary": "Tailoring velvet bridal suits, heavy brocade Anarkalis, and warm winter wedding ensembles for clients across Shimla, Theog, and Rampur.",
     "keywords": [
       "Boutique in Shimla",
@@ -207,7 +207,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     "author": "Santosh Devi (Master Couturier)",
     "date": "2026-09-24",
     "readTime": "5 min read",
-    "imageAsset": "ladiesSuit",
+    "imageAsset": "blogSolanFusion",
     "summary": "Compare off-the-rack clothes with precision bespoke tailoring. How working women and teachers in Solan, Nalagarh, and Baddi save money and look sharper with custom fits.",
     "keywords": [
       "Boutique in Solan",
@@ -234,7 +234,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     "author": "Santosh Devi (Master Couturier)",
     "date": "2026-09-24",
     "readTime": "6 min read",
-    "imageAsset": "partywear",
+    "imageAsset": "blogHimachaliPattu",
     "summary": "Blending traditional Kullu pattu shawls, geometric borders, and Dhaatu draping with modern crop tops, jackets, and bridal cholis at Santosh Boutique.",
     "keywords": [
       "Kullu Pattu Tailoring",
@@ -261,7 +261,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     "author": "Santosh Devi (Master Couturier)",
     "date": "2026-09-25",
     "readTime": "5 min read",
-    "imageAsset": "cottonSuit",
+    "imageAsset": "blogUnaSuit",
     "summary": "Trending Punjabi suits, heavy ghera salwars, and cigarette pant styles for women across Una, Amb, and Haroli. Complete rates and styling guide.",
     "keywords": [
       "Boutique in Una HP",
@@ -288,7 +288,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     "author": "Santosh Devi (Master Couturier)",
     "date": "2026-09-25",
     "readTime": "5 min read",
-    "imageAsset": "workshopStudio",
+    "imageAsset": "blogChambaSilk",
     "summary": "Pairing Chamba rumal embroidery and heritage silk dupattas with bespoke solid color suits, straight pants, and minimalist necklines.",
     "keywords": [
       "Boutique in Chamba",
@@ -315,7 +315,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     "author": "Santosh Devi (Master Couturier)",
     "date": "2026-09-25",
     "readTime": "6 min read",
-    "imageAsset": "svcLehenga",
+    "imageAsset": "blogSirmaurLehenga",
     "summary": "Complete guide to custom bridal lehenga choli tailoring, multi-layer can-can cage construction, and double dupatta draping styling for Sirmaur & Paonta Sahib brides.",
     "keywords": [
       "Boutique in Sirmaur",
@@ -342,7 +342,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     "author": "Santosh Devi (Master Couturier)",
     "date": "2026-09-25",
     "readTime": "5 min read",
-    "imageAsset": "alterationAfter",
+    "imageAsset": "blogPashminaWarm",
     "summary": "Expert woolen, tweed, and pashmina stitching techniques for extreme mountain weather. Zero draft armholes, fleece-lined cuffs, and durable stitching.",
     "keywords": [
       "Woolen Suit Stitching Himachal",
@@ -369,7 +369,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     "author": "Santosh Devi (Master Couturier)",
     "date": "2026-09-26",
     "readTime": "7 min read",
-    "imageAsset": "designerBlouse",
+    "imageAsset": "blogBlousesCouture",
     "summary": "The ultimate 2026 guide to designer saree blouse stitching. Padded cup placement, princess cut vs 4-tuck darting, backless dori patterns, and honest boutique pricing.",
     "keywords": [
       "Blouse Stitching Rates 2026",
@@ -400,7 +400,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     "author": "Santosh Devi (Master Couturier)",
     "date": "2026-09-26",
     "readTime": "5 min read",
-    "imageAsset": "alterationBefore",
+    "imageAsset": "blogExpressAlteration",
     "summary": "Need a wedding outfit or party dress resized in a hurry? Discover Santosh Boutique’s same-day and 24-hour express alterations for lehengas, blouses, and suits.",
     "keywords": [
       "Express Alteration Bilaspur",
@@ -427,7 +427,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     "author": "Santosh Devi (Master Couturier)",
     "date": "2026-09-26",
     "readTime": "6 min read",
-    "imageAsset": "designerBlouse",
+    "imageAsset": "blogPinterestRecreation",
     "summary": "Save thousands by recreating high-end celebrity lehengas and trending Pinterest Pakistani suits right here in Bilaspur, Himachal Pradesh.",
     "keywords": [
       "Pinterest Suit Tailor Himachal",
@@ -453,7 +453,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     "author": "Santosh Devi (Master Couturier)",
     "date": "2026-09-26",
     "readTime": "6 min read",
-    "imageAsset": "ladiesSuit",
+    "imageAsset": "blogPlussizeElegance",
     "summary": "Body-positive custom couture. How curvy and plus-size women achieve a streamlined, comfortable, and confident fit with bespoke tailoring at Santosh Boutique.",
     "keywords": [
       "Plus Size Tailor Himachal",
@@ -479,7 +479,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     "author": "Santosh Devi (Master Couturier)",
     "date": "2026-09-26",
     "readTime": "6 min read",
-    "imageAsset": "cottonSuit",
+    "imageAsset": "blogFabricsSelection",
     "summary": "Seasonal fabric selection for Himachal weddings: when to choose pure georgette, structured raw silk, breathable chanderi, or warm micro-velvet.",
     "keywords": [
       "Fabric Guide Himachal Weddings",
@@ -505,7 +505,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     "author": "Santosh Devi (Master Couturier)",
     "date": "2026-09-26",
     "readTime": "6 min read",
-    "imageAsset": "partywear",
+    "imageAsset": "blogAnarkaliFlare",
     "summary": "How Santosh Boutique calculates 24, 32, and 48-kali Anarkali dresses for a cascading royal twirl with zero hem dragging.",
     "keywords": [
       "Anarkali Stitching Tailor Himachal",
@@ -531,7 +531,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     "author": "Santosh Devi (Master Couturier)",
     "date": "2026-09-26",
     "readTime": "7 min read",
-    "imageAsset": "designerBlouse",
+    "imageAsset": "blogNeckSleeves",
     "summary": "Explore 2026’s top trending neck designs—scalloped V-plackets, sweetheart illusion, keyholes, bishop sleeves, and pleated organza cuffs.",
     "keywords": [
       "Gala Design 2026",
@@ -557,7 +557,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     "author": "Santosh Devi (Master Couturier)",
     "date": "2026-09-26",
     "readTime": "5 min read",
-    "imageAsset": "masterTailorFit",
+    "imageAsset": "blogOnlineBooking",
     "summary": "Living outside Bilaspur? Here is how clients from Shimla, Kangra, Mandi, and Delhi get custom garments stitched at Santosh Boutique via WhatsApp video measurements and courier delivery.",
     "keywords": [
       "Online Tailor Himachal",
