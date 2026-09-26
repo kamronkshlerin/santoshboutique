@@ -444,7 +444,7 @@ priceLehenga: ₹1200 onwards]]></b:widget-setting>
         <b:widget-settings>
           <b:widget-setting name='content'><![CDATA[address: Siddh Temple, near Godriya Baba, Fatoh, Ghumarwin, Himachal Pradesh 174021, India
 landmark: Siddh Temple, near Godriya Baba, Fatoh, Ghumarwin (HP - 174021)
-mapsUrl: https://www.google.com/maps/place//data=!4m2!3m1!1s0x39053d637335a73b:0x62a94a2e6ba15c9d?sa=X&ved=1t:8290&ictx=111]]></b:widget-setting>
+mapsUrl: https://www.google.com/maps/place//data=!4m2!3m1!1s0x39053d637335a73b:0x62a94a2e6ba15c9d?sa=X&amp;ved=1t:8290&amp;ictx=111]]></b:widget-setting>
         </b:widget-settings>
         <b:includable id='main'>
           <div class='cms-block' data-key='location'>

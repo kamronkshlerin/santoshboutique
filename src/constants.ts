@@ -37,7 +37,7 @@ export const GEO_COORDS = { lat: 31.412639, lng: 76.744472 };
 export const INSTAGRAM_URL = 'https://www.instagram.com/santoshboutiquehp/';
 export const FACEBOOK_URL = 'https://www.facebook.com/santoshboutiquehp/';
 export const GOOGLE_REVIEW_URL = 'https://share.google/VjLoLEBNcQzAPxhq5';
-export const GOOGLE_MAPS_URL = 'https://www.google.com/maps/place//data=!4m2!3m1!1s0x39053d637335a73b:0x62a94a2e6ba15c9d?sa=X&ved=1t:8290&ictx=111';
+export const GOOGLE_MAPS_URL = 'https://www.google.com/maps/place//data=!4m2!3m1!1s0x39053d637335a73b:0x62a94a2e6ba15c9d?sa=X&amp;ved=1t:8290&amp;ictx=111';
 
 // 100% Real Boutique Atelier & Work Photos (Self-Contained Embedded WebP)
 export const REAL_ASSETS = {
