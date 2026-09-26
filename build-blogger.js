@@ -54,6 +54,7 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
 
   <!-- Google Rich Snippets, Sitelinks & Knowledge Graph Schema -->
   <script type='application/ld+json'>
+  //<![CDATA[
   {
     "@context": "https://schema.org",
     "@graph": [
@@ -109,7 +110,7 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
           "https://www.facebook.com/santoshboutiquehp/",
           "https://share.google/VjLoLEBNcQzAPxhq5"
         ],
-        "hasMap": "https://www.google.com/maps/place//data=!4m2!3m1!1s0x39053d637335a73b:0x62a94a2e6ba15c9d?sa=X&ved=1t:8290&ictx=111",
+        "hasMap": "https://www.google.com/maps/place//data=!4m2!3m1!1s0x39053d637335a73b:0x62a94a2e6ba15c9d?sa=X&amp;ved=1t:8290&amp;ictx=111",
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "4.9",
@@ -165,7 +166,7 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
             "name": "Santosh Boutique ka exact location aur contact number kya hai?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Exact Address: Siddh Temple, near Godriya Baba, Fatoh, Ghumarwin, Himachal Pradesh 174021, India. Phone/WhatsApp: +91 94181 03213. Google Maps: https://www.google.com/maps/place//data=!4m2!3m1!1s0x39053d637335a73b:0x62a94a2e6ba15c9d?sa=X&ved=1t:8290&ictx=111"
+              "text": "Exact Address: Siddh Temple, near Godriya Baba, Fatoh, Ghumarwin, Himachal Pradesh 174021, India. Phone/WhatsApp: +91 94181 03213. Google Maps: https://www.google.com/maps/place//data=!4m2!3m1!1s0x39053d637335a73b:0x62a94a2e6ba15c9d?sa=X&amp;ved=1t:8290&amp;ictx=111"
             }
           }
         ]
@@ -193,6 +194,7 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
       }
     ]
   }
+  //]]>
   </script>
 
   <!-- Google Fonts -->
@@ -325,13 +327,6 @@ const bloggerXml = `<?xml version="1.0" encoding="UTF-8" ?>
 ${sanitizedCss}
   /*]]>*/
   </style>
-
-  <!-- Schema.org JSON-LD Structured Data -->
-  <script type='application/ld+json'>
-  //<![CDATA[
-${jsonLd}
-  //]]>
-  </script>
 
   <!-- Disable Default Google Blogger EU Cookie Consent Banner -->
   <script type='text/javascript'>
