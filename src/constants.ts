@@ -63,6 +63,16 @@ export const REAL_ASSETS = {
   svcBlouse: REAL_BASE64.svcBlouse,
   svcCustom: REAL_BASE64.svcCustom,
 
+  // Dedicated High-Fashion Blog Photography (Hosted via GitHub CDN)
+  blogBridalBlouse: `${CDN_BASE}/images/blog_bridal_blouse.jpg`,
+  blogPatialaSuit: `${CDN_BASE}/images/blog_patiala_suit.jpg`,
+  blogHimachaliPattu: `${CDN_BASE}/images/blog_himachali_pattu.jpg`,
+  blogBridalLehenga: `${CDN_BASE}/images/blog_bridal_lehenga.jpg`,
+  blogExpressAlteration: `${CDN_BASE}/images/blog_express_alteration.jpg`,
+  blogVelvetWinterSuit: `${CDN_BASE}/images/blog_velvet_winter_suit.jpg`,
+  blogNeckSleeves: `${CDN_BASE}/images/blog_neck_sleeves.jpg`,
+  blogMandiFestive: `${CDN_BASE}/images/blog_mandi_festive.jpg`,
+
   // Backwards compatibility aliases
   shopFront: REAL_BASE64.shopExterior,
   realWorkshop1: REAL_BASE64.workshopStudio,

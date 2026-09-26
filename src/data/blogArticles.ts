@@ -28,7 +28,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     "author": "Santosh Devi (Master Couturier)",
     "date": "2026-09-20",
     "readTime": "6 min read",
-    "imageAsset": "designerBlouse",
+    "imageAsset": "blogBridalBlouse",
     "summary": "Looking for the best ladies tailor and designer boutique in Bilaspur & Ghumarwin? Discover why Santosh Boutique at Fatoh near Siddh Temple & Godriya Baba is the premier destination for bridal blouses, Punjabi suits, and express alterations.",
     "keywords": [
       "Boutique in Bilaspur",
@@ -66,7 +66,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     "author": "Santosh Devi (Master Couturier)",
     "date": "2026-09-21",
     "readTime": "5 min read",
-    "imageAsset": "realStudioSign",
+    "imageAsset": "blogExpressAlteration",
     "summary": "Step-by-step navigation, local landmarks, and master tailoring services at Santosh Boutique located at Fatoh, near Siddh Temple and Godriya Baba in Ghumarwin, Bilaspur.",
     "keywords": [
       "Tailor in Ghumarwin",
@@ -98,7 +98,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     "author": "Santosh Devi (Master Couturier)",
     "date": "2026-09-22",
     "readTime": "6 min read",
-    "imageAsset": "svcLehenga",
+    "imageAsset": "blogMandiFestive",
     "summary": "Exclusive couture services for Mandi and Sundernagar brides. Discover bespoke sweetheart neckline blouses, heavy velvet lehenga stitching, and luxury wedding attire within easy reach.",
     "keywords": [
       "Boutique in Mandi HP",
